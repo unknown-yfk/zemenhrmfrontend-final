@@ -1,8 +1,11 @@
 import { Navigate } from "react-router-dom";
 import PageTitle from "../page-header/PageHeader";
 import AddLeavePolicy from "./AddLeavePolicy";
+import {  useTranslation } from "react-i18next";
 
 const LeavePolicy = (props) => {
+	const {t} = useTranslation();
+
 	const isLogged = Boolean(localStorage.getItem("isLogged"));
 
 	if (!isLogged) {
@@ -10,7 +13,7 @@ const LeavePolicy = (props) => {
 	}
 	return (
 		<div>
-			<PageTitle title='Back' />
+			<PageTitle title={t('back')} />
 			<AddLeavePolicy />
 		</div>
 	);

@@ -10,26 +10,29 @@ import ColVisibilityDropdown from "../Shared/ColVisibilityDropdown";
 import { CsvLinkBtn } from "../UI/CsvLinkBtn";
 import "./transaction.css";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 //Date fucntinalities
 let startdate = moment().startOf("month");
 let enddate = moment().endOf("month");
 
 function CustomTable({ list, total }) {
+	const {t} = useTranslation();
+
 	const dispatch = useDispatch();
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t("id"),
 			dataIndex: "id",
 			key: "id",
 			render: (id) => <Link to={`/admin/transaction/${id}`}>{id}</Link>,
 		},
 		{
 			id: 2,
-			title: "Date",
+			title: t("date"),
 			dataIndex: "date",
 			key: "date",
 			render: (date) => moment(date).format("ll"),
@@ -37,7 +40,7 @@ function CustomTable({ list, total }) {
 
 		{
 			id: 3,
-			title: "Debit Account",
+			title: t("debit"),
 			dataIndex: "debit",
 			key: "debit",
 			render: (debit) => debit?.name,
@@ -45,7 +48,7 @@ function CustomTable({ list, total }) {
 
 		{
 			id: 4,
-			title: "Credit Account",
+			title: t("credit"),
 			dataIndex: "credit",
 			key: "credit",
 			render: (credit) => credit?.name,
@@ -53,14 +56,14 @@ function CustomTable({ list, total }) {
 
 		{
 			id: 5,
-			title: "Amount",
+			title: t("amount"),
 			dataIndex: "amount",
 			key: "amount",
 			responsive: ["md"],
 		},
 		{
 			id: 6,
-			title: "Particulars",
+			title: t("perticulars"),
 			dataIndex: "particulars",
 			key: "particulars",
 		},
@@ -88,7 +91,7 @@ function CustomTable({ list, total }) {
 				{list && (
 					<CsvLinkBtn>
 						<CSVLink data={CSVlist} filename='transaction'>
-							Download CSV
+							{t('download_csv')}
 						</CSVLink>
 					</CsvLinkBtn>
 				)}
@@ -123,6 +126,8 @@ function CustomTable({ list, total }) {
 }
 
 const GetAllTransaction = (props) => {
+	const {t} = useTranslation();
+
 	const dispatch = useDispatch();
 	const list = useSelector((state) => state.transactions.list);
 
@@ -159,7 +164,7 @@ const GetAllTransaction = (props) => {
 			<Card className=''>
 				<div className='card-title  flex  justify-between mr-4'>
 					<h5 className='text-xl txt-color-2'>
-						<span>Transaction History</span>
+						<span>{t('transaction_history')}</span>
 					</h5>
 					<div>
 						<RangePicker

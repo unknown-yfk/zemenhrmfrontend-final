@@ -17,20 +17,24 @@ import { Link, useParams } from "react-router-dom";
 import BtnViewSvg from "../UI/Button/btnViewSvg";
 import AttendBtn from "../Buttons/AttendBtn";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
 
 function CustomTable({ list, loading }) {
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t('name'),
 			dataIndex: "user",
 			key: "user",
 			render: ({ firstName, lastName }) => firstName + " " + lastName,
@@ -38,7 +42,7 @@ function CustomTable({ list, loading }) {
 
 		{
 			id: 3,
-			title: "inTime",
+			title:  t('in_time'),
 			dataIndex: "inTime",
 			key: "inTime",
 			render: (inTime) => moment(inTime).format("DD-MM-YYYY, h:mm A"),
@@ -46,14 +50,14 @@ function CustomTable({ list, loading }) {
 
 		{
 			id: 4,
-			title: "Out Time",
+			title: t('out_time'),
 			dataIndex: "outTime",
 			key: "outTime",
 			render: (outTime) => moment(outTime).format("DD-MM-YYYY, h:mm A"),
 		},
 		{
 			id: 4,
-			title: "In Status",
+			title: t("in_status"),
 			dataIndex: "inTimeStatus",
 			key: "inTimeStatus",
 			render: (inTimeStatus) => {
@@ -71,7 +75,7 @@ function CustomTable({ list, loading }) {
 		},
 		{
 			id: 5,
-			title: "Out Status",
+			title: t("out_status"),
 			dataIndex: "outTimeStatus",
 			key: "outTimeStatus",
 			render: (outTimeStatus) => {
@@ -89,7 +93,7 @@ function CustomTable({ list, loading }) {
 		},
 		{
 			id: 7,
-			title: "Punch By",
+			title: t('puched_by'),
 			dataIndex: "punchBy",
 			key: "punchBy",
 			render: (punchBy) => (
@@ -100,7 +104,7 @@ function CustomTable({ list, loading }) {
 		},
 		{
 			id: 6,
-			title: "Total Hour",
+			title: t('total_h'),
 			dataIndex: "totalHour",
 			key: "totalHour",
 			render: (totalHour) => totalHour || "Not Checked",
@@ -134,8 +138,8 @@ function CustomTable({ list, loading }) {
 	return (
 		<Card className='mt-5'>
 			<div className='text-center my-2 flex justify-between'>
-				<h5 className='department-list-title text-color-2 text-xl mb-2'>
-					Attendance History
+				<h5 className='department-list-title text-color-2 text-xl mb-2'>			
+					{t('attendance_history')}
 				</h5>
 				{list && (
 					<div>
@@ -144,7 +148,8 @@ function CustomTable({ list, loading }) {
 								data={list}
 								className='btn btn-dark btn-sm mb-1'
 								filename='attendance_user'>
-								Download CSV
+								
+								{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -172,6 +177,8 @@ function CustomTable({ list, loading }) {
 }
 
 const UserAttendance = () => {
+	const {t} = useTranslation();
+	
 	const { list, loading } = useSelector((state) => state.attendance);
 	const { id } = useParams("id");
 
@@ -188,7 +195,7 @@ const UserAttendance = () => {
 	return (
 		<UserPrivateComponent permission='read-attendance'>
 			<div>
-				<PageTitle title='Back' />
+				<PageTitle title={t('back')} />
 				{!loading && <CustomTable list={list} loading={loading} />}
 			</div>
 		</UserPrivateComponent>

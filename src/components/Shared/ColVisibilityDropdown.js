@@ -1,5 +1,7 @@
 import { Select, Tag } from "antd";
 import React from "react";
+import {  useTranslation } from "react-i18next";
+
 
 const tagRender = (props) => {
   const { label, closable, onClose } = props;
@@ -22,6 +24,8 @@ const tagRender = (props) => {
 };
 
 const ColVisibilityDropdown = ({ options, columns, columnsToShowHandler }) => {
+	const {t} = useTranslation();
+
   const modOptions = options.map((option) => {
     return {
       id: option.id,
@@ -55,7 +59,7 @@ const ColVisibilityDropdown = ({ options, columns, columnsToShowHandler }) => {
       }}
       maxTagCount={0}
       options={modOptions}
-      maxTagPlaceholder="Column Selected"
+      maxTagPlaceholder={t('column_select')}
       placeholder="Column Visibility"
       onChange={handleChange}
     />

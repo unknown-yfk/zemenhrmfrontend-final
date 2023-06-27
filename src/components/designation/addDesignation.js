@@ -8,8 +8,13 @@ import {
 import UploadMany from "../Card/UploadMany";
 import styles from "./AddDesignation.module.css";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
 
 const AddDesignation = () => {
+
+	const {t} = useTranslation();
+
 	const dispatch = useDispatch();
 	const { Title } = Typography;
 
@@ -52,7 +57,9 @@ const AddDesignation = () => {
 						className='rounded column-design'>
 						<Card bordered={false}>
 							<Title level={4} className='m-2 mb-4 text-center'>
-								Add designation
+								{/* Add designation */}
+								{t('add_designation')}
+
 							</Title>
 							<Form
 								form={form}
@@ -71,7 +78,7 @@ const AddDesignation = () => {
 								autoComplete='off'>
 								<Form.Item
 									style={{ marginBottom: "20px" }}
-									label='Name'
+									label={t('name')}
 									name='name'
 									rules={[
 										{
@@ -96,7 +103,8 @@ const AddDesignation = () => {
 										shape='round'
 										size='large'
 										loading={loader}>
-										Add designation
+							
+										{t('add_designation')}
 									</Button>
 								</Form.Item>
 							</Form>

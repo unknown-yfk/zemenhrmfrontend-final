@@ -39,10 +39,14 @@ import EmployeeAward from "../UI/EmployeeAward";
 import AwardHistoryEditPopup from "../UI/PopUp/AwardHistoryEditPopup";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
 import { loadAllDesignation } from "../../redux/rtk/features/designation/designationSlice";
+import {  useTranslation } from "react-i18next";
 
 //PopUp
 
 const DetailStaff = () => {
+
+	const {t} = useTranslation();
+
 	const { id } = useParams();
 	let navigate = useNavigate();
 
@@ -59,7 +63,7 @@ const DetailStaff = () => {
 			dispatch(deleteStaff(id));
 
 			setVisible(false);
-			toast.warning(`User Name : ${user.username} is removed `);
+			toast.warning(`User Name : ${user.id} is removed `);
 			return navigate("/admin/hr/staffs");
 		} catch (error) {
 			console.log(error.message);
@@ -92,7 +96,7 @@ const DetailStaff = () => {
 	return (
 		<div>
 			<UserPrivateComponent permission={"read-user"}>
-				<PageTitle title=' Back  ' />
+				<PageTitle title={t('back')} />
 
 				{user ? (
 					<div className='mr-top'>
@@ -113,13 +117,13 @@ const DetailStaff = () => {
 											</h1>
 											<h2 class='text-base font-medium txt-color-secondary mb-1'>
 												{user?.designationHistory[0]?.designation?.name ||
-													"No Designation"}
+													t('no_designation')}
 											</h2>
 											<h3 class='text-base font-medium txt-color-secondary'>
-												{user?.department?.name || "No Department"}
+												{user?.department?.name || t('department')}
 											</h3>
 											<h3 class='text-base font-medium txt-color-secondary'>
-												{user?.employeeId || "No Employee ID"}
+												{user?.employeeId || t('no_id')}
 											</h3>
 										</div>
 									</div>
@@ -130,31 +134,32 @@ const DetailStaff = () => {
 									<div className='flex justify-center py-8 px-4 mt-4'>
 										<div className='flex flex-col items-around'>
 											<h1 className='text-2xl font-bold txt-color-2 mb-1'>
-												Leave Status
+												
+												{t('leave_satus')}
 											</h1>
 
 											<h3 className='text-base font-medium txt-color-secondary'>
-												Leaves :{" "}
+												{t('leave')} :{" "}
 												<span className='text-base font-medium txt-color-2'>
-													Paid - {user?.leavePolicy.paidLeaveCount} | U.Paid -{" "}
+													{t('paid')} - {user?.leavePolicy.paidLeaveCount} | {t('unpaid')}  -{" "}
 													{user?.leavePolicy.unpaidLeaveCount}
 												</span>
 											</h3>
 											<h3 className='text-base font-medium txt-color-secondary'>
-												Taken :{" "}
+												{t('taken')} :{" "}
 												<span className='text-base font-medium txt-color-2'>
-													Paid -{" "}
+												{t('paid')} -{" "}
 													{user?.leavePolicy.paidLeaveCount -
 														user?.leftPaidLeaveDays}{" "}
-													| U.Paid -{" "}
+													| {t('unpaid')} -{" "}
 													{user?.leavePolicy.unpaidLeaveCount -
 														user?.leftUnpaidLeaveDays}
 												</span>
 											</h3>
 											<h3 className='text-base font-medium txt-color-secondary'>
-												Balance :{" "}
+											{t('balance')} :{" "}
 												<span className='text-base font-medium txt-color-2'>
-													Paid - {user?.leftPaidLeaveDays} | U.Paid -{" "}
+												{t('paid')} - {user?.leftPaidLeaveDays} | {t('unpaid')} -{" "}
 													{user?.leftUnpaidLeaveDays}
 												</span>
 											</h3>
@@ -167,18 +172,19 @@ const DetailStaff = () => {
 								<div className='flex justify-center py-8 px-4 mt-4'>
 									<div className='flex flex-col items-around'>
 										<h1 className='text-2xl font-bold txt-color-2 mb-1'>
-											Clock In & Out
+											
+											{t('clock_in_out')}
 										</h1>
 
 										<h3 className='text-base font-medium txt-color-secondary'>
-											In Time :{" "}
+											{t('in_time')} :{" "}
 											<span className='text-base font-medium txt-color-2'>
 												{moment(user?.attendance.inTime).format("hh:mm A")}
 											</span>
 										</h3>
 
 										<h3 className='text-base font-medium txt-color-secondary'>
-											Out Time :{" "}
+										{t('out_time')}  :{" "}
 											<span className='text-base font-medium txt-color-2'>
 												{moment(user?.attendance.outTime).format("hh:mm A")}
 											</span>
@@ -221,7 +227,8 @@ const DetailStaff = () => {
 								xl={11}
 								className='new-card rounded h-auto m-2'>
 								<ProfileCardText className='text-start'>
-									Personal Information
+								
+									{t('personal_info')}
 								</ProfileCardText>
 
 								<Hr />
@@ -234,7 +241,7 @@ const DetailStaff = () => {
 												style={{ fontSize: "15px" }}
 											/>
 											<span className='txt-color-2 font-medium'>
-												Department:
+												{t('department')}:
 											</span>
 											<p className='txt-color-secondary ml-2'>
 												{user?.department?.name}
@@ -246,7 +253,7 @@ const DetailStaff = () => {
 												style={{ fontSize: "15px" }}
 											/>
 											<span className='txt-color-2 font-medium'>
-												Employment Status:
+												{t('emp_status')}:
 											</span>
 											<p className='txt-color-secondary ml-2'>
 												{user?.employmentStatus?.name}
@@ -259,7 +266,7 @@ const DetailStaff = () => {
 												style={{ fontSize: "15px" }}
 											/>
 											<span className='txt-color-2 font-medium'>
-												Join Date :
+												{t('join_date')} :
 											</span>
 											<p className='txt-color-secondary ml-2'>
 												{moment(user?.joinDate).format("ll")}
@@ -272,7 +279,7 @@ const DetailStaff = () => {
 												style={{ fontSize: "15px" }}
 											/>
 											<span className='txt-color-2 font-medium'>
-												Leave Date:
+											{t('leave_date')} :
 											</span>
 											<p className='txt-color-secondary ml-2'>
 												{user?.leaveDate
@@ -286,9 +293,9 @@ const DetailStaff = () => {
 												className='mr-3'
 												style={{ fontSize: "15px" }}
 											/>
-											<span className='txt-color-2 font-medium'>Role :</span>
+											<span className='txt-color-2 font-medium'>{t('role')} :</span>
 											<p className='txt-color-secondary ml-2'>
-												{user?.role?.name || "No Role"}
+												{user?.role?.name || t('no')}
 											</p>
 										</li>
 
@@ -298,7 +305,7 @@ const DetailStaff = () => {
 												style={{ fontSize: "15px" }}
 											/>
 											<span className='txt-color-2 font-medium'>
-												Leave Policy:
+											{t('leave_policy')} :
 											</span>
 											<p className='txt-color-secondary ml-2'>
 												{user?.leavePolicy.name}
@@ -311,7 +318,8 @@ const DetailStaff = () => {
 												style={{ fontSize: "15px" }}
 											/>
 											<span className='txt-color-2 font-medium'>
-												Weekly Holiday:
+											
+											{t('weekly_holiday')} :
 											</span>
 											<p className='txt-color-secondary ml-2'>
 												{user?.weeklyHoliday.name}
@@ -323,9 +331,9 @@ const DetailStaff = () => {
 												className='mr-3'
 												style={{ fontSize: "15px" }}
 											/>
-											<span className='txt-color-2 font-medium'>Shift :</span>
+											<span className='txt-color-2 font-medium'>{t('shift')} :</span>
 											<p className='txt-color-secondary ml-2'>
-												{user?.shift?.name || "No Shift"} (
+												{user?.shift?.name ||  t('no')} (
 												{moment(user?.shift?.startTime).format("LT")} -{" "}
 												{moment(user?.shift?.endTime).format("LT")})
 											</p>
@@ -341,7 +349,7 @@ const DetailStaff = () => {
 								xl={12}
 								className='new-card rounded h-auto m-2'>
 								<ProfileCardText className='text-start'>
-									Contact Information
+								{t('contact_info')}
 								</ProfileCardText>
 
 								<Hr />
@@ -352,9 +360,11 @@ const DetailStaff = () => {
 												className='mr-3'
 												style={{ fontSize: "15px" }}
 											/>
-											<span className='txt-color-2 font-medium'>Email:</span>
+											<span className='txt-color-2 font-medium'>
+												{t('email')}
+												:  </span>
 											<p className='txt-color-secondary  ml-2'>
-												{user?.email || "No Email"}
+												{user?.email || t('no')}
 											</p>
 										</li>
 										<li className='flex items-center'>
@@ -362,9 +372,11 @@ const DetailStaff = () => {
 												className='mr-3'
 												style={{ fontSize: "15px" }}
 											/>
-											<span className='txt-color-2 font-medium'>Phone:</span>
+											<span className='txt-color-2 font-medium'>
+											{t('phone')}
+												   :</span>
 											<p className='txt-color-secondary ml-2'>
-												{user?.phone || "No Phone"}
+												{user?.phone || t('no')}
 											</p>
 										</li>
 
@@ -373,28 +385,30 @@ const DetailStaff = () => {
 												className='mr-3'
 												style={{ fontSize: "15px" }}
 											/>
-											<span className='txt-color-2 font-medium'>Address:</span>
+											<span className='txt-color-2 font-medium'>{t('አድራሻ')}:
+
+											</span>
 											<div className=''>
 												<li className='txt-color-secondary ml-2'>
 													{" "}
-													City : {user?.street || "No Address"}
+													{t('city')}: {user?.street ||  t('no')}
 												</li>
 												<li className='txt-color-secondary ml-2'>
 													{" "}
-													Kifle Ketema : {user?.city || "No Address"}
+													{t('k_ketema')} : {user?.city ||  t('no')}
 												</li>
 												<li className='txt-color-secondary ml-2'>
 													{" "}
-													Woreda : {user?.state || "No Address"}
+													{t('woreda')} : {user?.state ||  t('no')}
 												</li>
 												<li className='txt-color-secondary ml-2'>
 													{" "}
-													Region : {user?.country || "No Address"}
+													{t('region')} : {user?.country ||  t('no')}
 												</li>
 
 												<li className='txt-color-secondary ml-2'>
 													{" "}
-													Kebele : {user?.zipCode || "No Address"}
+													{t('Kebele')} : {user?.zipCode ||  t('no')}
 												</li>
 											</div>
 										</li>
@@ -405,10 +419,10 @@ const DetailStaff = () => {
 												style={{ fontSize: "15px" }}
 											/>
 											<span className='txt-color-2 font-medium'>
-												Blood Group:
+												{t('blood_t')}:
 											</span>
 											<p className='txt-color-secondary ml-2'>
-												{user?.bloodGroup || "No Blood Group"}
+												{user?.bloodGroup ||  t('no')}
 											</p>
 										</li>
 									</ul>
@@ -423,7 +437,7 @@ const DetailStaff = () => {
 								className='new-card rounded h-auto m-2'>
 								<div className='flex justify-between'>
 									<ProfileCardText className='text-start'>
-										Designation History
+										{t('designation_hist')}
 									</ProfileCardText>
 
 									<UserPrivateComponent
@@ -440,10 +454,10 @@ const DetailStaff = () => {
 									) : (
 										<div className='mb-10'>
 											<p className='text-center mt-3 mb-3'>
-												No Designation History Found
+											{t('no_designation')}
 											</p>
 											<Alert
-												message='Not found , Click on edit button to add new'
+												message={t('not_found')}
 												type='info'
 												showIcon
 											/>
@@ -461,7 +475,8 @@ const DetailStaff = () => {
 								className='new-card rounded h-auto m-2 '>
 								<div className='flex justify-between'>
 									<ProfileCardText className='text-start'>
-										Educaiton History
+										
+										{t('educ_hist')}
 									</ProfileCardText>
 									<UserPrivateComponent permission={"update-education"}>
 										{user?.educations && (
@@ -476,10 +491,11 @@ const DetailStaff = () => {
 									) : (
 										<div className='mb-10'>
 											<p className='text-center mt-3 mb-3'>
-												No Education History Found
+											
+												{t('no_educ')}
 											</p>
 											<Alert
-												message='Not found , Click on edit button to add new'
+												message={t('not_found')}
 												type='info'
 												showIcon
 											/>
@@ -497,7 +513,8 @@ const DetailStaff = () => {
 								className='new-card rounded h-auto m-2 '>
 								<div className='flex justify-between'>
 									<ProfileCardText className='text-start'>
-										Salary History
+									
+										{t('salary_hist')}
 									</ProfileCardText>
 									<UserPrivateComponent permission={"update-salaryHistory"}>
 										{user?.salaryHistory && (
@@ -512,10 +529,11 @@ const DetailStaff = () => {
 									) : (
 										<div className='mb-10'>
 											<p className='text-center mt-3 mb-3 '>
-												No Education History Found
+												
+												{t('no_sala')}
 											</p>
 											<Alert
-												message='Not found , Click on edit button to add new'
+											    message={t('not_found')}
 												type='info'
 												showIcon
 											/>
@@ -533,7 +551,8 @@ const DetailStaff = () => {
 								className='new-card rounded h-auto m-2 '>
 								<div className='flex justify-between'>
 									<ProfileCardText className='text-start'>
-										Award History
+									
+										{t('award_hist')}
 									</ProfileCardText>
 
 									<UserPrivateComponent permission={"update-awardHistory"}>
@@ -549,10 +568,10 @@ const DetailStaff = () => {
 									) : (
 										<div className='mb-10'>
 											<p className='text-center mt-3 mb-3 '>
-												No Award History Found
+											{t('no_award')}
 											</p>
 											<Alert
-												message='Not found , Click on edit button to add new'
+												message={t('not_found')}
 												type='info'
 												showIcon
 											/>

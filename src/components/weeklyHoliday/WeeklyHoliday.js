@@ -2,8 +2,11 @@ import { Navigate } from "react-router-dom";
 import PageTitle from "../page-header/PageHeader";
 
 import AddWeeklyHoliday from "./AddWeeklyHoliday";
+import {  useTranslation } from "react-i18next";
 
 const WeeklyHoliday = (props) => {
+	const {t} = useTranslation();
+
 	const isLogged = Boolean(localStorage.getItem("isLogged"));
 
 	if (!isLogged) {
@@ -11,7 +14,7 @@ const WeeklyHoliday = (props) => {
 	}
 	return (
 		<div>
-			<PageTitle title='Back' />
+			<PageTitle title={t('back')} />
 			<AddWeeklyHoliday />
 		</div>
 	);

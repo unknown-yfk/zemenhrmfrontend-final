@@ -11,8 +11,11 @@ import { toast } from "react-toastify";
 import PageTitle from "../page-header/PageHeader";
 import { addPermission, loadPermission } from "./roleApis";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const AddPermission = () => {
+	const {t} = useTranslation();
+
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const { Option } = Select;
@@ -75,7 +78,7 @@ const AddPermission = () => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={t('back')} />
 			<UserPrivateComponent permission={"create-rolePermission"}>
 				<Row className='mr-top'>
 					<Col
@@ -87,7 +90,7 @@ const AddPermission = () => {
 						className='border rounded column-design'>
 						<Card bordered={false} className='criclebox h-full'>
 							<Title level={3} className='m-3 text-center'>
-								Add Permission :{" "}
+								{t('new-perm')} :{" "}
 								<span className='text-primary'>{roleName}</span>
 							</Title>
 
@@ -108,7 +111,7 @@ const AddPermission = () => {
 								onFinishFailed={onFinishFailed}
 								autoComplete='off'>
 								<Form.Item
-									label='Has Permissions'
+									label={t('has_perm')}
 									style={{ marginBottom: "20px" }}>
 									{rolePermissions &&
 										rolePermissions.map((i) => (
@@ -118,7 +121,7 @@ const AddPermission = () => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='New Permission'
+									label={t('new-perm')}
 									name='permission_id'
 									rules={[
 										{
@@ -139,7 +142,7 @@ const AddPermission = () => {
 										style={{
 											width: "100%",
 										}}
-										placeholder='Please select'
+										placeholder={t('select')}
 										onChange={handleChange}>
 										{permissions &&
 											permissions.map((permission) => (
@@ -162,7 +165,8 @@ const AddPermission = () => {
 										size='large'
 										shape='round'
 										loading={loader}>
-										Permit Now
+										
+										{t('permit')}
 									</Button>
 								</Form.Item>
 							</Form>

@@ -1,0 +1,14 @@
+{
+    "app_title": "ርእሲ",
+    "language": "ቋንቋ",
+    "tigrinya": "ትግርኛ",
+    "welcome_message": "እንኳዕ ደሓን መፁ",
+    "days_since_release": "it's been {{number_of_days}} days since this video was released",
+    "new_employee":  "ሓድሽ ሰራሕተኛ",
+    "employee_list": "ዝርዝር ሰራሕተኛታት", 
+    "role_permission": "ተራን ፍቓድን",
+    "designation": "ምስረታ",
+    "department": "ክፍሊ",
+    "dashboard": "ዳሽቦርድ",
+    "hr":   "ዓቕሚ ሰብ"
+  }

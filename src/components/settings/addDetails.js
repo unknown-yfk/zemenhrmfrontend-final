@@ -7,6 +7,7 @@ import { Fragment, useEffect, useState } from "react";
 import Loader from "../loader/loader";
 import styles from "./AddDetails.module.css";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 //Update Invoice API REQ
 
@@ -31,6 +32,9 @@ const updateInvoice = async (values) => {
 };
 
 const AddDetails = () => {
+
+	const {t} = useTranslation();
+
 	const { Title } = Typography;
 	const [loader, setLoader] = useState(false);
 
@@ -76,7 +80,7 @@ const AddDetails = () => {
 						className='border rounded column-design'>
 						<Card bordered={false}>
 							<Title level={4} className='m-2 mb-4 text-center'>
-								Company Setting
+								{t('comapny_settings')}
 							</Title>
 							{initValues ? (
 								<Form
@@ -98,7 +102,7 @@ const AddDetails = () => {
 									<Form.Item
 										style={{ marginBottom: "10px" }}
 										fields={[{ name: "Company Name" }]}
-										label='Company Name'
+										label=	{t('name')}
 										name='company_name'
 										rules={[
 											{
@@ -111,7 +115,7 @@ const AddDetails = () => {
 									<Form.Item
 										style={{ marginBottom: "10px" }}
 										fields={[{ name: "Tagline" }]}
-										label='Tagline'
+										label={t('tagline')}
 										name='tag_line'
 										rules={[
 											{
@@ -124,7 +128,7 @@ const AddDetails = () => {
 
 									<Form.Item
 										style={{ marginBottom: "10px" }}
-										label='Address'
+										label={t('address')}
 										name='address'
 										rules={[
 											{
@@ -137,7 +141,7 @@ const AddDetails = () => {
 
 									<Form.Item
 										style={{ marginBottom: "10px" }}
-										label='Phone Number'
+										label={t('phone')}
 										name='phone'
 										rules={[
 											{
@@ -150,7 +154,7 @@ const AddDetails = () => {
 
 									<Form.Item
 										style={{ marginBottom: "10px" }}
-										label='Email Address'
+										label={t('email')}
 										name='email'
 										rules={[
 											{
@@ -163,7 +167,7 @@ const AddDetails = () => {
 
 									<Form.Item
 										style={{ marginBottom: "10px" }}
-										label='Website'
+										label={t('website')}
 										name='website'
 										rules={[
 											{
@@ -176,7 +180,7 @@ const AddDetails = () => {
 
 									<Form.Item
 										style={{ marginBottom: "10px" }}
-										label='Footer'
+										label={t('footer')}
 										name='footer'
 										rules={[
 											{
@@ -197,7 +201,7 @@ const AddDetails = () => {
 											size='large'
 											loading={loader}
 											onClick={onClickLoading}>
-											Update Details
+											{t('add_new')}
 										</Button>
 									</Form.Item>
 								</Form>

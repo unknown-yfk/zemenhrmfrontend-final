@@ -4,8 +4,12 @@ import BtnEditSvg from "../Button/btnEditSvg";
 import Loader from "../../loader/loader";
 import EmployeeSalary from "../EmployeeSalary";
 import SalaryAddSinglePopup from "./SalaryAddPopup";
+import {  useTranslation } from "react-i18next";
+
 
 const SalaryEditPopup = ({ data }) => {
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 
@@ -24,7 +28,7 @@ const SalaryEditPopup = ({ data }) => {
 				<BtnEditSvg size={25} />
 			</button>
 			<Modal
-				title='Edit Salary'
+				title={t('edit_sala')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>

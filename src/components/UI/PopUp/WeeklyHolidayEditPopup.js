@@ -9,7 +9,13 @@ import {
 	updateWeeklyHoliday,
 } from "../../../redux/rtk/features/weeklyHoliday/weeklyHolidaySlice";
 
+import {  useTranslation } from "react-i18next";
+
+
 const WeeklyHolidayEdit = ({ data }) => {
+
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { id } = useParams("id");
 
@@ -56,7 +62,7 @@ const WeeklyHolidayEdit = ({ data }) => {
 				<BtnEditSvg size={30} />
 			</button>
 			<Modal
-				title='Weekly Holiday Edit'
+				title={t('edit_weekly')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>
@@ -77,7 +83,7 @@ const WeeklyHolidayEdit = ({ data }) => {
 					<div>
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Name'
+							label={t('name')}
 							name='name'
 							rules={[
 								{
@@ -90,7 +96,7 @@ const WeeklyHolidayEdit = ({ data }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Start Day'
+							label={t('s_date')}
 							name='startDay'
 							rules={[
 								{
@@ -113,7 +119,7 @@ const WeeklyHolidayEdit = ({ data }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='End Day'
+							label={t('end_date')}
 							name='endDay'
 							rules={[
 								{
@@ -147,7 +153,7 @@ const WeeklyHolidayEdit = ({ data }) => {
 								htmlType='submit'
 								block
 								loading={loader}>
-								Update Weekly Holiday
+								{t('add_new')}
 							</Button>
 						</Form.Item>
 					</div>

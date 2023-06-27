@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadAllAnnouncement } from "../../redux/rtk/features/announcement/announcementSlice";
 import AnnouncementDelete from "./AnnouncementDelete";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const TitleComponent = ({ item }) => {
 	return (
@@ -19,6 +20,8 @@ const TitleComponent = ({ item }) => {
 };
 
 const GetAllAnnouncement = () => {
+	const {t} = useTranslation();
+
 	const { loading, list } = useSelector((state) => state.announcement);
 	const dispatch = useDispatch();
 
@@ -28,7 +31,9 @@ const GetAllAnnouncement = () => {
 
 	return (
 		<Card>
-			<h2 className='text-center text-2xl txt-color-2'>Announcements</h2>
+			<h2 className='text-center text-2xl txt-color-2'>
+			{t('anouncement')}
+				</h2>
 			<hr className='mt-3 mb-5 mx-5' />
 			<List
 				className='m-4'

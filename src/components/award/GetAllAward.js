@@ -10,42 +10,45 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadAllAward } from "../../redux/rtk/features/award/awardSlice";
 import PageTitle from "../page-header/PageHeader";
 import Loader from "../loader/loader";
+import {  useTranslation } from "react-i18next";
 
 function GetAllAward() {
+	const {t} = useTranslation();
+	
 	const [columnsToShow, setColumnsToShow] = useState([]);
 	const { list, loading } = useSelector((state) => state.award);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t('name'),
 			dataIndex: "name",
 			key: "name",
 		},
 
 		{
 			id: 3,
-			title: "Description",
+			title: t('description'),
 			dataIndex: "description",
 			key: "description",
 		},
 
 		{
 			id: 3,
-			title: "Created at",
+			title: t('created_at'),
 			dataIndex: "createdAt",
 			key: "addrcreatedAtess",
 			render: (createdAt) => moment(createdAt).format("YYYY-MM-DD"),
 		},
 		{
 			id: 4,
-			title: "Action",
+			title: t('action'),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/award/${id}/`} />,
@@ -70,12 +73,13 @@ function GetAllAward() {
 
 	return (
 		<>
-			<PageTitle title='Back' />
+			<PageTitle title=	{t('back')} />
 			{!loading ? (
 				<Card className='mt-5'>
 					<div className='text-center my-2 flex justify-between'>
 						<h5 className='department-list-title text-color-2 text-xl mb-2'>
-							Award List
+							{t('awa_list')}
+
 						</h5>
 						{list && (
 							<div>
@@ -84,7 +88,7 @@ function GetAllAward() {
 										data={list}
 										className='btn btn-dark btn-sm mb-1'
 										filename='awards'>
-										Download CSV
+											{t('download_csv')}
 									</CSVLink>
 								</CsvLinkBtn>
 							</div>

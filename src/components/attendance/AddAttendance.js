@@ -21,8 +21,12 @@ import {
 } from "../../redux/rtk/features/attendance/attendanceSlice";
 import GetAllAttendance from "./GetAllAttendance";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const Attendance = ({ drawer }) => {
+
+	const {t} = useTranslation();
+
 	const [loader, setLoader] = useState(false);
 	const users = useSelector((state) => state.users?.list);
 	const dispatch = useDispatch();
@@ -82,7 +86,7 @@ const Attendance = ({ drawer }) => {
 						xl={drawer ? 22 : 12}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-							Add Manual Attendance
+							{t('add_manual_attendance')}							
 						</Title>
 						{inTimeDate.time === null ||
 						inTimeDate.date === null ||
@@ -90,8 +94,8 @@ const Attendance = ({ drawer }) => {
 						outTimeDate.date === null ? (
 							<p className='text-center text-rose-500 text-sm font-medium mb-4'>
 								{" "}
-								* Please fill Date and Time
-							</p>
+								{t('please_fill')}
+								</p>
 						) : (
 							""
 						)}
@@ -112,7 +116,7 @@ const Attendance = ({ drawer }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='User'
+									label={t('emp_name')}
 									name='userId'
 									rules={[
 										{
@@ -120,7 +124,7 @@ const Attendance = ({ drawer }) => {
 											message: "Please input your user!",
 										},
 									]}>
-									<Select placeholder='Select User'>
+									<Select placeholder={t('select')}>
 										{users?.map((user) => (
 											<Select.Option key={user.id} value={user.id}>
 												{user.userName}
@@ -131,7 +135,7 @@ const Attendance = ({ drawer }) => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Start Time'
+									label={t('start_time')}
 									rules={[
 										{
 											required: true,
@@ -144,6 +148,8 @@ const Attendance = ({ drawer }) => {
 											onChange={(date, dateString) =>
 												setInTimeDate({ ...inTimeDate, date: dateString })
 											}
+
+											placeholder={t('select_date')}
 										/>
 										<TimePicker
 											className='ml-4'
@@ -151,13 +157,14 @@ const Attendance = ({ drawer }) => {
 											onChange={(time, timeString) =>
 												setInTimeDate({ ...inTimeDate, time: timeString })
 											}
+											placeholder={t('select_time')}
 										/>
 									</div>
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='End Time'
+									label={t('end_time')}
 									rules={[
 										{
 											required: true,
@@ -170,6 +177,7 @@ const Attendance = ({ drawer }) => {
 											onChange={(date, dateString) =>
 												setOutTimeDate({ ...outTimeDate, date: dateString })
 											}
+												placeholder={t('select_date')}
 										/>
 										<TimePicker
 											className='ml-4'
@@ -177,20 +185,23 @@ const Attendance = ({ drawer }) => {
 											onChange={(time, timeString) =>
 												setOutTimeDate({ ...outTimeDate, time: timeString })
 											}
+											placeholder={t('select_time')}
 										/>
 									</div>
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Comment'
+								
+									label={t('comment')}
+
 									name='comment'>
-									<Input placeholder='Comment' />
+									<Input placeholder={t('comment')} />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='IP Address'
+									label={t('ip_ddress')}
 									name='ip'>
 									<Input placeholder='127.0.0.1' />
 								</Form.Item>
@@ -214,7 +225,8 @@ const Attendance = ({ drawer }) => {
 										htmlType='submit'
 										block
 										loading={loader}>
-										Add Attendance
+										{t('add_attendance')}
+										
 									</Button>
 								</Form.Item>
 							</div>

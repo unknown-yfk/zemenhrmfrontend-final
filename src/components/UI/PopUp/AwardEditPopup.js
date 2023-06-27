@@ -8,8 +8,12 @@ import {
 	updateAward,
 } from "../../../redux/rtk/features/award/awardSlice";
 import { useDispatch } from "react-redux";
+import {  useTranslation } from "react-i18next";
+
 
 const AwardEditPopup = ({ data }) => {
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { id } = useParams("id");
 
@@ -55,7 +59,7 @@ const AwardEditPopup = ({ data }) => {
 				<BtnEditSvg size={30} />
 			</button>
 			<Modal
-				title='Award Edit'
+				title={t('edit_award')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>
@@ -76,7 +80,7 @@ const AwardEditPopup = ({ data }) => {
 					<div>
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Name'
+							label={t('name')}
 							name='name'
 							rules={[
 								{
@@ -89,7 +93,7 @@ const AwardEditPopup = ({ data }) => {
 
 						<Form.Item
 							style={{ marginBottom: "20px" }}
-							label='Description'
+							label={t('description')}
 							name='description'
 							rules={[
 								{
@@ -113,7 +117,7 @@ const AwardEditPopup = ({ data }) => {
 								htmlType='submit'
 								block
 								loading={loader}>
-								Update Award
+								{t('add_new')}
 							</Button>
 						</Form.Item>
 					</div>

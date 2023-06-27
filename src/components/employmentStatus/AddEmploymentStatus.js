@@ -26,27 +26,31 @@ import {
 
 import { HexColorPicker } from "react-colorful";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
 
 function CustomTable({ list }) {
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t('name'),
 			dataIndex: "name",
 			key: "name",
 		},
 
 		{
 			id: 3,
-			title: "Color Code",
+			title: t('color_code'),
 			dataIndex: "colourValue",
 			key: "colourValue",
 			render: (colourValue) => (
@@ -66,13 +70,13 @@ function CustomTable({ list }) {
 
 		{
 			id: 4,
-			title: "Description",
+			title: t('description'),
 			dataIndex: "description",
 			key: "description",
 		},
 		{
 			id: 5,
-			title: "Action",
+			title: t('action'),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/employment-status/${id}/`} />,
@@ -93,7 +97,8 @@ function CustomTable({ list }) {
 		<Card>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='department-list-title text-color-2 text-xl mb-2'>
-					Shift List
+					
+					{t('shift_list')}
 				</h5>
 				{list && (
 					<div>
@@ -102,7 +107,8 @@ function CustomTable({ list }) {
 								data={list}
 								className='btn btn-dark btn-sm mb-1'
 								filename='shift'>
-								Download CSV
+							
+								{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -130,6 +136,9 @@ function CustomTable({ list }) {
 }
 
 const AddEmploymentStatus = ({ drawer }) => {
+
+	const {t} = useTranslation();
+
 	const [loader, setLoader] = useState(false);
 	const employmentStatus = useSelector((state) => state.employmentStatus.list);
 	const [color, setColor] = useState("#ffffff");
@@ -178,7 +187,8 @@ const AddEmploymentStatus = ({ drawer }) => {
 						xl={drawer ? 22 : 12}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-							Add Employment Status
+							
+							{t('add_emp_status')}
 						</Title>
 						<Form
 							form={form}
@@ -197,7 +207,7 @@ const AddEmploymentStatus = ({ drawer }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Name'
+									label={t('emp_status')}
 									name='name'
 									rules={[
 										{
@@ -205,12 +215,12 @@ const AddEmploymentStatus = ({ drawer }) => {
 											message: "Please input your shift!",
 										},
 									]}>
-									<Input placeholder='Parmanet' />
+									<Input placeholder={t('permanent')} />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Color Code'
+									label={t('color_code')}
 									name='colourValue'>
 									<Input
 										placeholder='#00FF00'
@@ -235,9 +245,9 @@ const AddEmploymentStatus = ({ drawer }) => {
 
 								<Form.Item
 									style={{ marginBottom: "20px" }}
-									label='Description'
+									label={t('description')}
 									name={"description"}>
-									<Input.TextArea placeholder='Description' />
+									<Input.TextArea placeholder={t('description')} />
 								</Form.Item>
 
 								<Form.Item
@@ -253,7 +263,7 @@ const AddEmploymentStatus = ({ drawer }) => {
 										block
 										htmlType='submit'
 										loading={loader}>
-										Add Employment Status
+										{t('add_emp_status')}
 									</Button>
 								</Form.Item>
 							</div>

@@ -20,23 +20,28 @@ import {
 import AwardEditPopup from "../UI/PopUp/AwardEditPopup";
 import BtnLoader from "../loader/BtnLoader";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
 
 //PopUp
 
 const CustomTable = ({ list }) => {
+
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 
 		{
 			id: 2,
-			title: " Name",
+			title: t('name'),
 			key: "user",
 			dataIndex: "user",
 			render: (user) => user?.firstName + " " + user?.lastName,
@@ -44,7 +49,7 @@ const CustomTable = ({ list }) => {
 
 		{
 			id: 6,
-			title: "Awarded Date",
+			title: t('date'),
 			dataIndex: "awardedDate",
 			key: "awardedDate",
 			render: (awardedDate) => moment(awardedDate).format("ll"),
@@ -52,14 +57,14 @@ const CustomTable = ({ list }) => {
 
 		{
 			id: 5,
-			title: "Comment",
+			title: t('comment'),
 			dataIndex: "comment",
 			key: "comment",
 		},
 
 		{
 			id: 4,
-			title: "Action",
+			title: t('action'),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/hr/staffs/${id}/`} />,
@@ -80,14 +85,16 @@ const CustomTable = ({ list }) => {
 		<div>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='award-list-title text-color-2 text-xl mb-2'>
-					Employee List
+					{/* Employee List */}
+
+					{t('employee_list')}
 				</h5>
 
 				{list && (
 					<div>
 						<CsvLinkBtn>
 							<CSVLink data={list} filename='user_award'>
-								Download CSV
+							{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -114,6 +121,7 @@ const CustomTable = ({ list }) => {
 };
 
 const DetailAward = () => {
+	const {t} = useTranslation();
 	const { id } = useParams();
 	let navigate = useNavigate();
 	const { award, loading } = useSelector((state) => state.award);
@@ -145,7 +153,7 @@ const DetailAward = () => {
 
 	return (
 		<div>
-			<PageTitle title=' Back  ' />
+			<PageTitle title={t('back')} />
 
 			<UserPrivateComponent permission={"read-award"}>
 				<Card className='mr-top mt-5'>
@@ -154,7 +162,7 @@ const DetailAward = () => {
 							<div>
 								<div className='flex justify-between '>
 									<h3 className={"text-xl"}>
-										ID : {award.id} | {award.name}
+									{t('id')} : {award.id} | {award.name}
 									</h3>
 									<div className='flex justify-end'>
 										<AwardEditPopup data={award} />

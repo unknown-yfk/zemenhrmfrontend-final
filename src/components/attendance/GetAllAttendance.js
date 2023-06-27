@@ -15,12 +15,17 @@ import {
 } from "../../redux/rtk/features/attendance/attendanceSlice";
 import BtnSearchSvg from "../UI/Button/btnSearchSvg";
 import { VioletLinkBtn } from "../UI/AllLinkBtn";
+import {  useTranslation } from "react-i18next";
+
 
 //Date fucntinalities
 let startdate = moment().startOf("month");
 let enddate = moment().endOf("month");
 
 function CustomTable({ list, total, status, setStatus, loading }) {
+
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const dispatch = useDispatch();
@@ -40,27 +45,27 @@ function CustomTable({ list, total, status, setStatus, loading }) {
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 10,
-			title: "Name",
+			title: t('name'),
 			dataIndex: "user",
 			key: "user",
 			render: (user) => `${user?.firstName} ${user?.lastName}`,
 		},
 		{
 			id: 2,
-			title: "In Time",
+			title: t('in_time'),
 			dataIndex: "inTime",
 			key: "inTime",
 			render: (inTime) => moment(inTime).format("DD-MM-YYYY, h:mm A") || "NONE",
 		},
 		{
 			id: 3,
-			title: "Out Time ",
+			title: t('out_time'),
 			dataIndex: `outTime`,
 			key: "outTime",
 			render: (outTime) =>
@@ -68,7 +73,7 @@ function CustomTable({ list, total, status, setStatus, loading }) {
 		},
 		{
 			id: 4,
-			title: "In Status",
+			title: t("in_status"),
 			dataIndex: "inTimeStatus",
 			key: "inTimeStatus",
 			render: (inTimeStatus) => {
@@ -86,7 +91,7 @@ function CustomTable({ list, total, status, setStatus, loading }) {
 		},
 		{
 			id: 5,
-			title: "Out Status",
+			title: t("out_status"),
 			dataIndex: "outTimeStatus",
 			key: "outTimeStatus",
 			render: (outTimeStatus) => {
@@ -104,7 +109,7 @@ function CustomTable({ list, total, status, setStatus, loading }) {
 		},
 		{
 			id: 6,
-			title: "Total Hour",
+			title: t('total_h'),
 			dataIndex: "totalHour",
 			key: "totalHour",
 			render: (totalHour) => totalHour || "Not Checked",
@@ -112,7 +117,7 @@ function CustomTable({ list, total, status, setStatus, loading }) {
 
 		{
 			id: 7,
-			title: "Punch By",
+			title: t('puched_by'),
 			dataIndex: "punchBy",
 			key: "punchBy",
 			render: (punchBy) => (
@@ -158,7 +163,8 @@ function CustomTable({ list, total, status, setStatus, loading }) {
 				<div className='text-center my-2 flex justify-end'>
 					<CsvLinkBtn>
 						<CSVLink data={CSVlist} filename='purchase'>
-							Download CSV
+						
+							{t('download_csv')}
 						</CSVLink>
 					</CsvLinkBtn>
 
@@ -224,6 +230,8 @@ function CustomTable({ list, total, status, setStatus, loading }) {
 }
 
 const GetAllAttendance = (props) => {
+	const {t} = useTranslation();
+
 	const dispatch = useDispatch();
 
 	const { list, loading } = useSelector((state) => state.attendance);
@@ -274,7 +282,10 @@ const GetAllAttendance = (props) => {
 			<Card className='card card-custom mt-3 '>
 				<div className='card-body'>
 					<div className='flex justify-between'>
-						<TableHeraderh2>Attendance List</TableHeraderh2>
+						<TableHeraderh2>
+						{t('attendance_list')}
+							
+						</TableHeraderh2>
 						<div className='flex justify-end'>
 							<RangePicker
 								onCalendarChange={onCalendarChange}
@@ -285,7 +296,7 @@ const GetAllAttendance = (props) => {
 							/>
 							<VioletLinkBtn>
 								<button onClick={onClickSearch}>
-									<BtnSearchSvg size={25} title={"SEARCH"} loading={loading} />
+									<BtnSearchSvg size={25} title={t('search')} loading={loading} />
 								</button>
 							</VioletLinkBtn>
 						</div>

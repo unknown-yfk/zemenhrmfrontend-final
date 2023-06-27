@@ -24,39 +24,44 @@ import {
 	loadAllWeeklyHoliday,
 } from "../../redux/rtk/features/weeklyHoliday/weeklyHolidaySlice";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
+
 function CustomTable({ list, loading }) {
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t("id"),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t("name"),
 			dataIndex: "name",
 			key: "name",
 		},
 
 		{
 			id: 3,
-			title: "Start Day",
+			title: t("s_date"),
 			dataIndex: "startDay",
 			key: "startDay",
 		},
 
 		{
 			id: 3,
-			title: "End Day",
+			title: t("end_date"),
 			dataIndex: "endDay",
 			key: "endDay",
 		},
 		{
 			id: 4,
-			title: "Action",
+			title: t("action"),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/holiday/week/${id}/`} />,
@@ -77,7 +82,8 @@ function CustomTable({ list, loading }) {
 		<Card>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='department-list-title text-color-2 text-xl mb-2'>
-					Weekly Holiday List
+					
+					{t('weekly_holiday_list')}
 				</h5>
 				{list && (
 					<div>
@@ -86,7 +92,9 @@ function CustomTable({ list, loading }) {
 								data={list}
 								className='btn btn-dark btn-sm mb-1'
 								filename='weekly-holiday'>
-								Download CSV
+								
+								{t('download_csv')}
+
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -114,6 +122,9 @@ function CustomTable({ list, loading }) {
 }
 
 const AddWeeklyHoliday = ({ drawer }) => {
+
+	const {t} = useTranslation();
+
 	const { list, loading } = useSelector((state) => state.weeklyHoliday);
 	const [loader, setLoader] = useState(false);
 	const [form] = Form.useForm();
@@ -154,7 +165,8 @@ const AddWeeklyHoliday = ({ drawer }) => {
 						xl={drawer ? 22 : 12}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-							Add Weekly Holiday
+							
+							{t('add_weekly_holiday')}
 						</Title>
 						<Form
 							style={{ marginBottom: "40px" }}
@@ -173,7 +185,7 @@ const AddWeeklyHoliday = ({ drawer }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Name'
+									label={t('name')}
 									name='name'
 									rules={[
 										{
@@ -186,7 +198,7 @@ const AddWeeklyHoliday = ({ drawer }) => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Start Day'
+									label={t('s_date')}
 									name='startDay'
 									rules={[
 										{
@@ -207,7 +219,7 @@ const AddWeeklyHoliday = ({ drawer }) => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='End Day'
+									label={t('end_date')}
 									name='endDay'
 									rules={[
 										{
@@ -239,7 +251,7 @@ const AddWeeklyHoliday = ({ drawer }) => {
 										htmlType='submit'
 										block
 										loading={loader}>
-										Add Weekly Holiday
+										{t('add_weekly_holiday')}
 									</Button>
 								</Form.Item>
 							</div>

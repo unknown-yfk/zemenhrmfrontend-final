@@ -3,35 +3,39 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import ColVisibilityDropdown from "../Shared/ColVisibilityDropdown";
 import { deleteRolePermission } from "./roleApis";
+import {  useTranslation } from "react-i18next";
+
 
 const CustomTable = ({ role }) => {
+	const {t} = useTranslation();
+
 	const [keys, setKeys] = useState([]);
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t("id"),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t("name"),
 			dataIndex: "permission",
 			key: "permission",
 			render: ({ name } = {}) => name,
 		},
 		{
 			id: 3,
-			title: "Created At",
+			title: t("created_at"),
 			dataIndex: "createdAt",
 			key: "createdAt",
 			render: (createdAt) => moment(createdAt).format("DD/MM/YYYY"),
 		},
 		{
 			id: 4,
-			title: "Updated At",
+			title: t("updated_at"),
 			dataIndex: "updatedAt",
 			key: "updatedAt",
 			render: (updatedAt) => moment(updatedAt).format("DD/MM/YYYY"),
@@ -70,7 +74,7 @@ const CustomTable = ({ role }) => {
 	return (
 		<Card className='card-body mb-3 '>
 			<div className='table-responsive'>
-				<h4 className='text-center mb-2 text-2xl'> Permissions</h4>
+				<h4 className='text-center mb-2 text-2xl'> {t("permission")}</h4>
 
 				{keys && keys.length > 0 && (
 					<div className='text-start mb-1'>

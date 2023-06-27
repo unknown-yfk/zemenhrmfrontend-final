@@ -40,8 +40,14 @@ import { addStaff } from "../../redux/rtk/features/user/userSlice";
 import { loadAllWeeklyHoliday } from "../../redux/rtk/features/weeklyHoliday/weeklyHolidaySlice";
 import { loadAllLeavePolicy } from "../../redux/rtk/features/leavePolicy/leavePolicySlice";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
 
 const AddUser = () => {
+
+	const {t} = useTranslation();
+
+
 	const [loader, setLoader] = useState(false);
 	const dispatch = useDispatch();
 	const { Title } = Typography;
@@ -166,11 +172,15 @@ const AddUser = () => {
 							}}>
 							<Col span={12} className='gutter-row form-color'>
 								<h2 className='text-center text-xl mt-3 mb-3 txt-color'>
-									User Information
+									{/* User Information */}
+									{t('add_new_employee')}
+
 								</h2>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Full Name'
+									// label='First Name'
+									// label='First Name'
+									label = {t('first_name')}
 									name='firstName'
 									rules={[
 										{
@@ -178,23 +188,25 @@ const AddUser = () => {
 											message: "Please input First Name!",
 										},
 									]}>
-									<Input placeholder='Abebe Kebede' />
+									<Input placeholder={t('abebe')} />
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Last Name'
+									// label='Father Name'
+									label = {t('last_name')}
 									name='lastName'
 									rules={[
 										{
 											required: true,
-											message: "Please input your GrandFather Name!",
+											message: "Please input Father Name!",
 										},
 									]}>
-									<Input placeholder='Tariku' />
+									<Input placeholder={t('kebede')} />
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='User Name'
+									// label='User Name'
+									label = {t('user_name')}
 									name='userName'
 									rules={[
 										{
@@ -202,11 +214,12 @@ const AddUser = () => {
 											message: "Please input User Name!",
 										},
 									]}>
-									<Input placeholder='abebe_kebede' />
+									<Input placeholder={t('abe_kebe')} />
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Password'
+									// label='Password'
+									label = {t('password')}
 									name='password'
 									rules={[
 										{
@@ -214,11 +227,12 @@ const AddUser = () => {
 											message: "Please input your password !",
 										},
 									]}>
-									<Input placeholder='Strong Password' />
+									<Input placeholder={t('strong_pass')}  />
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Email'
+									// label='Email'
+									label = {t('email')}
 									name='email'
 									rules={[
 										{
@@ -231,11 +245,15 @@ const AddUser = () => {
 							</Col>
 							<Col span={12} className='gutter-row'>
 								<h2 className='text-center text-xl mt-3 mb-3 txt-color'>
-									Address Information
+									{/* Address Information */}
+									{t('addres_info')}
+
+									
 								</h2>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='City'
+									// label='City'
+									label = {t('city')}
 									name='street'
 									rules={[
 										{
@@ -244,27 +262,31 @@ const AddUser = () => {
 										},
 									]}>
 									<Input
-										placeholder='Addis Ababa'
+										placeholder={t('addis_ababa')}
 										style={{ width: "100%" }}
 									/>
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Kifle Ketema'
+									// label='Kifle Ketema'
+									label = {t('k_ketema')}
 									name='city'
 									rules={[{ required: true, message: "Please input Kifle Ketema!" }]}>
-									<Input placeholder='Yeka' />
+									<Input placeholder={t('yeka')} />
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Woreda'
+									// label='Woreda'
+									label = {t('woreda')}
+
 									name='state'
 									rules={[{ required: true, message: "Please input Woreda!" }]}>
 									<Input placeholder='22' />
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Kebele'
+									// label='Kebele'
+									label = {t('Kebele')}
 									name='zipCode'
 									rules={[
 										{ required: false, message: "Please input Kebele!" },
@@ -273,12 +295,13 @@ const AddUser = () => {
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Region'
+									// label='Region'
+									label = {t('region')}
 									name='country'
 									rules={[
-										{ required: false, message: "Please input Region!" },
+										{ required: true, message: "Please input Region!" },
 									]}>
-									<Input placeholder='Tigray' />
+									<Input placeholder={t('region_name')} />
 								</Form.Item>
 							</Col>
 						</Row>
@@ -293,11 +316,14 @@ const AddUser = () => {
 							<Col span={12} className='gutter-row'>
 								<h2 className='text-center text-xl mt-3 mb-3 txt-color'>
 									{" "}
-									Employee Information{" "}
+									{/* Employee Information{" "} */}
+									{t('employee_info')}
+
 								</h2>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Joining Date'
+									// label='Joining Date'
+									label = {t('join_date')}
 									name='joinDate'
 									rules={[
 										{
@@ -305,17 +331,20 @@ const AddUser = () => {
 											message: "Please input joining date!",
 										},
 									]}>
-									<DatePicker className='date-picker hr-staffs-date-picker' />
+									<DatePicker placeholder={t('join_date')} className='date-picker hr-staffs-date-picker' />
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Leave Date'
+									// label='Leave Date'
+									label = {t('leave_date')}
 									name='leaveDate'>
-									<DatePicker className='date-picker hr-staffs-date-picker' />
+									<DatePicker placeholder={t('leave_date')}  className='date-picker hr-staffs-date-picker' />
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Employee ID'
+									// label='Employee ID'
+									label = {t('emp_id')}
+
 									name='employeeId'
 									rules={[
 										{
@@ -327,7 +356,9 @@ const AddUser = () => {
 								</Form.Item>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Blood Group'
+									// label='Blood Group'
+									label = {t('blood_t')}
+
 									name='bloodGroup'
 									rules={[
 										{
@@ -336,7 +367,7 @@ const AddUser = () => {
 										},
 									]}>
 									<Select
-										placeholder='Select Blood Group'
+										placeholder={t('select')}
 										allowClear
 										mode='single'
 										size='middle'
@@ -360,9 +391,13 @@ const AddUser = () => {
 											message: "Please input Employment Status!",
 										},
 									]}
-									label='Employee Status'>
+									// label='Employee Status'
+									label = {t('emp_status')}
+									
+									>
 									<Select
-										placeholder='Select Status'
+										placeholder={t('emp_status_select')}
+										
 										allowClear
 										size={"middle"}>
 										{employmentStatus &&
@@ -378,13 +413,16 @@ const AddUser = () => {
 								<Form.Item
 									name={"departmentId"}
 									style={{ marginBottom: "10px" }}
-									label='Department'
+									// label='Department'
+									label = {t('department')}
+
 									rules={[
 										{ required: true, message: "Please input Department!" },
 									]}>
 									<Select
 										loading={!department}
-										placeholder='Select Department'
+										placeholder= {t('department_select')}
+										
 										allowClear
 										size={"middle"}>
 										{department &&
@@ -399,7 +437,9 @@ const AddUser = () => {
 									rules={[
 										{ required: true, message: "Please input Department!" },
 									]}
-									label='Role'
+									// label='Role'
+									label = {t('role')}
+
 									name={"roleId"}
 									style={{ marginBottom: "10px" }}>
 									<Select
@@ -410,7 +450,7 @@ const AddUser = () => {
 										style={{
 											width: "100%",
 										}}
-										placeholder='Please select'>
+										placeholder= {t('select')}>
 										{list &&
 											list.map((role) => (
 												<Option key={role.id} value={role.id}>
@@ -427,9 +467,11 @@ const AddUser = () => {
 
 								<Form.Item
 									rules={[
-										{ required: true, message: "Please input Shift!" },
+										{ required: true, message: "Please input Department!" },
 									]}
-									label='Shift'
+									// label='Shift'
+									label = {t('shift')}
+
 									name={"shiftId"}
 									style={{ marginBottom: "10px" }}>
 									<Select
@@ -440,7 +482,7 @@ const AddUser = () => {
 										style={{
 											width: "100%",
 										}}
-										placeholder='Please select'>
+										placeholder={t('select')}>
 										{shift &&
 											shift.map((shift) => (
 												<Option key={shift.id} value={shift.id}>
@@ -459,7 +501,8 @@ const AddUser = () => {
 									rules={[
 										{ required: true, message: "Please input Department!" },
 									]}
-									label='Leave Policy'
+									// label='Leave Policy'
+									label = {t('leave_policy')}
 									name={"leavePolicyId"}
 									style={{ marginBottom: "10px" }}>
 									<Select
@@ -470,7 +513,7 @@ const AddUser = () => {
 										style={{
 											width: "100%",
 										}}
-										placeholder='Please select'>
+										placeholder={t('select')}>
 										{leavePolicy &&
 											leavePolicy.map((leavePolicy) => (
 												<Option key={leavePolicy.id} value={leavePolicy.id}>
@@ -484,7 +527,9 @@ const AddUser = () => {
 									rules={[
 										{ required: true, message: "Please input Department!" },
 									]}
-									label='WeekLy Holiday'
+									// label='WeekLy Holiday'
+									label = {t('weekly_holiday')}
+
 									name={"weeklyHolidayId"}
 									style={{ marginBottom: "10px" }}>
 									<Select
@@ -495,7 +540,7 @@ const AddUser = () => {
 										style={{
 											width: "100%",
 										}}
-										placeholder='Please select'>
+										placeholder={t('select')}>
 										{weeklyHoliday &&
 											weeklyHoliday.map((weeklyHoliday) => (
 												<Option key={weeklyHoliday.id} value={weeklyHoliday.id}>
@@ -507,14 +552,18 @@ const AddUser = () => {
 							</Col>
 							<Col span={12} className='gutter-row'>
 								<h2 className='text-center text-xl mt-3 mb-3 txt-color'>
-									Designation & Salary Information
+									{/* Designation & Salary Information */}
+									{t('designation_info')}
+									
 								</h2>
 
 								<Form.Item
 									rules={[
-										{ required: true, message: "Please input Designation!" },
+										{ required: false, message: "Please input Designation!" },
 									]}
-									label='Designation'
+									// label='Designation'
+									label = {t('designation')}
+
 									name={"designationId"}
 									style={{ marginBottom: "10px" }}>
 									<Select
@@ -525,7 +574,7 @@ const AddUser = () => {
 										style={{
 											width: "100%",
 										}}
-										placeholder='Please select Designation'>
+										placeholder={t('designation_select')}>
 										{designation &&
 											designation.map((designation) => (
 												<Option key={designation.id} value={designation.id}>
@@ -542,28 +591,32 @@ const AddUser = () => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Start Date'
+									// label='Designation Start Date'
+									label = {t('designation_s_date')}
+
 									rules={[{ required: true, message: "Please input date!" }]}
 									name='designationStartDate'>
-									<DatePicker className='date-picker hr-staffs-date-picker' 
-									placeholder='Select Designation Start Date' />
+									<DatePicker placeholder={t('select')} className='date-picker hr-staffs-date-picker' />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='End Date'
+									// label='Designation End Date'
+									label = {t('designation_e_date')}
+
 									name='designationEndDate'>
-									<DatePicker className='date-picker hr-staffs-date-picker'
-									placeholder='Select Designation End Date' />
+									<DatePicker placeholder={t('select')} className='date-picker hr-staffs-date-picker' />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Salary'
+									// label='Salary'
+									label = {t('salary')}
+
 									name='salary'
 									rules={[
 										{
-											required: false,
+											required: true,
 											message: "Please input salary",
 										},
 									]}>
@@ -571,28 +624,33 @@ const AddUser = () => {
 								</Form.Item>
 
 								<Form.Item
-									label='Salary Start Date'
+									// label='Salary Start Date'
+									label = {t('salary_s_date')}
+
 									name='salaryStartDate'
 									style={{ marginBottom: "10px" }}
 									rules={[
 										{
-											required: false,
+											required: true,
 											message: "Please input date!",
 										},
 									]}>
-									<DatePicker className='date-picker hr-staffs-date-picker' />
+									<DatePicker placeholder={t('select')} className='date-picker hr-staffs-date-picker' />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Salary End Date'
+									// label='Salary End Date'
+									label = {t('salary_e_date')}
+
 									name='salaryEndDate'>
-									<DatePicker className='date-picker hr-staffs-date-picker' />
+									<DatePicker placeholder={t('select')} className='date-picker hr-staffs-date-picker' />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Salary Comment'
+									// label='Salary Comment'
+									label = {t('salary_comment')}
 									name='salaryComment'>
 									<Input />
 								</Form.Item>
@@ -600,12 +658,17 @@ const AddUser = () => {
 						</Row>
 
 						<h2 className='text-center text-xl mt-3 mb-5 txt-color'>
-							Education Information
+							{/* Education Information */}
+							{t('educ_info')}
+
 						</h2>
 
 						<div className='text-center'>
 							<p className='text-red-500 text-base mb-4'>
-								Please add education information using the button below
+
+							{t('select_educ_info')}
+								
+								{/* Please add education information using the button below */}
 							</p>
 						</div>
 
@@ -633,7 +696,9 @@ const AddUser = () => {
 											onClick={() => add()}
 											block
 											icon={<PlusOutlined />}>
-											Add Education Information(Optional)
+
+											{t('add_edu')}
+											{/* Add Education Information */}
 										</Button>
 									</Form.Item>
 								</>
@@ -655,7 +720,9 @@ const AddUser = () => {
 								htmlType='submit'
 								shape='round'
 								loading={loader}>
-								Add New Staff
+								{/* Add New Staff */}
+								{t('add_new_employe')}
+
 							</Button>
 						</Form.Item>
 					</Form>

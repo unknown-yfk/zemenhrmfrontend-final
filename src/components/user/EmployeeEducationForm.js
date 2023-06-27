@@ -2,8 +2,13 @@ import { Button, DatePicker, Form, Input, Space } from "antd";
 import React from "react";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import moment from "moment";
+import {  useTranslation } from "react-i18next";
+
 
 const EmployeeEducationForm = ({ key, restField, remove, name }) => {
+
+	const {t} = useTranslation();
+
 	return (
 		<div>
 			<Space
@@ -24,7 +29,7 @@ const EmployeeEducationForm = ({ key, restField, remove, name }) => {
 							message: "Missing  degree",
 						},
 					]}>
-					<Input placeholder='Degree' />
+					<Input placeholder={t('degree')} />
 				</Form.Item>
 				<Form.Item
 					{...restField}
@@ -35,34 +40,34 @@ const EmployeeEducationForm = ({ key, restField, remove, name }) => {
 							message: "Missing institution",
 						},
 					]}>
-					<Input placeholder='Institution' />
+					<Input placeholder={t('inst')} />
 				</Form.Item>
 				<Form.Item
 					{...restField}
 					name={[name, "result"]}
 					rules={[{ required: true, message: "Missing result" }]}>
-					<Input placeholder='Result' />
+					<Input placeholder={t('result')} />
 				</Form.Item>
 
 				<Form.Item
 					{...restField}
 					name={[name, "studyStartDate"]}
 					rules={[{ required: true, message: "Missing studyStartDate" }]}>
-					<DatePicker placeholder='studyStartDate' />
+					<DatePicker placeholder={t('educ_st_d')}  />
 				</Form.Item>
 
 				<Form.Item
 					{...restField}
 					name={[name, "studyEndDate"]}
 					rules={[{ required: true, message: "Missing studyEndDate" }]}>
-					<DatePicker placeholder='studyEndDate' />
+					<DatePicker placeholder={t('educ_en_d')} />
 				</Form.Item>
 
 				<Form.Item
 					{...restField}
 					name={[name, "fieldOfStudy"]}
 					rules={[{ required: true, message: "Missing fieldOfStudy" }]}>
-					<Input placeholder='Field Of Study; Computer' />
+					<Input placeholder={t('educ_field')} />
 				</Form.Item>
 				<MinusCircleOutlined
 					className='txt-color'

@@ -9,8 +9,11 @@ import {
 	addAnnouncement,
 	loadAllAnnouncement,
 } from "../../redux/rtk/features/announcement/announcementSlice";
+import {  useTranslation } from "react-i18next";
 
 const AddAnnouncement = ({ drawer }) => {
+	const {t} = useTranslation();
+
 	const { loading } = useSelector((state) => state.announcement);
 
 	const dispatch = useDispatch();
@@ -46,7 +49,7 @@ const AddAnnouncement = ({ drawer }) => {
 					xl={drawer ? 22 : 12}
 					className='column-design border rounded card-custom'>
 					<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-						Add Announcement
+						{t('add_anouncement')}
 					</Title>
 					<Form
 						form={form}
@@ -65,7 +68,7 @@ const AddAnnouncement = ({ drawer }) => {
 						<div>
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Title'
+								label={t('title')}
 								name='title'
 								rules={[
 									{
@@ -78,9 +81,9 @@ const AddAnnouncement = ({ drawer }) => {
 
 							<Form.Item
 								style={{ marginBottom: "20px" }}
-								label='Description'
+								label={t('description')}
 								name={"description"}>
-								<Input.TextArea placeholder='Description' />
+								<Input.TextArea placeholder={t('description')} />
 							</Form.Item>
 
 							<Form.Item
@@ -95,7 +98,8 @@ const AddAnnouncement = ({ drawer }) => {
 									block
 									htmlType='submit'
 									loading={loading}>
-									Add Announcement
+									
+									{t('add_anouncement')}
 								</Button>
 							</Form.Item>
 						</div>

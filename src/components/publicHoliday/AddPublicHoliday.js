@@ -23,27 +23,30 @@ import {
 } from "../../redux/rtk/features/publicHoliday/publicHolidaySlice";
 import moment from "moment";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 function CustomTable({ list, loading }) {
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t('name'),
 			dataIndex: "name",
 			key: "name",
 		},
 
 		{
 			id: 3,
-			title: "Date",
+			title: t('date'),
 			dataIndex: "date",
 			key: "date",
 			render: (date) => moment(date).format("ll"),
@@ -51,14 +54,14 @@ function CustomTable({ list, loading }) {
 
 		{
 			id: 3,
-			title: "Created At",
+			title: t('created_at'),
 			dataIndex: "createdAt",
 			key: "createdAt",
 			render: (createdAt) => moment(createdAt).format("ll"),
 		},
 		{
 			id: 4,
-			title: "Action",
+			title: t('action'),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/holiday/public/${id}/`} />,
@@ -79,7 +82,7 @@ function CustomTable({ list, loading }) {
 		<Card>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='department-list-title text-color-2 text-xl mb-2'>
-					Public Holiday List
+					{t('public_holiday_list')}
 				</h5>
 				{list && (
 					<div>
@@ -88,7 +91,7 @@ function CustomTable({ list, loading }) {
 								data={list}
 								className='btn btn-dark btn-sm mb-1'
 								filename='public-holiday'>
-								Download CSV
+								{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -116,6 +119,8 @@ function CustomTable({ list, loading }) {
 }
 
 const AddPublicHoliday = ({ drawer }) => {
+	const {t} = useTranslation();
+
 	const { list, loading } = useSelector((state) => state.publicHoliday);
 	const [loader, setLoader] = useState(false);
 	const [form] = Form.useForm();
@@ -156,7 +161,7 @@ const AddPublicHoliday = ({ drawer }) => {
 						xl={drawer ? 22 : 12}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-							Add Public Holiday
+							{t('add_public_holiday')}
 						</Title>
 						<Form
 							style={{ marginBottom: "40px" }}
@@ -175,7 +180,7 @@ const AddPublicHoliday = ({ drawer }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Name'
+									label={t('name_holidaye')}
 									name='name'
 									rules={[
 										{
@@ -183,12 +188,12 @@ const AddPublicHoliday = ({ drawer }) => {
 											message: "Please input name!",
 										},
 									]}>
-									<Input placeholder='New Year' />
+									<Input placeholder={t('new_year')} />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "20px" }}
-									label='Date'
+									label={t('date')}
 									name='date'
 									rules={[
 										{
@@ -196,7 +201,7 @@ const AddPublicHoliday = ({ drawer }) => {
 											message: "Please input date!",
 										},
 									]}>
-									<DatePicker placeholder='Select Date' />
+									<DatePicker placeholder={t('select')} />
 								</Form.Item>
 
 								<Form.Item
@@ -212,7 +217,8 @@ const AddPublicHoliday = ({ drawer }) => {
 										htmlType='submit'
 										block
 										loading={loader}>
-										Add Public Holiday
+										
+										{t('add_public_holiday')}
 									</Button>
 								</Form.Item>
 							</div>

@@ -3,8 +3,11 @@ import React, { useEffect, useState } from "react";
 import PageTitle from "../page-header/PageHeader";
 import { getIncomeStatement } from "./account.api";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const IncomeStatement = () => {
+	const {t} = useTranslation();
+
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
@@ -17,7 +20,7 @@ const IncomeStatement = () => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={t('back')} />
 			<br />
 			<UserPrivateComponent permission={"read-account"}>
 				<Card>
@@ -25,7 +28,7 @@ const IncomeStatement = () => {
 						<div className='card-title  flex  justify-between'>
 							<h5 className='text-xl mb-2'>
 								<span className='ml-2 report-section-card-title'>
-									Income Statement{" "}
+								{t('inc_state')}{" "}
 								</span>
 							</h5>
 						</div>
@@ -33,19 +36,19 @@ const IncomeStatement = () => {
 							<table className=' w-full max-w-full mb-4 bg-transparent detail-account-table'>
 								<h5 className='mt-2 mb-1 ml-2  font-semibold text-base'>
 									{" "}
-									Revenue{" "}
+									{t('revenue')}{" "}
 								</h5>
 								<thead className='text-gray-600 text-xs font-semibold border-gray tracking-wider text-left px-5 py-3 hover:cursor-pointer uppercase border-b-2 border-gray-200'>
 									<tr className='border-b border-gray'>
 										<th
 											scope='col'
 											className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-											Account
+											{t('acoount')}
 										</th>
 										<th
 											scope='col'
 											className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-											Amount
+										{t('amount')}
 										</th>
 									</tr>
 								</thead>
@@ -67,7 +70,7 @@ const IncomeStatement = () => {
 									<tr className='hover:bg-gray-100 hover:cursor-pointer'>
 										<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 											{" "}
-											<strong>TOTAL</strong>
+											<strong>{t('total')}</strong>
 										</td>
 										<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 											<strong>{data?.totalRevenue}</strong>
@@ -76,7 +79,7 @@ const IncomeStatement = () => {
 
 									<h5 className='mt-2 mb-1 ml-2  font-semibold text-base'>
 										{" "}
-										Expense
+										{t('expense')}
 									</h5>
 
 									{data &&
@@ -95,7 +98,7 @@ const IncomeStatement = () => {
 
 									<tr className='hover:bg-gray-100 hover:cursor-pointer'>
 										<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
-											<strong>TOTAL</strong>
+											<strong>{t('total')}</strong>
 										</td>
 										<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 											<strong>{data?.totalExpense}</strong>
@@ -104,12 +107,12 @@ const IncomeStatement = () => {
 
 									<h5 className='mt-2 mb-1 ml-2  font-semibold text-base'>
 										{" "}
-										Profit
+										{t('profit')}
 									</h5>
 									<tr className='hover:bg-gray-100 hover:cursor-pointer'>
 										<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 											{" "}
-											<strong>Total </strong>
+											<strong>{t('total')} </strong>
 										</td>
 										<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 											<strong>{data?.profit}</strong>

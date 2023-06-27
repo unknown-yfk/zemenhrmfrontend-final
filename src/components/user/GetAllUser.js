@@ -15,8 +15,13 @@ import ViewBtn from "../Buttons/ViewBtn";
 import { CsvLinkBtn } from "../UI/CsvLinkBtn";
 import AttendBtn from "../Buttons/AttendBtn";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
 
 function CustomTable({ list }) {
+
+	const {t} = useTranslation();
+
 	const dispatch = useDispatch();
 	const [status, setStatus] = useState("true");
 	const [columnsToShow, setColumnsToShow] = useState([]);
@@ -26,13 +31,13 @@ function CustomTable({ list }) {
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t("id"),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t("name"),
 
 			key: "fullName",
 			render: ({ firstName, lastName }) =>
@@ -40,7 +45,7 @@ function CustomTable({ list }) {
 		},
 		{
 			id: 3,
-			title: "Usr Name",
+			title: t("user_name"),
 			dataIndex: "userName",
 			key: "userName",
 		},
@@ -54,7 +59,7 @@ function CustomTable({ list }) {
 		// },
 		{
 			id: 5,
-			title: "Designation",
+			title: t("designation"),
 			dataIndex: "designationHistory",
 			key: "designationHistory",
 			render: (record) =>
@@ -65,14 +70,14 @@ function CustomTable({ list }) {
 
 		{
 			id: 6,
-			title: "E-Status",
+			title: t("status"),
 			dataIndex: "employmentStatus",
 			key: "employmentStatus",
 			render: (record) => (record?.name ? record?.name : "N/A"),
 		},
 		{
 			id: 8,
-			title: "Department",
+			title: t("department"),
 			dataIndex: "department",
 			key: "department",
 			render: (record) => (record?.name ? record?.name : "N/A"),
@@ -80,7 +85,7 @@ function CustomTable({ list }) {
 
 		{
 			id: 9,
-			title: "Shift",
+			title: t("shift"),
 			dataIndex: "shift",
 			key: "shift",
 			render: (record) => (record?.name ? record?.name : "N/A"),
@@ -88,7 +93,7 @@ function CustomTable({ list }) {
 
 		{
 			id: 7,
-			title: "Action",
+			title: t("action"),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => (
@@ -119,7 +124,8 @@ function CustomTable({ list }) {
 		<div className='ant-card p-4 rounded mt-5'>
 			<div className='flex my-2 justify-between'>
 				<div className='w-50'>
-					<h4 className='text-2xl mb-2'>Employee List</h4>
+					
+					<h4 className='text-2xl mb-2'> {t('employee_list')}</h4>
 				</div>
 				{list && (
 					<div className='flex justify-end mr-4'>
@@ -130,7 +136,7 @@ function CustomTable({ list }) {
 									className='btn btn-dark btn-sm'
 									style={{ marginTop: "5px" }}
 									filename='staffs'>
-									Download CSV
+									{t('download_csv')}
 								</CSVLink>
 							</CsvLinkBtn>
 						</div>
@@ -143,7 +149,7 @@ function CustomTable({ list }) {
 									{
 										label: (
 											<span>
-												<i className='bi bi-person-lines-fill'></i> Active
+												<i className='bi bi-person-lines-fill'></i> {t('active')}
 											</span>
 										),
 										value: "true",
@@ -151,7 +157,7 @@ function CustomTable({ list }) {
 									{
 										label: (
 											<span>
-												<i className='bi bi-person-dash-fill'></i> Inactive
+												<i className='bi bi-person-dash-fill'></i> {t('inactive')}
 											</span>
 										),
 										value: "false",

@@ -19,50 +19,55 @@ import { loadSingelEmploymentStatus } from "../../redux/rtk/features/employemntS
 import EmploymentStatusEditPopup from "../UI/PopUp/EmploymentStatusEditPopup";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
 import EmploymentStatusDelete from "./EmploymentStatusDelete";
+import {  useTranslation } from "react-i18next";
+
 
 //PopUp
 
 const CustomTable = ({ list }) => {
+
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 
 		{
 			id: 2,
-			title: " Name",
+			title: t('name'),
 			key: "firstName",
 			render: ({ firstName, lastName }) => firstName + " " + lastName,
 		},
 
 		{
 			id: 6,
-			title: "User Name",
+			title: t('user_name'),
 			dataIndex: "userName",
 			key: "userName",
 		},
 		{
 			id: 7,
-			title: "Start Time",
+			title: t('start_time'),
 			dataIndex: "startTime",
 			key: "startTime",
 			render: (startTime) => moment(startTime).format("hh:mm A"),
 		},
 		{
 			id: 8,
-			title: "End Time",
+			title: t('end_time'),
 			dataIndex: "endTime",
 			key: "endTime",
 			render: (endTime) => moment(endTime).format("hh:mm A"),
 		},
 		{
 			id: 4,
-			title: "Action",
+			title: t('action'),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/hr/staffs/${id}/`} />,
@@ -83,14 +88,14 @@ const CustomTable = ({ list }) => {
 		<div>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='department-list-title text-color-2 text-xl mb-2'>
-					Employee List
+					{t('employee_list')}
 				</h5>
 
 				{list && (
 					<div>
 						<CsvLinkBtn>
 							<CSVLink data={list} filename='user_department'>
-								Download CSV
+							{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -117,6 +122,8 @@ const CustomTable = ({ list }) => {
 };
 
 const DetailEmploymentStatus = () => {
+	const {t} = useTranslation();
+
 	const { id } = useParams();
 
 	//dispatch
@@ -138,7 +145,7 @@ const DetailEmploymentStatus = () => {
 
 	return (
 		<div>
-			<PageTitle title=' Back  ' />
+			<PageTitle title={t('back')} />
 			<UserPrivateComponent permission={"read-employmentStatus"}>
 				<Card className='mr-top mt-5'>
 					{employmentStatus ? (
@@ -146,7 +153,7 @@ const DetailEmploymentStatus = () => {
 							<div>
 								<div className='flex justify-between '>
 									<h3 className={"text-xl"}>
-										ID : {employmentStatus.id} | {employmentStatus.name}
+										{t('id')} : {employmentStatus.id} | {employmentStatus.name}
 									</h3>
 									<div className='flex justify-end'>
 										<UserPrivateComponent

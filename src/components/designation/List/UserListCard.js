@@ -4,36 +4,42 @@ import { Link } from "react-router-dom";
 import ViewBtn from "../../Buttons/ViewBtn";
 
 const UserListCard = ({ list, loading }) => {
-	// const [columnsToShow, setColumnsToShow] = useState([]);
+	
 	const columns = [
 		{
+			id: 1,
 			title: "ID",
 			dataIndex: "id",
 			key: "id",
-			render: (id) => <Link to={`/admin/hr/staffs/${id}`}>{id}</Link>,
+
 		},
+
 		{
-			title: "Employee Name",
-			key: "employee",
-			render: ({ firstName, lastName, id }) => (
-				<Link to={`/admin/hr/staffs/${id}`}>{firstName + " " + lastName}</Link>
-			),
+			id: 2,
+			title: " Name",
+			key: "user",
+			dataIndex: "user",
+			render: (user) => user?.firstName + " " + user?.lastName,	
 		},
+
+
 		{
+			id: 3,
 			title: "Action",
 			dataIndex: "id",
 			key: "action",
-			render: (id) => <ViewBtn path={`/admin/hr/staffs/${id}`} />,
+			render: (user) => <ViewBtn path={`/admin/hr/staffs/${id}/`
+		
+		} 
+			/>,
+			
 		},
 	];
+
+
+
+
 	
-
-
-
-	// useEffect(() => {
-	// 	setColumnsToShow(columns);
-	// }, []);
-
 
 	const addKeys = (arr) => arr.map((i) => ({ ...i, key: i.id }));
 

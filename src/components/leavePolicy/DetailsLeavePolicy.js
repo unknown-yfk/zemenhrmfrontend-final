@@ -21,23 +21,26 @@ import {
 } from "../../redux/rtk/features/leavePolicy/leavePolicySlice";
 import LeavePolicyEdit from "../UI/PopUp/LeavePolicyEditPopup";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 //PopUp
 
 const CustomTable = ({ list, data }) => {
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t("id"),
 			dataIndex: "id",
 			key: "id",
 		},
 
 		{
 			id: 2,
-			title: " Name",
+			title: t("name"),
 			key: "name",
 
 			render: ({ firstName, lastName }) => firstName + " " + lastName,
@@ -45,21 +48,21 @@ const CustomTable = ({ list, data }) => {
 
 		{
 			id: 6,
-			title: "Paid Leave",
+			title: t("paid"),
 			key: "paidLeaveCount",
 			render: () => data?.paidLeaveCount,
 		},
 
 		{
 			id: 6,
-			title: "Unpaid Leave",
+			title: t("unpaid"),
 			key: "unpaidLeaveCount",
 			render: () => data?.unpaidLeaveCount,
 		},
 
 		{
 			id: 4,
-			title: "Action",
+			title: t("action"),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/hr/staffs/${id}/`} />,
@@ -80,14 +83,14 @@ const CustomTable = ({ list, data }) => {
 		<div>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='award-list-title text-color-2 text-xl mb-2'>
-					Employee List
+				{t("employee_list")}
 				</h5>
 
 				{list && (
 					<div>
 						<CsvLinkBtn>
 							<CSVLink data={list} filename='user_award'>
-								Download CSV
+								{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -114,6 +117,9 @@ const CustomTable = ({ list, data }) => {
 };
 
 const DetailLeavePolicy = () => {
+
+	const {t} = useTranslation();
+
 	const { id } = useParams();
 	let navigate = useNavigate();
 	const { leavePolicy, loading } = useSelector((state) => state.leavePolicy);
@@ -149,7 +155,7 @@ const DetailLeavePolicy = () => {
 
 	return (
 		<div>
-			<PageTitle title=' Back  ' />
+			<PageTitle title={t('back')} />
 
 			<UserPrivateComponent permission={"read-leavePolicy"}>
 				<Card className='mr-top mt-5'>

@@ -2,8 +2,11 @@ import PageTitle from "../page-header/PageHeader";
 
 import { Navigate } from "react-router-dom";
 import GetAllTransaction from "./getAllTransaction";
+import {  useTranslation } from "react-i18next";
 
 const Transaction = (props) => {
+	const {t} = useTranslation();
+
   const isLogged = Boolean(localStorage.getItem("isLogged"));
 
   if (!isLogged) {
@@ -12,7 +15,7 @@ const Transaction = (props) => {
 
   return (
     <div>
-      <PageTitle title="Back" />
+      <PageTitle title={t('back')} />
       <br />
       <GetAllTransaction />
     </div>

@@ -9,34 +9,40 @@ import ViewBtn from "../Buttons/ViewBtn";
 import ColVisibilityDropdown from "../Shared/ColVisibilityDropdown";
 import { addRole, getRoles } from "./roleApis";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+import { CsvLinkBtn } from "../UI/CsvLinkBtn";
+
 
 function CustomTable({ list }) {
+
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t("id"),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t("name"),
 			dataIndex: "name",
 			key: "name",
 		},
 
 		{
 			id: 3,
-			title: "Created at",
+			title: t("created_at"),
 			dataIndex: "createdAt",
 			key: "addrcreatedAtess",
 			render: (createdAt) => moment(createdAt).format("YYYY-MM-DD"),
 		},
 		{
 			id: 4,
-			title: "Action",
+			title: t("action"),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/role/${id}/`} />,
@@ -55,16 +61,22 @@ function CustomTable({ list }) {
 
 	return (
 		<Card>
-			<div className='text-center my-2 d-flex justify-content-between'>
-				<h5 className='role-list-title'>AddRole List</h5>
+	
+			<div className='text-center my-2 flex justify-between'>
+				<h5 className='department-list-title text-color-2 text-xl mb-2'>
+					{t('role_list')}
+				</h5>
 				{list && (
 					<div>
-						<CSVLink
-							data={list}
-							className='btn btn-dark btn-sm mb-1'
-							filename='roles'>
-							Download CSV
-						</CSVLink>
+					
+						<CsvLinkBtn>
+							<CSVLink
+								data={list}
+								className='btn btn-dark btn-sm mb-1'
+								filename='roles'>
+								{t('download_csv')}
+							</CSVLink>
+						</CsvLinkBtn>
 					</div>
 				)}
 			</div>
@@ -90,6 +102,8 @@ function CustomTable({ list }) {
 }
 
 const AddRole = ({ drawer }) => {
+	const {t} = useTranslation();
+
 	const [list, setList] = useState(null);
 	const [loader, setLoader] = useState(false);
 
@@ -129,7 +143,8 @@ const AddRole = ({ drawer }) => {
 						xl={drawer ? 22 : 12}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='mt-10 m-2 text-center'>
-							Add New Role
+							
+							{t('add_new_role')}
 						</Title>
 						<Form
 							style={{ marginBottom: "100px" }}
@@ -147,7 +162,9 @@ const AddRole = ({ drawer }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "20px" }}
-									label='Name'
+									label=	{t('name')}
+						
+
 									name='name'
 									rules={[
 										{
@@ -171,7 +188,8 @@ const AddRole = ({ drawer }) => {
 										htmlType='submit'
 										block
 										loading={loader}>
-										Add New Role
+											{t('add_new_role')}
+										
 									</Button>
 								</Form.Item>
 							</div>

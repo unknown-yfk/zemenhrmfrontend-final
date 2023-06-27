@@ -1,7 +1,11 @@
 import { Col, Layout, Row } from "antd";
 import styles from "./Footer.module.css";
+import {  useTranslation } from "react-i18next";
+
 
 function Footer() {
+	const {t} = useTranslation();
+
   const { Footer: AntFooter } = Layout;
   const year = new Date().getFullYear();
 
@@ -17,7 +21,8 @@ function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-               &copy; ANDINET ICT SOLUTION
+               &copy;
+               {t('andinet')}
             </a>{" "}
            
           </p>
@@ -31,12 +36,15 @@ function Footer() {
                   className="nav-link text-muted"
                   target="/"
                 >
-                  Andinet
+                  {/* Andinet */}
+                  {t('andinet')}
                 </a>
               </li>
               <li className="nav-item">
                 <a href="https://software.andnetdigital.com/about/" className="nav-link text-muted" target="/">
-                  About Us
+                  {/* About Us */}
+                  {t('about_us')}
+
                 </a>
               </li>
               <li className="nav-item">
@@ -45,7 +53,9 @@ function Footer() {
                   className="nav-link text-muted"
                   target="_blank"
                 >
-                  Blog
+                  {/* Blog */}
+                  {t('blog')}
+
                 </a>
               </li>
              

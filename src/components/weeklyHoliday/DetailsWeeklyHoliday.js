@@ -21,23 +21,27 @@ import {
 } from "../../redux/rtk/features/weeklyHoliday/weeklyHolidaySlice";
 import WeeklyHolidayEdit from "../UI/PopUp/WeeklyHolidayEditPopup";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 //PopUp
 
 const CustomTable = ({ list, data }) => {
+
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 
 		{
 			id: 2,
-			title: " Name",
+			title: t('name'),
 			key: "name",
 
 			render: ({ firstName, lastName }) => firstName + " " + lastName,
@@ -45,21 +49,21 @@ const CustomTable = ({ list, data }) => {
 
 		{
 			id: 6,
-			title: "Start Day",
+			title: t('s_date'),
 			key: "startDay",
 			render: () => data?.startDay,
 		},
 
 		{
 			id: 6,
-			title: "End Day",
+			title: t('end_date'),
 			key: "endDay",
 			render: () => data?.endDay,
 		},
 
 		{
 			id: 4,
-			title: "Action",
+			title: t('action'),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/hr/staffs/${id}/`} />,
@@ -80,14 +84,14 @@ const CustomTable = ({ list, data }) => {
 		<div>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='award-list-title text-color-2 text-xl mb-2'>
-					Employee List
+					{t('employee_list')}
 				</h5>
 
 				{list && (
 					<div>
 						<CsvLinkBtn>
 							<CSVLink data={list} filename='user_award'>
-								Download CSV
+								{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -114,6 +118,8 @@ const CustomTable = ({ list, data }) => {
 };
 
 const DetailWeeklyHoliday = () => {
+	const {t} = useTranslation();
+
 	const { id } = useParams();
 	let navigate = useNavigate();
 	const { weeklyHoliday, loading } = useSelector(
@@ -151,7 +157,7 @@ const DetailWeeklyHoliday = () => {
 
 	return (
 		<div>
-			<PageTitle title=' Back  ' />
+			<PageTitle title={t('back')} />
 
 			<UserPrivateComponent permission={"read-weeklyHoliday"}>
 				<Card className='mr-top mt-5'>
@@ -160,7 +166,7 @@ const DetailWeeklyHoliday = () => {
 							<div>
 								<div className='flex justify-between '>
 									<h3 className={"text-xl"}>
-										ID : {weeklyHoliday.id} | {weeklyHoliday.name}
+										{t('id')} : {weeklyHoliday.id} | {weeklyHoliday.name}
 									</h3>
 									<div className='flex justify-end '>
 										<UserPrivateComponent permission={"update-weeklyHoliday"}>

@@ -7,8 +7,13 @@ import { toast } from "react-toastify";
 import { loadSingleStaff } from "../../../redux/rtk/features/user/userSlice";
 import { addDesHistory } from "../../designationHistory/designationHistoryApis";
 import AddAwardHistory from "../../awardHistory/AddAwardHistory";
+import {  useTranslation } from "react-i18next";
+
 
 const AwardAddSinglePopup = ({ data, setLoading }) => {
+
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const showModal = () => {
@@ -25,11 +30,12 @@ const AwardAddSinglePopup = ({ data, setLoading }) => {
 		<>
 			<div className='text-center'>
 				<Button type='primary' onClick={showModal}>
-					Add New Award
+					
+					{t('add_new')}
 				</Button>
 			</div>
 			<Modal
-				title={`Add award`}
+				title={t('add_award')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>

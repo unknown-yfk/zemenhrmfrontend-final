@@ -7,12 +7,16 @@ import NewDashboardCard from "../../Card/Dashboard/NewDashboardCard";
 import Loader from "../../loader/loader";
 import { loadDashboardData } from "../../../redux/rtk/features/dashboard/dashboardSlice";
 import UserPrivateComponent from "../../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 //Date fucntinalities
 let startdate = moment(new Date()).startOf("month").format("YYYY-MM-DD");
 let enddate = moment(new Date()).endOf("month").format("YYYY-MM-DD");
 
 const DemoLine = () => {
+
+	const {t} = useTranslation();
+
 	const data = useSelector((state) => state.dashboard.list?.workHoursByDate);
 
 	const cardInformation = useSelector((state) => state.dashboard.list);
@@ -67,7 +71,7 @@ const DemoLine = () => {
 
 				<NewDashboardCard information={cardInformation} />
 
-				<Card title='WORK HOURS '>
+				<Card title={t('work_hours')}>
 					{data ? <Line {...config} /> : <Loader />}
 				</Card>
 			</UserPrivateComponent>

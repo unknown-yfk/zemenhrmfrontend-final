@@ -12,7 +12,7 @@ import {
 } from "../../redux/rtk/features/designation/designationSlice";
 import Loader from "../loader/loader";
 import PageTitle from "../page-header/PageHeader";
-import UserListCard from "./List/UserListCard";
+// import UserListCard from "./List/UserListCard";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
 import ColVisibilityDropdown from "../Shared/ColVisibilityDropdown";
 import ViewBtn from "../Buttons/ViewBtn";
@@ -21,15 +21,21 @@ import { CSVLink } from "react-csv";
 
 import BtnEditSvg from "../UI/Button/btnEditSvg";
 import BtnDeleteSvg from "../UI/Button/btnDeleteSvg";
+import {  useTranslation } from "react-i18next";
+
+
+
 //PopUp
 
 const CustomTable = ({ list }) => {
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "user",
 			key: "user",
 			render: (user) => user?.id,
@@ -38,7 +44,7 @@ const CustomTable = ({ list }) => {
 
 		{
 			id: 2,
-			title: " Name",
+			title: t('name'),
 			key: "user",
 			dataIndex: "user",
 			render: (user) => user?.firstName + " " + user?.lastName,
@@ -46,7 +52,7 @@ const CustomTable = ({ list }) => {
 
 		{
 			id: 3,
-			title: "Action",
+			title: t('action'),
 			dataIndex: "user",
 			key: "user",
 			render: (user) => <ViewBtn path={`/admin/hr/staffs/${user?.id}/`} />,

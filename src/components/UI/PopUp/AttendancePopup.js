@@ -11,10 +11,14 @@ import {
 // import { toast } from "react-toastify";
 import moment from "moment";
 import getUserFromToken from "../../../utils/getUserFromToken";
+import {  useTranslation } from "react-i18next";
+
 // publicIp
 const publicIp = require("react-public-ip");
 
 const AttendancePopup = () => {
+	const {t} = useTranslation();
+
 	const isLogged = localStorage.getItem("isLogged");
 
 	const dispatch = useDispatch();
@@ -104,7 +108,7 @@ const AttendancePopup = () => {
 						type='primary'
 						className='btn-clock-in'
 						onClick={() => clockInClick()}>
-						<span className='btn-clock-in-text'>Clock In</span>
+						<span className='btn-clock-in-text'>{t('clock_in')}</span>
 					</Button>
 				) : (
 					<Button
@@ -112,7 +116,7 @@ const AttendancePopup = () => {
 						type='danger'
 						className='btn-clock-in'
 						onClick={() => clockInClick()}>
-						<span className='btn-clock-in-text'>Clock Out {inTime}</span>
+						<span className='btn-clock-in-text'>{t('clock_out')} {inTime}</span>
 					</Button>
 				))}
 			<Modal

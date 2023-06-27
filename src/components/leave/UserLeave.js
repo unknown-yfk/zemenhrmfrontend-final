@@ -13,8 +13,12 @@ import ViewBtn from "../Buttons/ViewBtn";
 import { loadSingleLeaveHistory } from "../../redux/rtk/features/leave/leaveSlice";
 import { useParams } from "react-router-dom";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 function CustomTable({ list, loading }) {
+
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	console.log(list);
@@ -22,34 +26,34 @@ function CustomTable({ list, loading }) {
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 
 		{
 			id: 3,
-			title: "Leave Type",
+			title: t('leave_type'),
 			dataIndex: "leaveType",
 			key: "leaveType",
 		},
 		{
 			id: 4,
-			title: "Leave From",
+			title: t('leave_from'),
 			dataIndex: "leaveFrom",
 			key: "leaveFrom",
 			render: (leaveFrom) => moment(leaveFrom).format("DD-MM-YYYY"),
 		},
 		{
 			id: 5,
-			title: "Leave To",
+			title: t('leave_to'),
 			dataIndex: "leaveTo",
 			key: "leaveTo",
 			render: (leaveTo) => moment(leaveTo).format("DD-MM-YYYY"),
 		},
 		{
 			id: 6,
-			title: "Leave Duration",
+			title: t('leave_duration'),
 			dataIndex: "leaveDuration",
 			key: "leaveDuration",
 			render: (leaveDuration) => {
@@ -63,7 +67,7 @@ function CustomTable({ list, loading }) {
 
 		{
 			id: 7,
-			title: "Status",
+			title: t('status'),
 			dataIndex: "status",
 			key: "status",
 			render: (status) => {
@@ -79,14 +83,14 @@ function CustomTable({ list, loading }) {
 
 		{
 			id: 7,
-			title: "Applied On",
+			title:  t('applied_on'),
 			dataIndex: "createdAt",
 			render: (createdAt) => moment(createdAt).format("DD-MM-YYYY"),
 		},
 
 		{
 			id: 7,
-			title: "Action",
+			title: t('action'),
 			key: "action",
 			render: ({ id }) => (
 				<ViewBtn
@@ -112,7 +116,7 @@ function CustomTable({ list, loading }) {
 		<div className='ant-card p-4 rounded mt-5'>
 			<div className='flex my-2 justify-between'>
 				<div className='w-50'>
-					<h4 className='text-2xl mb-2'> My Leave Applications</h4>
+					<h4 className='text-2xl mb-2'> {t('my_leave_app')}</h4>
 				</div>
 				{list && (
 					<div className='flex justify-end mr-4'>

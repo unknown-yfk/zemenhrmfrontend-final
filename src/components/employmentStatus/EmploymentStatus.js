@@ -2,8 +2,12 @@ import { Navigate } from "react-router-dom";
 import PageTitle from "../page-header/PageHeader";
 
 import AddEmploymentStatus from "./AddEmploymentStatus";
+import {  useTranslation } from "react-i18next";
+
 
 const EmploymentStatus = (props) => {
+	const {t} = useTranslation();
+
 	const isLogged = Boolean(localStorage.getItem("isLogged"));
 
 	if (!isLogged) {
@@ -11,7 +15,7 @@ const EmploymentStatus = (props) => {
 	}
 	return (
 		<div>
-			<PageTitle title='Back' />
+			<PageTitle title={t('back')} />
 			<AddEmploymentStatus />
 		</div>
 	);

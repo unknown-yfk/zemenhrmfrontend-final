@@ -4,8 +4,11 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getMainAccount, updateAccount } from "./account.api";
+import {  useTranslation } from "react-i18next";
 
 const UpdateAccount = ({ account, id }) => {
+	const {t} = useTranslation();
+
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -70,11 +73,14 @@ const UpdateAccount = ({ account, id }) => {
   return (
     <>
       <Button onClick={showModal} size="small">
-        Update Account
+
+       
+        {t('update_account')}
+
       </Button>
       <Modal
         open={open}
-        title="Update Account"
+        title={t('update_account')}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[
@@ -101,7 +107,7 @@ const UpdateAccount = ({ account, id }) => {
           <Form.Item
             style={{ marginBottom: "10px" }}
             name="name"
-            label="Name"
+            label={t('name')}
             rules={[
               {
                 required: true,
@@ -114,7 +120,7 @@ const UpdateAccount = ({ account, id }) => {
           <Form.Item
             style={{ marginBottom: "10px" }}
             name="account_id"
-            label="Account Type"
+            label={t('acc_type')}
             rules={[
               {
                 required: true,
@@ -127,7 +133,7 @@ const UpdateAccount = ({ account, id }) => {
               style={{
                 width: 200,
               }}
-              placeholder="Select Account Type"
+              placeholder={t('select')}
               optionFilterProp="children"
               filterOption={(input, option) => option.children.includes(input)}
               filterSort={(optionA, optionB) =>
@@ -157,7 +163,8 @@ const UpdateAccount = ({ account, id }) => {
               shape="round"
               loading={loading}
               onClick={() => setLoading(true)}>
-              Update Account
+           
+              {t('update_account')}
             </Button>
           </Form.Item>
         </Form>

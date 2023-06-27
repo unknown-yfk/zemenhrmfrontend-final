@@ -19,37 +19,40 @@ import ViewBtn from "../Buttons/ViewBtn";
 import moment from "moment";
 import DepartmentEditPopup from "../UI/PopUp/DepartmentEditPopup";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 //PopUp
 
 const CustomTable = ({ list }) => {
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t("id"),
 			dataIndex: "id",
 			key: "id",
 		},
 
 		{
 			id: 2,
-			title: " Name",
+			title: t("name"),
 			key: "firstName",
 			render: ({ firstName, lastName }) => firstName + " " + lastName,
 		},
 
 		{
 			id: 6,
-			title: "User Name",
+			title: t("user_name"),
 			dataIndex: "userName",
 			key: "userName",
 		},
 
 		{
 			id: 5,
-			title: "Role",
+			title: t("role"),
 			dataIndex: "role",
 			key: "role",
 			render: (role) => role?.name,
@@ -57,7 +60,7 @@ const CustomTable = ({ list }) => {
 
 		{
 			id: 6,
-			title: "Designation",
+			title: t("designation"),
 			dataIndex: "designationHistory",
 			key: "designationHistory",
 			render: (designationHistory) =>
@@ -66,7 +69,7 @@ const CustomTable = ({ list }) => {
 
 		{
 			id: 4,
-			title: "Action",
+			title: t("action"),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/hr/staffs/${id}/`} />,

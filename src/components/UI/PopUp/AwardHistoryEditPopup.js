@@ -5,8 +5,11 @@ import Loader from "../../loader/loader";
 
 import EmployeeAward from "../EmployeeAward";
 import AwardAddSinglePopup from "./AwardHistoryAddSinglePopup";
+import {  useTranslation } from "react-i18next";
 
 const AwardHistoryEditPopup = ({ data }) => {
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 
@@ -25,7 +28,7 @@ const AwardHistoryEditPopup = ({ data }) => {
 				<BtnEditSvg size={25} />
 			</button>
 			<Modal
-				title='Edit Award'
+				title={t('edit_awa')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>

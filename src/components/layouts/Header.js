@@ -2,13 +2,17 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 
-import { Button, Col, Dropdown, Menu, Row } from "antd";
+import { Button, Col, Dropdown, Menu, Row, Typography } from "antd";
 
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import AttendancePopup from "../UI/PopUp/AttendancePopup";
+import Languageoption from "../language-dropdown";
+import {  useTranslation } from "react-i18next";
+import i18next from "i18next";
+
 
 const toggler = [
 	<svg
@@ -22,6 +26,15 @@ const toggler = [
 ];
 
 function Header({ onPress, collapsed, handleCollapsed }) {
+
+	// language translation
+	const {t} = useTranslation();
+
+	const handleClick=(e) => {
+
+		i18next.changeLanguage(e.target.value)
+	}
+
 	useEffect(() => window.scrollTo(0, 0));
 
 	const isLogged = localStorage.getItem("isLogged");
@@ -47,7 +60,7 @@ function Header({ onPress, collapsed, handleCollapsed }) {
 					className='flex align-items-center'>
 					<Link to='/admin/auth/logout' className={styles.logoutLink}>
 						<LogoutOutlined className='text-danger' />
-						<span className='logout-text font-weight-bold'>Log Out</span>
+						<span className='logout-text font-weight-bold'>{t('logout')}</span>
 					</Link>
 				</p>
 			),
@@ -67,8 +80,10 @@ function Header({ onPress, collapsed, handleCollapsed }) {
 
 	return (
 		<>
-			<Row gutter={[24, 0]}>
-				<Col span={24} md={4}>
+			<Row gutter={[48, 24]}>
+
+				
+				<Col span={6} md={4}>
 					<div className={styles.sidebarTogglerPC}>
 						{isLogged &&
 							React.createElement(
@@ -80,25 +95,48 @@ function Header({ onPress, collapsed, handleCollapsed }) {
 							)}
 					</div>
 				</Col>
-				<Col span={24} md={20} className={styles.headerControl}>
+
+						<Col span={6} md={5}>
+						
+
+						
+
+					 	</Col>
+
+
+								
+
+
+
+
+
+
+				
+				<Col span={6} md={15} className={styles.headerControl}>
+					
 					<DarkModeSwitch
 						style={{ margin: "1rem" }}
 						checked={isDarkMode}
 						onChange={toggleDarkMode}
 						size={20}
 					/>
-					{/* {isLogged && (
+				
             <Typography.Title
               level={5}
               style={{ margin: 0 }}
               className="me-3 flex align-items-center"
             >
-              <UserOutlined style={{ fontSize: "16px" }} />{" "}
+					
               <span className="logout-text font-weight-bold me-2 ms-1">
-                {user}
-              </span>
+    
+				<Languageoption  onChange={(e)=> handleClick(e)}/>
+    
+	          </span>
+
+			
             </Typography.Title>
-          )} */}
+		
+
 
 					{!isLogged && (
 						<Link to='/admin/auth/login' className='btn-sign-in text-dark'>
@@ -114,6 +152,8 @@ function Header({ onPress, collapsed, handleCollapsed }) {
 							style={{ boxShadow: "none" }}>
 							{toggler}
 						</Button>
+
+						
 					)}
 					<AttendancePopup />
 					{isLogged && (
@@ -129,6 +169,8 @@ function Header({ onPress, collapsed, handleCollapsed }) {
 						</div>
 					)}
 				</Col>
+							
+								
 			</Row>
 		</>
 	);

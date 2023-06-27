@@ -3,8 +3,12 @@ import PageTitle from "../page-header/PageHeader";
 import AddDesignation from "./addDesignation";
 import GetAllDesignation from "./getAllDesignation";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const Designation = (props) => {
+
+	const {t} = useTranslation();
+
 	const isLogged = Boolean(localStorage.getItem("isLogged"));
 
 	if (!isLogged) {
@@ -13,7 +17,7 @@ const Designation = (props) => {
 
 	return (
 		<div>
-			<PageTitle title='Back' />
+			<PageTitle title={t('back')} />
 			<UserPrivateComponent permission={"create-designation"}>
 				<AddDesignation />
 			</UserPrivateComponent>

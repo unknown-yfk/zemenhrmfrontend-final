@@ -11,10 +11,13 @@ import PageTitle from "../page-header/PageHeader";
 import CustomTable from "./CustomTable";
 import { loadSingleRole } from "./roleApis";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 //PopUp
 
 const DetailRole = () => {
+	const {t} = useTranslation();
+
 	const { id } = useParams();
 	let navigate = useNavigate();
 
@@ -50,7 +53,7 @@ const DetailRole = () => {
 
 	return (
 		<div>
-			<PageTitle title=' Back  ' />
+			<PageTitle title={t('back')} />
 
 			<UserPrivateComponent permission={"read-role"}>
 				<div className='mr-top'>
@@ -75,7 +78,7 @@ const DetailRole = () => {
 													shape='round'
 													icon={<EditOutlined />}>
 													{" "}
-													New Permission{" "}
+													{t('new-perm')}{" "}
 												</Button>
 											</Link>
 										</UserPrivateComponent>

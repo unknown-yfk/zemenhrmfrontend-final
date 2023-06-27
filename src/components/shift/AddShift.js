@@ -24,27 +24,32 @@ import {
 	loadAllShift,
 } from "../../redux/rtk/features/shift/shiftSlice";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
 
 function CustomTable({ list }) {
+
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t('name'),
 			dataIndex: "name",
 			key: "name",
 		},
 
 		{
 			id: 3,
-			title: "Start Time",
+			title: t('start_time'),
 			dataIndex: "startTime",
 			key: "startTime",
 			render: (startTime) => moment(startTime).format("hh:mm A"),
@@ -52,14 +57,14 @@ function CustomTable({ list }) {
 
 		{
 			id: 4,
-			title: "End Time",
+			title: t('end_time'),
 			dataIndex: "endTime",
 			key: "endTime",
 			render: (endTime) => moment(endTime).format("hh:mm A"),
 		},
 		{
 			id: 5,
-			title: "Action",
+			title: t('action'),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/shift/${id}/`} />,
@@ -80,7 +85,8 @@ function CustomTable({ list }) {
 		<Card>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='department-list-title text-color-2 text-xl mb-2'>
-					Shift List
+			
+					{t('shift_list')}
 				</h5>
 				{list && (
 					<div>
@@ -89,7 +95,8 @@ function CustomTable({ list }) {
 								data={list}
 								className='btn btn-dark btn-sm mb-1'
 								filename='shift'>
-								Download CSV
+								
+								{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -117,6 +124,8 @@ function CustomTable({ list }) {
 }
 
 const AddShift = ({ drawer }) => {
+	const {t} = useTranslation();
+
 	const [loader, setLoader] = useState(false);
 	const shift = useSelector((state) => state.shift.list);
 	const dispatch = useDispatch();
@@ -163,7 +172,8 @@ const AddShift = ({ drawer }) => {
 						xl={drawer ? 22 : 12}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-							Add shift
+							
+							{t('add_shift')}
 						</Title>
 						<Form
 							form={form}
@@ -182,7 +192,7 @@ const AddShift = ({ drawer }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Name'
+									label={t('shift_name')}
 									name='name'
 									rules={[
 										{
@@ -195,7 +205,7 @@ const AddShift = ({ drawer }) => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Start Time'
+									label={t('shift_start_time')}
 									name='startTime'
 									rules={[
 										{
@@ -203,12 +213,12 @@ const AddShift = ({ drawer }) => {
 											message: "Please input your shift!",
 										},
 									]}>
-									<TimePicker />
+									<TimePicker placeholder={t('select')} />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "20px" }}
-									label='End Time'
+									label={t('shift_end_time')}
 									name='endTime'
 									rules={[
 										{
@@ -216,7 +226,7 @@ const AddShift = ({ drawer }) => {
 											message: "Please input your shift!",
 										},
 									]}>
-									<TimePicker />
+									<TimePicker placeholder={t('select')} />
 								</Form.Item>
 
 								<Form.Item
@@ -232,7 +242,8 @@ const AddShift = ({ drawer }) => {
 										htmlType='submit'
 										block
 										loading={loader}>
-										Add New Shift
+										{t('add_new_shift')}
+
 									</Button>
 								</Form.Item>
 							</div>

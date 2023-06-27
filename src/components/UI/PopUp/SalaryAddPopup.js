@@ -14,8 +14,12 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { loadSingleStaff } from "../../../redux/rtk/features/user/userSlice";
 import { addSalaryHistory } from "../../salaryHistory/salaryHistoryApis";
+import {  useTranslation } from "react-i18next";
 
 const SalaryAddSinglePopup = ({ data, setLoading }) => {
+
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [form] = Form.useForm();
 	const [salaryStartDate, setsalaryStartDate] = useState(null);
@@ -79,11 +83,12 @@ const SalaryAddSinglePopup = ({ data, setLoading }) => {
 		<>
 			<div className='text-center'>
 				<Button type='primary' onClick={showModal}>
-					Add New Salary
+					{/* Add New Salary */}
+					{t('add_new')}
 				</Button>
 			</div>
 			<Modal
-				title={`Add Salary`}
+				title={t('add_new')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>
@@ -104,14 +109,14 @@ const SalaryAddSinglePopup = ({ data, setLoading }) => {
 					<div>
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Salary'
+							label={t('salary')}
 							name='salary'>
-							<Input placeholder='Salary' />
+							<Input placeholder={t('salary')} />
 						</Form.Item>
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Start Date'
+							label={t('s_date')}
 							name='salaryStartDate'
 							valuePropName='salaryStartDate'
 							rules={[
@@ -120,22 +125,22 @@ const SalaryAddSinglePopup = ({ data, setLoading }) => {
 									message: "Please input your start date!",
 								},
 							]}>
-							<DatePicker onChange={(date) => setsalaryStartDate(date)} />
+							<DatePicker placeholder={t('select')} onChange={(date) => setsalaryStartDate(date)} />
 						</Form.Item>
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='End Date'
+							label={t('end_date')}
 							name='salaryEndDate'
 							valuePropName='salaryEndDate'>
-							<DatePicker onChange={(date) => setsalaryEndDate(date)} />
+							<DatePicker  placeholder={t('select')} onChange={(date) => setsalaryEndDate(date)} />
 						</Form.Item>
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Comment'
+							label={t('comment')}
 							name='salaryComment'>
-							<Input placeholder='Comment' />
+							<Input placeholder={t('comment')} />
 						</Form.Item>
 
 						<Form.Item
@@ -151,7 +156,7 @@ const SalaryAddSinglePopup = ({ data, setLoading }) => {
 								htmlType='submit'
 								block
 								loading={loader}>
-								Add Now
+								{t('add_new')}
 							</Button>
 						</Form.Item>
 					</div>

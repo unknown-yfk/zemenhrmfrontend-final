@@ -20,6 +20,7 @@ import {
 	WalletOutlined,
 	FileSyncOutlined,
 	FlagOutlined,
+	FormOutlined
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import React from "react";
@@ -29,8 +30,15 @@ import { disable } from "workbox-navigation-preload";
 import getPermissions from "../../utils/getPermissions";
 import getUserFromToken from "../../utils/getUserFromToken";
 import styles from "./Sidenav.module.css";
+import {  useTranslation } from "react-i18next";
+import i18next from "i18next";
+import Languageoption from "../language-dropdown";
 
 const Sidenav = ({ color, sideNavOpenKeys }) => {
+
+
+	const {t} = useTranslation();
+
 	const user = getUserFromToken();
 	const permissions = getPermissions();
 	const hasPermission = (item) => {
@@ -41,7 +49,7 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 		{
 			label: (
 				<NavLink to='/admin/dashboard'>
-					<span>Dashboard</span>
+					<span> {t('dashboard')}</span>		
 				</NavLink>
 			),
 			key: "dashboard",
@@ -53,14 +61,18 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 			hasPermission("read-role") ||
 			hasPermission("read-designation") ||
 			hasPermission("read-department")) && {
-			label: "HR",
+			label: (
+				<span> {t('hr')}</span>		
+			),
 			key: "hr",
 			icon: <UserOutlined />,
 			children: [
 				hasPermission("create-user") && {
 					label: (
 						<NavLink to='/admin/hr/staffs/new'>
-							<span>New Employee</span>
+					
+					<span> {t('new_employee')}</span>		
+
 						</NavLink>
 					),
 
@@ -70,7 +82,9 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 				hasPermission("read-user") && {
 					label: (
 						<NavLink to='/admin/hr/staffs'>
-							<span>Employee List</span>
+						
+					<span> {t('employee_list')}</span>		
+
 						</NavLink>
 					),
 					key: "users",
@@ -79,7 +93,9 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 				hasPermission("read-role") && {
 					label: (
 						<NavLink to='/admin/role'>
-							<span>Role & Permissions</span>
+						
+					<span> {t('role_permission')}</span>		
+							
 						</NavLink>
 					),
 					key: "roleAndPermissions",
@@ -88,7 +104,9 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 				hasPermission("read-designation") && {
 					label: (
 						<NavLink to='/admin/designation/'>
-							<span>Designation</span>
+							
+					<span> {t('designation')}</span>		
+
 						</NavLink>
 					),
 					key: "designation",
@@ -97,7 +115,8 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 				hasPermission("read-department") && {
 					label: (
 						<NavLink to='/admin/department'>
-							<span>Department</span>
+					<span> {t('department')}</span>		
+
 						</NavLink>
 					),
 					key: "department",
@@ -108,14 +127,17 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 
 		(hasPermission("create-attendance") ||
 			hasPermission("read-attendance")) && {
-			label: "ATTENDANCE",
+			label: (
+				<span> {t('attendance')}</span>		
+			),
+
 			key: "attendance",
 			icon: <ClockCircleOutlined />,
 			children: [
 				hasPermission("create-attendance") && {
 					label: (
 						<NavLink to='/admin/attendance'>
-							<span>Attendance</span>
+							<span> {t('attendance')}</span>		
 						</NavLink>
 					),
 					key: "attendance",
@@ -124,7 +146,8 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 				hasPermission("read-attendance") && {
 					label: (
 						<NavLink to={`/admin/attendance/user/${user}`}>
-							<span>My Attendance</span>
+							
+							<span> {t('my_attendance')}</span>		
 						</NavLink>
 					),
 					key: "myAttendance",
@@ -133,41 +156,49 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 			],
 		},
 
+		
 		(hasPermission("create-payroll") || hasPermission("read-payroll")) && {
-			label: "PAYROLL",
+			label:(
+
+
+				t('payroll')
+				
+				),
 			key: "payroll",
 			icon: <WalletOutlined />,
 			children: [
 				hasPermission("create-payroll") && {
 					label: (
-						<NavLink to='/admin/payroll/new'>
-							<span>Calculate Payroll</span>
+						// <NavLink to='http://localhost:3001/' >
+						<NavLink to='#' >
+
+
+							<span> {t('payroll')}</span>		
+			
 						</NavLink>
 					),
 					key: "calculatePayroll",
 					icon: <FileDoneOutlined />,
 				},
-				hasPermission("read-payroll") && {
-					label: (
-						<NavLink to='/admin/payroll/list'>
-							<span>Payslip List</span>
-						</NavLink>
-					),
-					key: "payslipList",
-					icon: <FileOutlined />,
-				},
+				
 			],
 		},
 
 		hasPermission("read-shift") && {
-			label: "SHIFT",
+			label: (
+
+				<span> {t('shift')}</span>		
+
+			),
 			key: "shift",
 			icon: <ClockCircleOutlined />,
 			children: [
 				hasPermission("read-shift") && {
 					label: (
 						<NavLink to='/admin/shift'>
-							<span>Shift</span>
+						
+							<span> {t('shift')}</span>		
+
 						</NavLink>
 					),
 					key: "newShift",
@@ -177,14 +208,20 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 		},
 
 		hasPermission("read-employmentStatus") && {
-			label: "EMPLOYEMENT",
+			label: (
+
+				<span> {t('employment')}</span>		
+
+			),
 			key: "employementStatus",
 			icon: <RocketOutlined />,
 			children: [
 				hasPermission("read-employmentStatus") && {
 					label: (
 						<NavLink to='/admin/employment-status'>
-							<span>Status</span>
+						
+							<span> {t('status')}</span>		
+				
 						</NavLink>
 					),
 					key: "employementStatus",
@@ -195,14 +232,20 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 
 		(hasPermission("create-leaveApplication") ||
 			hasPermission("read-leaveApplication")) && {
-			label: "LEAVE ",
+			 label: (
+
+				<span> {t('leave')}</span>		
+
+			),
 			key: "leave",
 			icon: <UsergroupDeleteOutlined />,
 			children: [
 				hasPermission("create-leaveApplication") && {
 					label: (
 						<NavLink to='/admin/leave/new'>
-							<span> New Leave </span>
+
+								<span> {t('new_leave')}</span>	
+							
 						</NavLink>
 					),
 					key: "newLeave",
@@ -211,7 +254,8 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 				hasPermission("read-leaveApplication") && {
 					label: (
 						<NavLink to='/admin/leave'>
-							<span>Leave Status</span>
+						
+							<span> {t('leave_satus')}</span>
 						</NavLink>
 					),
 					key: "leaveStatus",
@@ -220,7 +264,9 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 				hasPermission("read-leaveApplication") && {
 					label: (
 						<NavLink to={`/admin/leave/user/${user}`}>
-							<span>My Leaves</span>
+							
+							<span> {t('my_leaves')}</span>
+
 						</NavLink>
 					),
 					key: "myLeaves",
@@ -231,14 +277,20 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 
 		(hasPermission("read-weeklyHoliday") ||
 			hasPermission("read-publicHoliday")) && {
-			label: "HOLIDAY",
+				label: (
+
+					<span> {t('holiday')}</span>		
+	
+				),
 			key: "holiday",
 			icon: <CalendarOutlined />,
 			children: [
 				hasPermission("read-weeklyHoliday") && {
 					label: (
 						<NavLink to='/admin/holiday/week'>
-							<span>Weekly Holiday</span>
+						
+					<span> {t('weekly_holiday')}</span>		
+
 						</NavLink>
 					),
 					key: "weeklyHoliday",
@@ -247,7 +299,8 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 				hasPermission("read-publicHoliday") && {
 					label: (
 						<NavLink to='/admin/holiday/public'>
-							<span>Public Holiday</span>
+					<span> {t('public_holiday')}</span>		
+
 						</NavLink>
 					),
 					key: "publicHoliday",
@@ -257,14 +310,19 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 		},
 
 		hasPermission("read-leavePolicy") && {
-			label: "LEAVE POLICY",
+			label: (
+
+				<span> {t('leave_policy')}</span>		
+
+			),
 			key: "leavePolicy",
 			icon: <CalendarOutlined />,
 			children: [
 				hasPermission("read-leavePolicy") && {
 					label: (
 						<NavLink to='/admin/leave-policy'>
-							<span>Leave Policy</span>
+				<span> {t('leave_policy')}</span>		
+
 						</NavLink>
 					),
 					key: "leavePolicy",
@@ -274,14 +332,19 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 		},
 
 		hasPermission("read-announcement") && {
-			label: "ANNOUNCEMENT",
+			label: (
+
+				<span> {t('anouncement')}</span>		
+
+			),
 			key: "announcement",
 			icon: <NotificationFilled />,
 			children: [
 				hasPermission("read-announcement") && {
 					label: (
 						<NavLink to='/admin/announcement'>
-							<span>Announcement</span>
+						
+							<span> {t('anouncement')}</span>
 						</NavLink>
 					),
 					key: "newLeave",
@@ -290,87 +353,108 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 			],
 		},
 
-		(hasPermission("read-account") ||
-			hasPermission("read-transaction") ||
-			hasPermission("create-transaction")) && {
-			label: "ACCOUNTS",
-			key: "accounts",
-			icon: <WalletOutlined />,
-			children: [
-				hasPermission("read-account") && {
-					label: (
-						<NavLink to='/admin/account/'>
-							<span>Account</span>
-						</NavLink>
-					),
-					key: "accountList",
-					icon: <UnorderedListOutlined />,
-				},
-				hasPermission("create-transaction") && {
-					label: (
-						<NavLink to='/admin/transaction/create'>
-							<span>New Transaction</span>
-						</NavLink>
-					),
-					key: "newTransaction",
-					icon: <CheckOutlined />,
-				},
-				hasPermission("read-transaction") && {
-					label: (
-						<NavLink to='/admin/transaction/'>
-							<span>Transaction List</span>
-						</NavLink>
-					),
-					key: "transactionList",
-					icon: <UnorderedListOutlined />,
-				},
-			],
-		},
+		// (hasPermission("read-account") ||
+		// 	hasPermission("read-transaction") ||
+		// 	hasPermission("create-transaction")) && {
+		// 		label: (
 
-		hasPermission("read-account") && {
-			label: "FINANCE REPORT",
-			key: "report",
-			icon: <FlagOutlined />,
-			children: [
-				hasPermission("read-account") && {
-					label: (
-						<NavLink to='/admin/account/trial-balance'>
-							<span>Trial Balance</span>
-						</NavLink>
-					),
-					key: "trialBalance",
-					icon: <FileDoneOutlined />,
-				},
-				hasPermission("read-account") && {
-					label: (
-						<NavLink to='/admin/account/balance-sheet'>
-							<span>Balance Sheet</span>
-						</NavLink>
-					),
-					key: "balanceSheet",
-					icon: <FileOutlined />,
-				},
-				hasPermission("read-account") && {
-					label: (
-						<NavLink to='/admin/account/income'>
-							<span>Income Statement</span>
-						</NavLink>
-					),
-					key: "incomeStatement",
-					icon: <FileSyncOutlined />,
-				},
-			],
-		},
+		// 			<span> {t('accounts')}</span>		
+	
+		// 		),
+		// 	key: "accounts",
+		// 	icon: <WalletOutlined />,
+		// 	children: [
+		// 		hasPermission("read-account") && {
+		// 			label: (
+		// 				<NavLink to='/admin/account/'>
+		// 					<span> {t('acoount')}</span>		
+		// 				</NavLink>
+		// 			),
+		// 			key: "accountList",
+		// 			icon: <UnorderedListOutlined />,
+		// 		},
+		// 		hasPermission("create-transaction") && {
+		// 			label: (
+		// 				<NavLink to='/admin/transaction/create'>
+		// 					<span> {t('new_transaction')}</span>	
+		// 				</NavLink>
+		// 			),
+		// 			key: "newTransaction",
+		// 			icon: <CheckOutlined />,
+		// 		},
+		// 		hasPermission("read-transaction") && {
+		// 			label: (
+		// 				<NavLink to='/admin/transaction/'>
+
+		// 					<span> {t('transaction_list')}</span>	
+
+		// 				</NavLink>
+		// 			),
+		// 			key: "transactionList",
+		// 			icon: <UnorderedListOutlined />,
+		// 		},
+		// 	],
+		// },
+
+		// hasPermission("read-account") && {
+		// 	label: (
+
+		// 		<span> {t('finance_report')}</span>		
+
+		// 	),
+		// 	key: "report",
+		// 	icon: <FlagOutlined />,
+		// 	children: [
+		// 		hasPermission("read-account") && {
+		// 			label: (
+		// 				<NavLink to='/admin/account/trial-balance'>
+					
+		// 					<span> {t('trail_balance')}</span>		
+
+		// 				</NavLink>
+		// 			),
+		// 			key: "trialBalance",
+		// 			icon: <FileDoneOutlined />,
+		// 		},
+		// 		hasPermission("read-account") && {
+		// 			label: (
+		// 				<NavLink to='/admin/account/balance-sheet'>
+						
+		// 					<span> {t('balance_sheet')}</span>		
+
+		// 				</NavLink>
+		// 			),
+		// 			key: "balanceSheet",
+		// 			icon: <FileOutlined />,
+		// 		},
+		// 		hasPermission("read-account") && {
+		// 			label: (
+		// 				<NavLink to='/admin/account/income'>
+						
+		// 					<span> {t('income_statement')}</span>		
+
+		// 				</NavLink>
+		// 			),
+		// 			key: "incomeStatement",
+		// 			icon: <FileSyncOutlined />,
+		// 		},
+		// 	],
+		// },
 
 		(hasPermission("crate-award") || hasPermission("read-award")) && {
-			label: "Performance Award",
+			label: (
+
+				<span> {t('performance_award')}</span>		
+
+			),
 			key: "award",
 			icon: <TrophyFilled />,
 			children: [
 				hasPermission("create-award") && {
 					label: (
 						<NavLink to='/admin/award/new'>
-							<span>New Performance  Award</span>
+					
+							<span> {t('new_performance')}</span>	
 						</NavLink>
 					),
 					key: "newAward",
@@ -380,7 +464,9 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 				hasPermission("read-award") && {
 					label: (
 						<NavLink to='/admin/award'>
-							<span>Performance Award</span>
+						
+						<span> {t('performance_award')}</span>		
+
 						</NavLink>
 					),
 					key: "award",
@@ -389,15 +475,44 @@ const Sidenav = ({ color, sideNavOpenKeys }) => {
 			],
 		},
 
+		hasPermission("create-user") && {
+			label: (
+
+				t('letters')
+			),
+			key: "settings",
+			icon: <FormOutlined />,
+			
+			children: [
+				hasPermission("create-user") && {
+					label: (
+						// <NavLink to='http://localhost:3001/letters/' >
+								<NavLink to='#' >
+							<span>{t('letter')}</span>
+						</NavLink>
+					),
+					key: "invoiceSetting",
+					icon: <FormOutlined />
+					
+				},
+			],
+		},
+
 		hasPermission("read-setting") && {
-			label: "SETTINGS",
+			label: (
+
+				<span> {t('settings')}</span>		
+
+			),
 			key: "settings",
 			icon: <SettingOutlined />,
 			children: [
 				hasPermission("read-setting") && {
 					label: (
 						<NavLink to='/admin/company-setting'>
-							<span>Company Settings</span>
+					
+				<span> {t('comapny_settings')}</span>		
+
 						</NavLink>
 					),
 					key: "invoiceSetting",

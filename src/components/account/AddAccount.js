@@ -7,8 +7,12 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addAccount } from "../../redux/rtk/features/account/accountSlice";
 import { getMainAccount } from "./account.api";
+import {  useTranslation } from "react-i18next";
+
 
 const AddAccount = ({ drawer }) => {
+	const {t} = useTranslation();
+
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch();
@@ -67,7 +71,7 @@ const AddAccount = ({ drawer }) => {
 					className='border rounded column-design'>
 					<Card bordered={false}>
 						<Title level={4} className='m-2 text-center'>
-							Add Account
+							{t('add_account')}
 						</Title>
 						<Form
 							form={form}
@@ -88,20 +92,20 @@ const AddAccount = ({ drawer }) => {
 							<Form.Item
 								style={{ marginBottom: "10px" }}
 								name='name'
-								label='Name'
+								label=	{t('name')}
 								rules={[
 									{
 										required: true,
 										message: "Please input debit account!",
 									},
 								]}>
-								<Input placeholder='Name' />
+								<Input placeholder={t('name')}/>
 							</Form.Item>
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
 								name='account_id'
-								label='Account Type'
+								label={t('acc_type')}
 								rules={[
 									{
 										required: true,
@@ -111,7 +115,7 @@ const AddAccount = ({ drawer }) => {
 								<Select
 									loading={!accounts}
 									showSearch
-									placeholder='Select Account Type'
+									placeholder={t('select')}
 									optionFilterProp='children'
 									filterOption={(input, option) =>
 										option.children.includes(input)
@@ -140,7 +144,8 @@ const AddAccount = ({ drawer }) => {
 									size='large'
 									loading={loader}
 									onClick={() => setLoader(true)}>
-									Add New Account
+									
+									{t('add_new')}
 								</Button>
 							</Form.Item>
 						</Form>

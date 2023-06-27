@@ -12,8 +12,11 @@ import PageTitle from "../page-header/PageHeader";
 import UpdateAccount from "./updateAccount";
 import "./account.css";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const DetailAccount = () => {
+	const {t} = useTranslation();
+
 	// const [data, setData] = useState(null);
 	const data = useSelector((state) => state.accounts.account);
 	const { id } = useParams("id");
@@ -31,7 +34,7 @@ const DetailAccount = () => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={t('back')} />
 			<br />
 			<UserPrivateComponent permission={"read-account"}>
 				<Card>
@@ -40,7 +43,7 @@ const DetailAccount = () => {
 							<div className='flex justify-between mb-4'>
 								<h5 className='text-xl'>
 									<i className='bi bi-card-list'>
-										<span className=' ml-2'> Account Details: {data.name}</span>{" "}
+										<span className=' ml-2'> {t('acc_detail')}: {data.name}</span>{" "}
 									</i>
 								</h5>
 								<UserPrivateComponent permission={"update-account"}>
@@ -54,22 +57,26 @@ const DetailAccount = () => {
 											<th
 												scope='col'
 												className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-												Debit
+												
+												{t('debit')}
 											</th>
 											<th
 												scope='col'
 												className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-												Credit
+												{t('credit')}
+												
 											</th>
 											<th
 												scope='col'
 												className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-												Perticulars
+												
+												{t('perticulars')}
 											</th>
 											<th
 												scope='col'
 												className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-												Date
+												
+												{t('date')}
 											</th>
 										</tr>
 									</thead>
@@ -114,7 +121,7 @@ const DetailAccount = () => {
 												<td
 													colSpan='2'
 													className=' table-active py-4 px-6 border-b border-gray-200 text-gray-900 text-base'>
-													<strong>Balance</strong>
+													<strong>{t('balance')}</strong>
 												</td>
 												<td>
 													<strong>{data?.balance}</strong>

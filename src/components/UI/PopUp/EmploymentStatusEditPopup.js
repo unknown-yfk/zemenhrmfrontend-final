@@ -8,8 +8,11 @@ import BtnEditSvg from "../Button/btnEditSvg";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { updateEmploymentStatus } from "../../../redux/rtk/features/employemntStatus/employmentStatusSlice";
+import {  useTranslation } from "react-i18next";
 
 const EmploymentStatusEditPopup = ({ data }) => {
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { id } = useParams("id");
 	const dispatch = useDispatch();
@@ -46,7 +49,7 @@ const EmploymentStatusEditPopup = ({ data }) => {
 				<BtnEditSvg size={30} />
 			</button>
 			<Modal
-				title='Edit Shift'
+				title={t('edit_emp')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>
@@ -68,7 +71,7 @@ const EmploymentStatusEditPopup = ({ data }) => {
 					<div>
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Name'
+							label={t('name')}
 							name='name'
 							rules={[
 								{
@@ -76,12 +79,12 @@ const EmploymentStatusEditPopup = ({ data }) => {
 									message: "Please input your shift!",
 								},
 							]}>
-							<Input placeholder='Parmanet' />
+							<Input placeholder={t('permanent')}/>
 						</Form.Item>
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Color Code'
+							label={t('color_code')}
 							name='colourValue'
 							rules={[
 								{
@@ -94,9 +97,9 @@ const EmploymentStatusEditPopup = ({ data }) => {
 
 						<Form.Item
 							style={{ marginBottom: "20px" }}
-							label='Description'
+							label={t('description')}
 							name={"description"}>
-							<Input.TextArea placeholder='Description' />
+							<Input.TextArea placeholder={t('description')} />
 						</Form.Item>
 
 						<Form.Item
@@ -111,7 +114,7 @@ const EmploymentStatusEditPopup = ({ data }) => {
 								htmlType='submit'
 								block
 								loading={loading}>
-								Update Now
+								{t('add_new')}
 							</Button>
 						</Form.Item>
 					</div>

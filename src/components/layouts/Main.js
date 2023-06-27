@@ -9,10 +9,14 @@ import QuickLinks from "./QuickLinks";
 import { useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
 import checkTokenExp from "../../utils/checkTokenExp";
+import {  useTranslation } from "react-i18next";
+
 
 const { Header: AntHeader, Content, Sider } = Layout;
 
 function Main({ children }) {
+	const {t} = useTranslation();
+
 	const dispatch = useDispatch();
 
 	// get the token from local storage and decode JWT Token and get the user id from the token
@@ -102,11 +106,13 @@ function Main({ children }) {
 							<div>
 								<h2
 									className='text-white text-center mt-2 mb-1 '
-									style={{ fontSize: "25px" }}>
-									ANDINET 
+									style={{ fontSize: "20px" }}>
+								
+									{t('title1')}
 									<strong style={{ color: "#6ECCAF	", fontWeight: "bold" }}>
 										{" "}
-										HRM
+										
+										{t('title2')}
 									</strong>
 								</h2>
 							</div>

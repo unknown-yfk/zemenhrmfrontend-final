@@ -10,34 +10,38 @@ import ColVisibilityDropdown from "../Shared/ColVisibilityDropdown";
 import { CsvLinkBtn } from "../UI/CsvLinkBtn";
 import { addDepartment, getDepartments } from "./departmentApis";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 function CustomTable({ list }) {
+
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t("id"),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t("name"),
 			dataIndex: "name",
 			key: "name",
 		},
 
 		{
 			id: 3,
-			title: "Created at",
+			title: t("created_at"),
 			dataIndex: "createdAt",
 			key: "addrcreatedAtess",
 			render: (createdAt) => moment(createdAt).format("YYYY-MM-DD"),
 		},
 		{
 			id: 4,
-			title: "Action",
+			title: t("action"),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/department/${id}/`} />,
@@ -58,8 +62,8 @@ function CustomTable({ list }) {
 		<Card>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='department-list-title text-color-2 text-xl mb-2'>
-					Department List
-				</h5>
+					{t('department_list')}
+					</h5>
 				{list && (
 					<div>
 						<CsvLinkBtn>
@@ -67,7 +71,7 @@ function CustomTable({ list }) {
 								data={list}
 								className='btn btn-dark btn-sm mb-1'
 								filename='departments'>
-								Download CSV
+								{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -95,6 +99,8 @@ function CustomTable({ list }) {
 }
 
 const AddDepartment = ({ drawer }) => {
+	const {t} = useTranslation();
+
 	const [list, setList] = useState(null);
 	const [loader, setLoader] = useState(false);
 
@@ -134,7 +140,8 @@ const AddDepartment = ({ drawer }) => {
 						xl={drawer ? 22 : 12}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-							Add department
+							
+							{t('add_department')}
 						</Title>
 						<Form
 							style={{ marginBottom: "40px" }}
@@ -152,7 +159,7 @@ const AddDepartment = ({ drawer }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "20px" }}
-									label='Name'
+									label={t('name')}
 									name='name'
 									rules={[
 										{
@@ -176,7 +183,8 @@ const AddDepartment = ({ drawer }) => {
 										htmlType='submit'
 										block
 										loading={loader}>
-										Add New department
+									
+										{t('add_new_department')}
 									</Button>
 								</Form.Item>
 							</div>

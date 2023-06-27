@@ -3,8 +3,11 @@ import React, { useEffect, useState } from "react";
 import PageTitle from "../page-header/PageHeader";
 import { getBalanceSheet } from "./account.api";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const BalanceSheet = () => {
+	const {t} = useTranslation();
+
 	const [data, setData] = useState(null);
 
 	useEffect(() => {
@@ -17,7 +20,7 @@ const BalanceSheet = () => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={t('back')} />
 			<br />
 			<UserPrivateComponent permission={"read-account"}>
 				<Card>
@@ -25,7 +28,7 @@ const BalanceSheet = () => {
 						<div className='card-title  flex  justify-between'>
 							<h5 className='text-xl mb-3'>
 								<span className='ml-2 report-section-card-title'>
-									Balance Sheet
+									{t('balance_sheet')}
 								</span>
 							</h5>
 						</div>
@@ -34,19 +37,19 @@ const BalanceSheet = () => {
 								<table className=' w-full max-w-full mb-4 bg-transparent report-section-table'>
 									<h5 className='mt-2 mb-1 ml-2  font-semibold text-base'>
 										{" "}
-										Assets
+										{t('assets')}
 									</h5>
 									<thead className='text-gray-600 text-xs font-semibold border-gray tracking-wider text-left px-5 py-3 hover:cursor-pointer uppercase border-b-2 border-gray-200'>
 										<tr className='border-b border-gray'>
 											<th
 												scope='col'
 												className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-												Account
+												{t('acoount')}
 											</th>
 											<th
 												scope='col'
 												className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-												Amount
+												{t('amount')}
 											</th>
 										</tr>
 									</thead>
@@ -68,7 +71,7 @@ const BalanceSheet = () => {
 										<tr className='hover:bg-gray-100 hover:cursor-pointer'>
 											<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 												{" "}
-												<strong>TOTAL</strong>
+												<strong>{t('total')}</strong>
 											</td>
 											<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 												<strong>{data?.totalAsset}</strong>
@@ -77,7 +80,8 @@ const BalanceSheet = () => {
 
 										<h5 className='mt-2 mb-1 ml-2  font-semibold text-base'>
 											{" "}
-											Liabilities
+											{t('lial')}
+											
 										</h5>
 
 										{data &&
@@ -96,7 +100,7 @@ const BalanceSheet = () => {
 
 										<tr className='hover:bg-gray-100 hover:cursor-pointer'>
 											<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
-												<strong>TOTAL</strong>
+												<strong>{t('total')}</strong>
 											</td>
 											<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 												<strong>{data?.totalLiability}</strong>
@@ -105,7 +109,7 @@ const BalanceSheet = () => {
 
 										<h5 className='mt-2 mb-1 ml-2  font-semibold text-base'>
 											{" "}
-											Equity
+											{t('equity')}
 										</h5>
 
 										{data &&
@@ -125,7 +129,7 @@ const BalanceSheet = () => {
 										<tr className='hover:bg-gray-100 hover:cursor-pointer'>
 											<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 												{" "}
-												<strong>TOTAL</strong>
+												<strong>{t('total')}</strong>
 											</td>
 											<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 												<strong>{data?.totalEquity}</strong>
@@ -134,7 +138,7 @@ const BalanceSheet = () => {
 										<tr className='hover:bg-gray-100 hover:cursor-pointer'>
 											<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 												{" "}
-												<strong>Total Liability and Equity</strong>
+												<strong>{t('lial_equity')}</strong>
 											</td>
 											<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 												<strong>

@@ -26,8 +26,12 @@ import PageTitle from "../page-header/PageHeader";
 import BigDrawer from "../Drawer/BigDrawer";
 import AddAccount from "../account/AddAccount";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const AddTransaction = () => {
+
+	const {t} = useTranslation();
+
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch();
@@ -91,7 +95,7 @@ const AddTransaction = () => {
 
 	return (
 		<>
-			<PageTitle title='Back' />
+			<PageTitle title={t('back')} />
 			<UserPrivateComponent permission={"create-transaction"}>
 				<Row className='mr-top'>
 					<Col
@@ -103,7 +107,8 @@ const AddTransaction = () => {
 						className='column-design border rounded bg-white'>
 						<Card bordered={false}>
 							<Title level={3} className='m-2 mb-4 text-center'>
-								Transaction
+								
+								{t('transaction')}
 							</Title>
 							<Form
 								form={form}
@@ -120,11 +125,11 @@ const AddTransaction = () => {
 								onFinish={onFinish}
 								onFinishFailed={onFinishFailed}
 								autoComplete='off'>
-								<Form.Item label='Date' required>
+								<Form.Item label={t('date')} required>
 									<DatePicker
 										defaultValue={moment()}
 										onChange={(value) => setDate(value?._d)}
-										label='date'
+										label={t('date')}
 										name='date'
 										className='date-picker date-picker-transaction-create'
 										rules={[
@@ -139,7 +144,7 @@ const AddTransaction = () => {
 								<Form.Item
 									style={{ marginBottom: "10px" }}
 									name='debit_id'
-									label='Debit Account'>
+									label={t('debit')}>
 									<Space.Compact block>
 										<Select
 											onChange={(value) =>
@@ -147,7 +152,7 @@ const AddTransaction = () => {
 											}
 											loading={!accounts}
 											showSearch
-											placeholder='Select Debit ID'
+											placeholder={t('select')}
 											optionFilterProp='children'
 											filterOption={(input, option) =>
 												option.children.includes(input)
@@ -165,8 +170,8 @@ const AddTransaction = () => {
 												))}
 										</Select>
 										<BigDrawer
-											title={"new debit account"}
-											btnTitle={"Debit account"}
+											title={t('debit')}
+											btnTitle={t('debit')}
 											children={<AddAccount drawer={true} />}
 										/>
 									</Space.Compact>
@@ -175,7 +180,7 @@ const AddTransaction = () => {
 								<Form.Item
 									style={{ marginBottom: "10px" }}
 									name='credit_id'
-									label='Credit Account'>
+									label={t('credit')}>
 									<Space.Compact block>
 										<Select
 											onChange={(value) =>
@@ -183,7 +188,7 @@ const AddTransaction = () => {
 											}
 											loading={!accounts}
 											showSearch
-											placeholder='Select Credit ID'
+											placeholder={t('select')}
 											optionFilterProp='children'
 											filterOption={(input, option) =>
 												option.children.includes(input)
@@ -201,8 +206,8 @@ const AddTransaction = () => {
 												))}
 										</Select>
 										<BigDrawer
-											title={"new credit account"}
-											btnTitle={"Credit account"}
+											title={t("credit")}
+											btnTitle={t('credit')}
 											children={<AddAccount drawer={true} />}
 										/>
 									</Space.Compact>
@@ -210,7 +215,7 @@ const AddTransaction = () => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Amount'
+									label={t('amount')}
 									name='amount'
 									rules={[
 										{
@@ -223,7 +228,7 @@ const AddTransaction = () => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Particulars'
+									label={t('perticulars')}
 									name='particulars'
 									rules={[
 										{
@@ -244,7 +249,8 @@ const AddTransaction = () => {
 										size='large'
 										loading={loader}
 										onClick={() => setLoader(true)}>
-										Pay Now
+									
+										{t('pay')}
 									</Button>
 								</Form.Item>
 							</Form>

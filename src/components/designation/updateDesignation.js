@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import { Navigate, useLocation, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import PageTitle from "../page-header/PageHeader";
+import {  useTranslation } from "react-i18next";
 
 //Update Designation API REQ
 const updateDesignation = async (id, values) => {
+	
 	try {
 		await axios({
 			method: "put",
@@ -27,6 +29,8 @@ const updateDesignation = async (id, values) => {
 };
 
 function UpdateDesignation() {
+	const {t} = useTranslation();
+
 	const { Title } = Typography;
 	const [form] = Form.useForm();
 	const [success, setSuccess] = useState(false);
@@ -64,7 +68,7 @@ function UpdateDesignation() {
 
 	return (
 		<>
-			<PageTitle title={`back`} />
+			<PageTitle title={t('back')} />
 			<div className='text-center'>
 				<Card className='mt-2'>
 					<Row className='mr-top'>
@@ -86,11 +90,12 @@ function UpdateDesignation() {
 								</div>
 							)}
 							<Title level={3} className='m-3 text-center'>
-								Edit Designation Form
+								
+								{t('edit_desig')}
 							</Title>
 							<Form
 								initialValues={{
-									...initValues,
+									initValues,
 								}}
 								form={form}
 								className='m-4'
@@ -107,7 +112,7 @@ function UpdateDesignation() {
 								<Form.Item
 									style={{ marginBottom: "10px" }}
 									fields={[{ name: "Name" }]}
-									label='Name'
+									label={t('name')}
 									name='name'
 									rules={[
 										{
@@ -125,7 +130,8 @@ function UpdateDesignation() {
 										span: 16,
 									}}>
 									<Button block type='primary' htmlType='submit' shape='round'>
-										Update Now
+										
+										{t('add_new')}
 									</Button>
 								</Form.Item>
 							</Form>

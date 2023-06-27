@@ -1,0 +1,360 @@
+{
+
+
+    "andinet": " አንድነት አይሲቲ ሶሉሽን",
+    "about_us": "ስለ እኛ",
+    "blog":"ብሎግ",
+
+    "app_title": "ርዕስ",
+    "language": "ቋንቋ",
+    "amharic": "አማርኛ",
+    "welcome_message": "እንኳን በደህና መጡ",
+    "days_since_release": "it's been {{number_of_days}} days since this video was released",
+    "new_employee":  "አዲስ ሰራተኛ ለመመዝገብ",
+    "employee_list": "የሰራተኞች ዝርዝር", 
+    "designation_list": "የስራ ሃላፊነት ዝርዝር",
+    "department_list": "የስራ ክፍል ዝርዝር",
+    "attendance_list": "አቴንዳንስ ዝርዝር",
+    "shift_list" :"የፈረቃ ዝርዝር",
+    "edit_shift": "ፈረቃ አስተካክል",
+    "edit_emp": "የቅጥር ሁኔታ አስተካክል",
+
+    "role_permission": "ሮል ኤንድ ፐርሚሽን",
+    "designation": "የስራ ሃላፊነት",
+    "department": "የስራ ክፍል",
+    "dashboard" : "ዳሽቦርድ",
+    "hr":  "የሰው ኃይል",
+
+    "login": "ግባ",
+    "submit": "አስገባ",
+
+    "title1": "አንድነት",
+    "title2": "ኤች አር አም",
+
+
+
+
+    "attendance": "አቴንዳንስ",
+    "attend": "አቴንዳንስ",
+    "my_attendance": "የኔ አቴንዳንስ",
+
+
+    "payroll": "ፔሮል",
+    "calculate_payroll": "ካልኩሌት ፔሮል",
+    "payslip_list": "የክፍያ ደብተር ዝርዝር",
+
+    
+    "shift": "ፈረቃ",
+    "shif": "ፈረቃ",
+    "shift_name": "የፈረቃው ስም",
+    "shift_start_time": "ፈረቃው የሚጀምርበት ሰአት",
+    "shift_end_time": "ፈረቃው የሚያበቃበት ሰአት",
+
+
+
+
+    "employment":"የቅጥር ሁኔታ",
+    "status": "የቅጥር ሁኔታ",
+
+
+    "leave": "ፍቃድ",
+    "new_leave": "አዲስ ፍቃድ",
+    "leave_satus": "የፍቃድ ሁኔታ",
+    "leave_reason": "የፍቃድ ምክንያት",
+    "my_leaves": "የኔ ፍቃዶች",
+    "leave_acc_fr":"ፍቃድ ",
+    "leave_acc_to":"",
+
+
+    "holiday": "ክብረ በአላት",
+    "weekly_holiday": "የሳምንቱ በአላት",
+    "public_holiday": "የህዝብ በአላት",
+    "name_holidaye": "የበአሉ ስም",
+    
+    "leave_policy": "ሊቭ ፖሊሲ",
+    "leave_policy_list": "የሊቭ ፖሊሲ ዝርዝር",
+    "add_leave_policy": "ሊቭ ፖሊሲ መዝግብ",
+    "leave_policy_edit": "ሊቭ ፖሊሲ አስተካክል",
+
+
+    "leave_poli": "ሊቭ ፖሊሲ",
+    
+
+
+    "anouncement": "ማስታወቂያ",
+    "add_anouncement": "ማስታወቂያ መዝግብ",
+    "title": "ርዕስ",
+    "anounce": "ማስታወቂያ",
+    "metting": "ስብሰባ በ 00:00",
+
+
+    "accounts": "አካዉንትስ",
+    "acoount": "አካዉንት",
+    "new_transaction": "አዲስ ግብይት",
+    "transaction_list": "የግብይት ዝርዝር",
+    "transaction": "ግብይት",
+
+
+    "finance_report": "የፋይናንስ ሪፖርት",
+    "trail_balance": "የሙከራ ሂሳብ",
+    "balance_sheet": "ወጭና ገቢ ሂሳብ መመዝገቢያ",
+    "income_statement": "የገቢ መግለጫ",
+
+
+    "performance_award": "የአፈጻጸም ሽልማት",
+    "new_performance": "የአፈጻጸም ሽልማት መመዝገቢያ",
+    
+
+
+    "settings": "ቅንብሮች",
+    "comapny_settings": "የኩባንያ ቅንብሮች",
+
+
+
+
+
+      "total_users": "ጠቅላላ ተጠቃሚዎች",
+      "total_salary": "ጠቅላላ ደመወዝ",
+      "today_present": "ዛሬ የተገኁ ሰራተኞች",
+      "today_absent": "ዛሬ ያልገቡ ሰራተኞች",
+      "today_on_leave": "ዛሬ ፈቃድ ላይ ያሉ ሰራተኞች",
+
+      "work_hours": "የስራ ሰዓት",
+
+
+
+
+
+      "add_new_employee": "አዲስ ሰራተኛ መዝግብ",
+      "user_info": "የተጠቃሚ መረጃ",
+      "addres_info": "የአድራሻ መረጃ",
+      "employee_info": "የሰራተኛ መረጃ",
+      "designation_info": "የስራ ሃላፊነት እና የደመወዝ መረጃ",
+      "educ_info": "የትምህርት መረጃ ",
+      "select_educ_info": "እባኮትን ከታች ያለውን ቁልፍ በመጠቀም የትምህርት መረጃን ያስገቡ",
+      "add_edu": "የትምህርት መረጃ ያስገቡ",
+      "degree":"ድግሪ",
+      "inst": "ተቋም",
+      "result": "ውጤት",
+      "educ_st_d": "ትምህርት የጀመሩበት ቀን",
+      "educ_en_d": "ትምህርት ያበቁበት ቀን",
+      "educ_field": "የትምህርት መስክ",
+
+
+
+      "first_name": "ሙሉ ስም",
+      "last_name":"የአያት ስም",
+      "user_name": "የተጠቃሚ ስም",
+      "emp_name": "የሰራተኛው ስም",
+      "password": "የይለፍ ቃል",
+      "email": "ኢሜይል",
+      "city": "ከተማ",
+      "k_ketema": "ክፍለ ከተማ",
+      "woreda": "ወረዳ",
+      "Kebele": "ቀበሌ",
+      "region": "ክልል",
+      "join_date": "የተቀጠሩበት ቀን",
+      "leave_date": "ስራ የለቀቁበት ቀን",
+      "emp_id": "ተራ ቁጥር",
+      "blood_t":"የደም አይነት",
+      "emp_status":"የቅጥር ሁኔታ",
+      "role": "ሮል",
+      "designation_s_date": "የስራ ሃላፊነት የሚጀምርበት ቀን",
+      "designation_e_date": "የስራ ሃላፊነት የሚያበቃበት ቀን",
+      "salary": "ደሞዝ",
+      "salary_s_date": "ደሞዝ የሚጀምርበት ቀን",
+      "salary_e_date": "ደሞዝ የሚያበቃበት ቀን",
+      "salary_comment": "አስተያየት",
+
+
+
+
+
+      "abebe": "አበበ",
+      "kebede":"ከበደ",
+      "abe_kebe": "አበበ_ከበደ",
+      "strong_pass": "ጠንካራ የይለፍ ቃል",
+      "addis_ababa": "አዲስ አበባ",
+      "yeka": "የካ",
+      "region_name": "ትግራይ",
+      "date_select":"ቀን ያስገቡ",
+      "blood_group_select": "የደም አይነት ያስገቡ",
+      "emp_status_select": "የቅጥር ሁኔታ ያስገቡ",
+      "department_select": "የስራ ክፍል ያስገቡ",
+      "designation_select": "የስራ ሃላፊነት ያስገቡ",
+
+      
+      "select": "እባክዎን ይምረጡ",
+      "add_new_employe":"አዲስ ሰራተኞችን ያስገቡ",
+      "back" : "ተመለስ",
+      
+      
+
+    "download_csv": "ኤክሴል አውርድ",
+    "active": "አክቲቭ",
+    "inactive": "ኢንአክቲቭ",
+    "id": "ተራ ቁጥር",
+    "action": "አክሽን",
+    "add_new_role": "አዲስ ሮል ያስገቡ",
+    "add_designation": "አዲስ የስራ ሃላፊነት",
+    "add_department": "የስራ ክፍል ያስገቡ",
+    "add_attendance": "አቴንዳንስ ያስገቡ",
+    "add_shift": "ፈረቃ ያስገቡ",
+    "add_new_shift": " አዲስ ፈረቃ ያስገቡ",
+    "add_new_department": "አዲስ የስራ ክፍል ያስገቡ",
+    "add_manual_attendance": "አቴንዳንስ በ ማኗል ያስገቡ",
+    "add_award": "ሽልማት አስገባ",
+    "edit_award": "ሽልማት አስተካክል",
+    "add_salary": "ደመወዝ አስገባ",
+    "name": "ስም",
+    "user": "ተጠቃሚ",
+   
+    
+    "start_time": "ስራ የጀመሩበት ሰአት",
+    "end_time": "ስራ የጨረሱበት ሰአት",
+    "comment": "አስተያየት",
+    "no_comment": "አስተያየት አልተገኘም",
+    "ip_ddress": "አይፒ አድሬስ",
+    "attendance_history": "አቴንዳንስ ሂስትሪ",
+    "transaction_history": "የግብይት ታሪክ",
+
+    "add_emp_status":"የቅጥር ሁኔታ ያስገቡ",
+    "color_code": "የቀለም ኮድ",
+    "description": "መግለጫ",
+    "permanent": "በቋሚነት",
+
+
+
+    "taken": "ተወስዷል",
+    "balance": "ሒሳብ",
+    "in_time": "በሰዓት",
+    "out_time": "ያለ ሰዓት",
+    "clock_in_out": "መግቢያና መዉጫ ሰአት",
+    "personal_info": "የግል መረጃ",
+    "contact_info":   "የግንኙነት መረጃ",
+    "designation_hist": "የስራ ሃላፊነት ታሪክ",
+    "educ_hist": "የትምህርት ታሪክ",
+    "salary_hist": "የደመወዝ ታሪክ",
+    "award_hist": "የሽልማት ታሪክ",
+    "paid": "የተከፈለ",
+    "unpaid": "ያልተከፈለ",
+    "phone": "ሞባይል",
+    "no_designation": "የስራ ሃላፊነት አልተገኘም",
+    "no_depat": "የስራ ክፍል አልተገኘም",
+    "no_id": "የሰራተኛ አይዲ አልተገኘም",
+    "no_educ": "የትምህርት ታሪክ አልተገኘም",
+    "no_sala": "የደመወዝ ታሪክ አልተገኘም",
+    "no_award": "የሽልማት ታሪክ አልተገኘም",
+    "update_emp": "ሰራተኛን አዘምን",
+    "update_employee": "የሰራተኛን መረጃ አዘምን",
+    "edit_desig": "የስራ ሃላፊነት አስተካክል",
+    "edit_educ": "የትምህርት መረጃ አስተካክል",
+    "edit_sala": "የደመወዝ መረጃ አስተካክል",  
+    "edit_awa": "የሽልማት መረጃ አስተካክል",
+    "edit_weekly": "የሳምንቱ በአላት አስተካክል",
+   
+    "created_at": "የተመዘገበበት ቀን",
+    "updated_at": "የታደሰበት ቀን",
+    "permission": "ፍቃዶች",
+    "not_found": "አልተገኘም፣ አዲስ ለመመዝገብ ኤዲት ቁልፍን ይጫኑ",
+    "add_new": "አዲስ አስገባ",
+    
+    "s_date": "የሚጀምርበት ቀን",
+    "end_date": "የሚያበቃበት ቀን",
+    "date": "ቀን",
+    "new-perm": "ፍቃዶች ያስገቡ",
+    "has_perm": "የተፈቀዱ",
+    "permit": "ፍቃድ ስጥ",
+    "clock_in": " መግቢያ ሰአት",
+    "clock_out": "መዉጫ ሰአት",
+    "logout": "ውጣ",
+    "please_fill": "* ሰአት እና ቀን ያስገቡ",
+    "select_date": "ቀን ያስገቡ",
+    "select_time": "ሰአት ያስገቡ",
+    "in_status": "መግቢያ ሁኔታ",
+    "out_status": "መውጫ ሁኔታ",
+    "total_h": "አጠቃላይ ሰአት",
+    "puched_by": "መዝጋቢ",
+    "column_select": "የተመረጡ ዝርዝሮች",
+    "update_shift": "ፈረቃ አስተካክል",
+    "app_leave": "ፈቃድ መሙያ ፎርም",
+    "leave_type": "የፍቃድ አይነት",
+    "leave_to": "ፍቃዱ የሚያበቃበት",
+    "leave_from": "ፍቃዱ የሚጀምርበት",
+    "leave_duration": "የፍቃዱ ቆይታ",
+    "all": "ሁሉም",
+    "accepted": "ተቀባይነት ያገኘ",
+    "rejected":"ተቀባይነት አላገኘም",
+    "pending": "ያላለቀ",
+    "applied_on": "የተሞላበት ቀን",
+    "my_leave_app": "የኔ ፍቃድ ፎርም",
+    "public_holiday_list": "የህዝብ በአላት ዝርዝር",
+    "weekly_holiday_list": "የሳምንቱ በአላት ዝርዝር",
+    "role_list": "የተጠቃሚ ሮል ዝርዝር",
+    "add_public_holiday": "የህዝብ በአላት አስገባ",
+    "add_weekly_holiday": "የሳምንቱ በአላት አስገባ",
+    "new_year": "አዲስ አመት",
+    "detail_public": "የህዝብ በአላት ዝርዝር",
+    "update_pub_holiday": "የህዝብ በአላት አስተካክል",
+    "add_account": "አካውንት መዝግብ",
+    "acc_type": " የአካውንት አይነት" ,
+    "acc_list": "የአካውንት ዝርዝር",
+    "acc_detail": "የአካውንት ዝርዝር",
+    "update_account": "አካውንት አስተካክል",
+    "debit": "ዴቢት",
+    "credit": "ክሬዲት",
+    "perticulars": "ልዩ",
+    "amount": "መጠን",
+    "pay": "ክፍያ ፈፅም",
+    "total": "ጠቅላላ",
+    "assets": "አሴትስ",
+    "lial": "ሊያቢሊቲስ",
+    "equity": "ኢኩቲ",
+    "lial_equity":"ጠቅላላ ሊያቢሊቲስ እና ኢኩቲ",
+    "inc_state":"የገቢ መመዝገቢያ",
+    "revenue": "ገቢ",
+    "expense": "ወጪ",
+    "profit": "ትርፍ",
+    "emp_mon":"የወሩ ምርጥ ሰራተኛ",
+    "emp_per": "ጠንካራ ሰራተኛ",
+    "awa_list": "ሽልማት ዝርዝር",
+    "address": "አድራሻ",
+    "website": "ዌብ ሳይት",
+    "tagline": "ታግ ላይን",
+    "footer": "ፉተር",
+    "attachment": "አታችመንት",
+    "no_attachment": "አታችመንት አልተገኘም",
+    "download": "አውርድ",
+    "no_reason": "ያለ ምክንያት",
+    "on_review": "በግምገማ ላይ",
+    "ok": "እሺ",
+    "cancel": "ሰርዝ",
+    "load":"በሂደት ላይ እባክዎን ይታገሱ ...",
+    "review": "ሪቪው ሊቭ",
+    "approve_leave": "ፍቃድ ተቀበል",
+    "reject": "",
+    "no_mail": "No Email",
+    "no_phone": "No Phone",
+    "no_address": "No Address",
+    "no": "አልተገኘም!!",
+    "search": "ፈልግ",
+    "letters": "ደብዳቤ",
+    "letter": "ደብዳቤ"
+    
+
+    
+    
+
+
+
+    
+
+  
+
+
+
+
+    
+      
+      
+  }

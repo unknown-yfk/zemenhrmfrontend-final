@@ -1,8 +1,12 @@
 import { Navigate } from "react-router-dom";
 import PageTitle from "../page-header/PageHeader";
 import AddDepartment from "./AddDepartment";
+import {  useTranslation } from "react-i18next";
 
 const Department = (props) => {
+
+	const {t} = useTranslation();
+
 	const isLogged = Boolean(localStorage.getItem("isLogged"));
 
 	if (!isLogged) {
@@ -10,7 +14,7 @@ const Department = (props) => {
 	}
 	return (
 		<div>
-			<PageTitle title='Back' />
+			<PageTitle title={t('back')} />
 			<AddDepartment />
 		</div>
 	);

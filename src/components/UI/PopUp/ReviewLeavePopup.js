@@ -10,8 +10,11 @@ import {
 	reviewLeaveApplication,
 } from "../../../redux/rtk/features/leave/leaveSlice";
 import getUserFromToken from "../../../utils/getUserFromToken";
+import {  useTranslation } from "react-i18next";
 
 const ReviewLeavePopup = () => {
+	const {t} = useTranslation();
+
 	const { id } = useParams("id");
 	const dispatch = useDispatch();
 	const [form] = Form.useForm();
@@ -65,17 +68,17 @@ const ReviewLeavePopup = () => {
 	return (
 		<>
 			<Button onClick={showDrawer} className='mt-4' type='primary'>
-				Review Leave
+				{t('review')}
 			</Button>
 			{data && (
 				<Drawer
 					width={720}
-					title='Leave Review'
+					title={t('leave')}
 					placement='right'
 					onClose={onClose}
 					open={open}>
 					<h2 className='text-2xl font-semibold mb-4 text-center mt-5'>
-						Approve Leave
+					{t('approve_leave')}
 					</h2>
 					<Form
 						className='list-inside list-none border-2 border-inherit rounded px-5 py-5 m-5 mt-10'
@@ -95,7 +98,7 @@ const ReviewLeavePopup = () => {
 						<div>
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Accept From'
+								label={t('s_date')}
 								name='acceptLeaveFrom'
 								rules={[
 									{
@@ -108,7 +111,7 @@ const ReviewLeavePopup = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Accept To'
+								label={t('end_date')}
 								name='acceptLeaveTo'
 								rules={[
 									{
@@ -121,20 +124,20 @@ const ReviewLeavePopup = () => {
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Comment'
+								label={t('comment')}
 								name='reviewComment'>
 								<Input name='reviewComment' />
 							</Form.Item>
 
 							{status === null && (
 								<p className='text-red-500 text-center mb-3'>
-									Please select status
+									{t('select')}
 								</p>
 							)}
 
 							<Form.Item
 								style={{ marginBottom: "10px" }}
-								label='Select Status'
+								label={t('select')}
 								name='status'
 								rules={[
 									{
@@ -145,8 +148,8 @@ const ReviewLeavePopup = () => {
 								<Radio.Group
 									buttonStyle='solid'
 									onChange={(e) => setStatus(e.target.value)}>
-									<Radio.Button value='ACCEPTED'>ACCEPTED</Radio.Button>
-									<Radio.Button value='REJECTED'>REJECTED</Radio.Button>
+									<Radio.Button value='ACCEPTED'>{t('accepted')}</Radio.Button>
+									<Radio.Button value='REJECTED'>{t('rejected')}</Radio.Button>
 								</Radio.Group>
 							</Form.Item>
 
@@ -164,7 +167,7 @@ const ReviewLeavePopup = () => {
 									block
 									disabled={status === null}
 									loading={loader}>
-									Review Leave
+									{t('approve_leave')}
 								</Button>
 							</Form.Item>
 						</div>

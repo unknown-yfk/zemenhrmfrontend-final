@@ -8,8 +8,12 @@ import BtnEditSvg from "../Button/btnEditSvg";
 import { updateShift } from "../../../redux/rtk/features/shift/shiftSlice";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
+import {  useTranslation } from "react-i18next";
+
 
 const ShiftEditPopup = ({ data }) => {
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { id } = useParams("id");
 	const dispatch = useDispatch();
@@ -46,7 +50,7 @@ const ShiftEditPopup = ({ data }) => {
 				<BtnEditSvg size={30} />
 			</button>
 			<Modal
-				title='Edit Shift'
+				title={t('edit_shift')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>
@@ -68,7 +72,7 @@ const ShiftEditPopup = ({ data }) => {
 					<div>
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Name'
+							label={t('name')}
 							name='name'
 							rules={[
 								{
@@ -81,7 +85,7 @@ const ShiftEditPopup = ({ data }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Start Time'
+							label={t('start_time')}
 							name='startTime'
 							rules={[
 								{
@@ -89,12 +93,12 @@ const ShiftEditPopup = ({ data }) => {
 									message: "Please input your shift!",
 								},
 							]}>
-							<TimePicker name='startTime' />
+							<TimePicker placeholder={t('select')} name='startTime' />
 						</Form.Item>
 
 						<Form.Item
 							style={{ marginBottom: "20px" }}
-							label='End Time'
+							label={t('end_time')}
 							name='endTime'
 							rules={[
 								{
@@ -102,7 +106,7 @@ const ShiftEditPopup = ({ data }) => {
 									message: "Please input your shift!",
 								},
 							]}>
-							<TimePicker name='endTime' />
+							<TimePicker placeholder={t('select')} name='endTime' />
 						</Form.Item>
 
 						<Form.Item
@@ -117,7 +121,8 @@ const ShiftEditPopup = ({ data }) => {
 								htmlType='submit'
 								block
 								loading={loading}>
-								Update Shift
+								
+								{t('update_shift')}
 							</Button>
 						</Form.Item>
 					</div>

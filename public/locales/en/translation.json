@@ -1,0 +1,359 @@
+{
+
+
+  "andinet": " Andinet ICT Solution",
+  "about_us": "About Us",
+  "blog":"Blog",
+
+
+    "app_title": "Title",
+    "language": "Language",
+    "english": "English",
+    "welcome_message": "Welcome",
+    "days_since_release": "it's been {{number_of_days}} days since this video was released",
+    "new_employee":  "New Employee",
+    "employee_list": "Employee List", 
+    "role_permission": "Role and Permission",
+    "designation": "Designation",
+    "designation_list": "Designation List",
+    "department_list": "Department List",
+    "attendance_list": "Attendance List",
+    "shift_list" :"Shift List",
+    "edit_shift": "Edit Shift",
+    "edit_emp": "Edit Employment Status",
+    "department": "Department",
+    "dashboard" : "DASHBOARD",
+    "hr":"HR",
+
+    
+
+    "title1": "ANDINET",
+    "title2": "HRM",
+
+    
+    "login": "Login",
+    "submit": "Submit",
+
+
+    
+    "attendance": "ATTENDANCE",
+    "attend": "Attendance",
+    "my_attendance": "My Attendance",
+
+
+    "payroll": "PAYROLL",
+    "calculate_payroll": "Calculate Payroll",
+    "payslip_list": "Payslip List",
+
+    
+    "shift": "Shift",
+    "shif": "Shift",
+    "shift_name": "Shift Name",
+    "shift_start_time":"Start Time",
+    "shift_end_time": "End Time",
+
+
+
+    "employment":"EMPLOYEMENT",
+    "status": "Status",
+
+
+    "leave": "LEAVE",
+    "new_leave": "New Leave",
+    "leave_satus": "Leave Status",
+    "leave_reason": "Leave Reason",
+    "my_leaves": "My Leaves",
+
+    "holiday": "HOLIDAY",
+    "weekly_holiday": "Weekly Holiday",
+    "public_holiday": "Public Holiday",
+    "name_holidaye": "Holiday Name",
+    "leave_policy_list": "Leave Policy List",
+    "add_leave_policy": "Add Leave Policy",
+    "leave_policy_edit": "Edit Leave Policy",
+    "leave_policy": "Leave Policy",
+    
+    "leave_poli": "Leave Policy",
+
+
+    "anouncement": "ANNOUNCEMENT",
+    "add_anouncement": "Add Anouncement",
+    "title": "Title",
+    "anounce": "Anouncement",
+    "metting": "Metting at 00:00",
+
+
+    "accounts": "ACCOUNTS",
+    "acoount": "Account",
+    "new_transaction": "New Transaction",
+    "transaction_list": "Transaction List",
+
+
+    "finance_report": "FINANCE REPORT",
+    "trail_balance": "Trial Balance",
+    "balance_sheet": "Balance Sheet",
+    "income_statement": "Income Statement",
+
+
+    "performance_award": "Performance Award",
+    "new_performance": "New Performance",
+    
+
+
+    "settings": "SETTINGS",
+    "comapny_settings": "Comapny Settings",
+    "assets": "Assets",
+    "lial": "Liabilities",
+    "equity": "Equity",
+    "lial_equity":"Total Liability and Equity",
+    "inc_state":"Income Statement",
+    "revenue": "Revenue",
+    "expense": "Expense",
+    "profit": "Profit",
+
+
+
+
+
+
+
+
+
+
+
+    "total_users": "TOTAL USERS",
+    "total_salary": "TOTAL USERS",
+    "today_present": "TODAY PRESENT",
+    "today_absent": "TODAY ABSENT",
+    "today_on_leave": "TODAY ON LEAVE",
+
+    "work_hours": "WORK HOURS",
+
+
+
+
+
+    "add_new_employee": "Add New Employee",
+    "user_info": "User Information",
+    "addres_info": "Address Information",
+    "employee_info": "Employee Information",
+    "designation_info": "Designation & Salary Information",
+    "educ_info": "Education Information",
+    "select_educ_info": "Please add education information using the button below",
+    "add_edu": "Add Education Information",
+    "degree":"Degree",
+    "inst": "Institute",
+    "result": "Result",
+    "educ_st_d": "studyStartDate",
+    "educ_en_d": "studyEndDate",
+    "educ_field": "Field Of Study; Computer",
+
+
+
+    "first_name": "First Name",
+    "last_name":"Last Name",
+    "user_name": "User Name",
+    "emp_name": "Employee Name",
+    "password": "Password",
+    "email": "Email",
+    "city": "City",
+    "k_ketema": "Kifle Ketema",
+    "woreda": "Woreda",
+    "Kebele": "Kebele",
+    "region": "Region",
+    "join_date": "Join Date",
+    "leave_date": "Leave Date",
+    "emp_id": "Employee ID",
+    "blood_t":"Blood Group",
+    "emp_status":"Employee Status",
+    "role": "Role",
+    "designation_s_date": "Designation Start Date",
+    "designation_e_date": "Designation End Date",
+    "salary": "Salary",
+    "salary_s_date": "Salary Start Date",
+    "salary_e_date": "Salary End Date",
+    "salary_comment": "Salary Comment",
+
+
+
+
+
+    "abebe": "Abebe",
+    "kebede":"Kebede",
+    "abe_kebe": "abebe_kebede",
+    "strong_pass": "Strong Password",
+    "addis_ababa": "Addis Ababa",
+    "yeka": "Yeka",
+    "region_name": "Tigray",
+    "date_select":"Select Date",
+    "blood_group_select": "Select Blood Group",
+    "emp_status_select": "Select Employee Status",
+    "department_select": "Select Department",
+    "designation_select": "Select Designation",
+
+    
+    "select": "Please select",
+    "add_new_employe":"Add New Employee",
+    "back" : "Back" ,
+
+
+
+
+    "download_csv": "Download CSV",
+    "active": "Active",
+    "inactive": "Inactive",
+    "id": "ID",
+    "action": "Action",
+    "add_new_role": "Add New Role",
+    "add_designation": "Add designation",
+    "add_department": "Add Department",
+    "add_attendance": "Add Attendance",
+    "add_shift": "Add Shift",
+    "add_new_shift": "Add New Shift",
+    
+    "add_new_department": "Add New Department",
+    "add_manual_attendance": "Add Manual Attendance",
+    "add_award": "Add Award",
+    "edit_award": "Award Edit",
+    "name": "Name",
+    "user": "User",
+    "start_time": "Start Time",
+    "end_time": "End Time",
+    "comment": "Comment",
+    "no_comment": "No Comment",
+    "ip_ddress": "IP Address",
+    "attendance_history": "Attendance History",
+    "transaction_history": "Transaction History",
+
+
+    "add_emp_status":"Add Employment Status",
+    "color_code": "Color Code",
+    "description": "Description",
+    "permanent": "Permanent",
+
+
+
+    
+    "taken": "Taken",
+    "balance": "Balance",
+    "in_time": "In Time",
+    "out_time": "Out Time",
+    "clock_in_out": "Clock In & Out",
+    "personal_info": "Personal Information",
+    "contact_info":   "Contact Information",
+    "designation_hist": "Designation History",
+    "educ_hist": "Education History",
+    "salary_hist": "Salary History",
+    "award_hist": "Award History",
+    "paid": "Paid",
+    "unpaid": "U.Paid",
+    "phone": "Phone",
+    "no_designation": "No Designation",
+    "no_depat": "NO Department",
+    "no_id": "No Employee ID",
+    "no_educ": "No Education History Found",
+    "no_sala": "No Salary History Found",
+    "no_award": "No Award History Found",
+    "update_emp": "Update Employee",
+    "update_employee": "Update Employee Information",
+    "edit_desig": "Edit Designation",
+    "edit_educ": "Edit Education",
+    "edit_sala": "Edit Salary",
+    "edit_awa": "Edit Award",
+    "edit_weekly": "Weekly Holiday Edit",
+
+    "created_at": "Created at",
+    "updated_at": "Updated at",
+    "permission": "Permissions",
+    "not_found": "Not found , Click on edit button to add new",
+    "add_new": "Add New ",
+    "s_date": "Start Date",
+    "end_date": "End Date",
+    "date": "Date",
+    "new-perm": "New Permission",
+    "has_perm": "Has Permissions",
+    "clock_in": "Clock In",
+    "clock_out": "Clock Out",
+    "logout": "Log Out",
+    "please_fill": "* Please fill Date and Time",
+    "select_date": "Select date",
+    "select_time": "Select Time",
+    "in_status": "In Status",
+    "out_status": "Out Status",
+    "total_h": "Total Hours",
+    "puched_by": "Punch By",
+    "column_select": "Column Selected",
+    "update_shift": "Update Shift",
+    "app_leave": "Application for Leave",
+    "leave_type": "Leave Type",
+    "all": "ALL",
+    "accepted": "Accepted",
+    "rejected":"Rejected",
+    "pending": "Pending",
+    "applied_on": "Applied On",
+    "my_leave_app": "My Leave Applications",
+    "public_holiday_list": "Public Holiday List",
+    "weekly_holiday_list": "Weekly Holiday List",
+    "add_public_holiday": "Add Public Holiday",
+    "add_weekly_holiday": "Add Public Weekly",
+    "role_list": "Role List",
+    "new_year": "New Year",
+    "detail_public": "Details of Public Holiday",
+    "update_pub_holiday": "Update Public Holiday",
+    "add_account": "Add Account",
+    "acc_type": "Account Type",
+    "acc_list": "Accounts List",
+    "acc_detail": "Account Details",
+    "update_account": "Update Account",
+    "debit": "Debit",
+    "credit": "Credit",
+    "PERTICULARS": "PERTICULARS",
+    "amount": "Amount",
+    "pay": "Pay Now",
+    "total": "Total",
+    "emp_mon":"Employee Of The Month",
+    "emp_per": "Employee Who Performed Well",
+    "awa_list": "Award List",
+    "address": "Address",
+    "website": "Website",
+    "tagline": "Tagline",
+    "footer": "Footer",
+    "attachment": "Attachment",
+    "no_attachment": "No Attachment",
+    "download": "Download",
+    "no_reason": "No reason",
+    "on_review": "ON REVIEW",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "load":" Loading Please Wait ...",
+    "review": "Review Leave",
+    "approve_leave": "Approve Leave",
+    "no_mail": "No Email",
+    "no_phone": "No Phone",
+    "no_address": "No Address",
+    "no": "Not Found",
+    "search": "SEARCH",
+    "Letters": "LETTERS",
+    "letter": "Letter"
+ 
+
+    
+    
+   
+
+
+
+
+
+
+    
+    
+   
+
+  
+    
+    
+
+  
+    
+  }

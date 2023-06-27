@@ -9,8 +9,11 @@ import {
 	loadSingleLeavePolicy,
 	updateLeavePolicy,
 } from "../../../redux/rtk/features/leavePolicy/leavePolicySlice";
+import {  useTranslation } from "react-i18next";
 
 const LeavePolicyEdit = ({ data }) => {
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { id } = useParams("id");
 
@@ -62,7 +65,7 @@ const LeavePolicyEdit = ({ data }) => {
 				<BtnEditSvg size={30} />
 			</button>
 			<Modal
-				title='Leave Policy Edit'
+				title={t('leave_policy_edit')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>
@@ -83,7 +86,7 @@ const LeavePolicyEdit = ({ data }) => {
 					<div>
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Name'
+							label={t('name')}
 							name='name'
 							rules={[
 								{
@@ -96,7 +99,7 @@ const LeavePolicyEdit = ({ data }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Paid Leave'
+							label={t('paid')}
 							name='paidLeaveCount'
 							rules={[
 								{
@@ -109,7 +112,7 @@ const LeavePolicyEdit = ({ data }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Unpaid Leave'
+							label={t('unpaid')}
 							name='unpaidLeaveCount'
 							rules={[
 								{
@@ -133,7 +136,7 @@ const LeavePolicyEdit = ({ data }) => {
 								htmlType='submit'
 								block
 								loading={loader}>
-								Update Leave Policy
+								{t('add_leave_policy')}
 							</Button>
 						</Form.Item>
 					</div>

@@ -16,8 +16,11 @@ import {
 } from "../../redux/rtk/features/publicHoliday/publicHolidaySlice";
 import PublicHolidayEdit from "../UI/PopUp/PublicHolidayEditPopup";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const DetailPublicHoliday = () => {
+	const {t} = useTranslation();
+
 	const { id } = useParams();
 	let navigate = useNavigate();
 	const { publicHoliday, loading } = useSelector(
@@ -63,13 +66,13 @@ const DetailPublicHoliday = () => {
 							<div>
 								<div className='flex justify-between '>
 									<h3 className={"text-xl"}>
-										ID : {publicHoliday.id} | {publicHoliday.name}
+										{t('id')} : {publicHoliday.id} | {publicHoliday.name}
 									</h3>
 								</div>
 								<div className='flex justify-center mt-5 mb-4 '>
 									<Card
 										style={{ width: 500 }}
-										title='Details of Public Holiday'
+										title={t('detail_public')}
 										extra={
 											<div className='flex justify-end '>
 												<PublicHolidayEdit data={publicHoliday} />
@@ -85,27 +88,27 @@ const DetailPublicHoliday = () => {
 										<div className='flex justify-center'>
 											<ul className='list-inside list-none '>
 												<ListItem>
-													Name :{" "}
+												{t('name')} :{" "}
 													<TextInside>
 														{(publicHoliday?.name).toUpperCase()}{" "}
 													</TextInside>
 												</ListItem>
 												<ListItem>
-													Date :{" "}
+												{t('date')} :{" "}
 													<TextInside>
 														{moment(publicHoliday?.date).format("ll")}
 													</TextInside>
 												</ListItem>
 
 												<ListItem>
-													Created At :{" "}
+												{t('created_at')} :{" "}
 													<TextInside>
 														{moment(publicHoliday?.createdAt).format("ll")}
 													</TextInside>
 												</ListItem>
 
 												<ListItem>
-													Updated At :{" "}
+												{t('updated_at')} :{" "}
 													<TextInside>
 														{moment(publicHoliday?.updatedAt).format("ll")}
 													</TextInside>

@@ -4,8 +4,11 @@ import PageTitle from "../page-header/PageHeader";
 
 import { getTrailBalance } from "./account.api";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const TrialBalance = () => {
+	const {t} = useTranslation();
+
 	const [data, setData] = useState([]);
 
 	//make a use effect to get the data from the getTrailBalance function
@@ -17,7 +20,7 @@ const TrialBalance = () => {
 
 	return (
 		<>
-			<PageTitle title={"Back"} />
+			<PageTitle title={t('back')} />
 			<br />
 			<UserPrivateComponent permission={"read-account"}>
 				<Card>
@@ -25,7 +28,7 @@ const TrialBalance = () => {
 						<div className='card-title  flex  justify-between'>
 							<h5 className='text-xl mb-3'>
 								<span className=' ml-2 report-section-card-title'>
-									Trail Balance
+									{t('balance')}
 								</span>
 							</h5>
 						</div>
@@ -36,17 +39,17 @@ const TrialBalance = () => {
 										<th
 											scope='col'
 											className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-											Account
+											{t('acoount')}
 										</th>
 										<th
 											scope='col'
 											className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-											Debit
+											{t('debit')}
 										</th>
 										<th
 											scope='col'
 											className='text-white border-gray border-b-2 border-t-2 border-gray-200 py-3 px-3 bg-gray-900 text-left text-xs font-semibold uppercase tracking-wider'>
-											Credit
+											{t('credit')}
 										</th>
 									</tr>
 								</thead>
@@ -82,7 +85,7 @@ const TrialBalance = () => {
 
 									<tr className='hover:bg-gray-100 hover:cursor-pointer  font-semibold'>
 										<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm '>
-											TOTAL
+											{t('total')}
 										</td>
 										<td className='py-4 px-6 border-b border-gray-200 text-gray-900 text-sm'>
 											{data?.totalDebit}

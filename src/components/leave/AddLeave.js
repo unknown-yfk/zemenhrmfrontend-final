@@ -13,8 +13,12 @@ import {
 import { addLeaveApplication } from "../../redux/rtk/features/leave/leaveSlice";
 import getUserFromToken from "../../utils/getUserFromToken";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
 
 const AddLeave = ({ drawer }) => {
+	const {t} = useTranslation();
+
 	const [loader, setLoader] = useState(false);
 	const shift = useSelector((state) => state.shift.list);
 
@@ -67,7 +71,8 @@ const AddLeave = ({ drawer }) => {
 						xl={drawer ? 22 : 12}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-							Application for Leave
+							
+							{t('app_leave')}
 						</Title>
 						<Form
 							form={form}
@@ -86,7 +91,7 @@ const AddLeave = ({ drawer }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Leave Type'
+									label={t('leave_type')}
 									name='leaveType'
 									rules={[
 										{
@@ -96,7 +101,7 @@ const AddLeave = ({ drawer }) => {
 									]}>
 									<Select
 										mode='single'
-										placeholder='Select leave type'
+										placeholder={t('select')}
 										optionFilterProp='children'>
 										<Select.Option value='PAID'>PAID</Select.Option>
 										<Select.Option value='UNPAID'>UNPAID</Select.Option>
@@ -105,7 +110,7 @@ const AddLeave = ({ drawer }) => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Start Date'
+									label={t('s_date')}
 									name='leaveFrom'
 									rules={[
 										{
@@ -113,12 +118,12 @@ const AddLeave = ({ drawer }) => {
 											message: "Please input your shift!",
 										},
 									]}>
-									<DatePicker />
+									<DatePicker placeholder={t('select')} />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "20px" }}
-									label='End Date'
+									label={t('end_date')}
 									name='leaveTo'
 									rules={[
 										{
@@ -126,7 +131,7 @@ const AddLeave = ({ drawer }) => {
 											message: "Please input your shift!",
 										},
 									]}>
-									<DatePicker />
+									<DatePicker  placeholder={t('select')}/>
 								</Form.Item>
 
 								<Form.Item
@@ -142,7 +147,8 @@ const AddLeave = ({ drawer }) => {
 										htmlType='submit'
 										block
 										loading={loader}>
-										Submit Leave
+										{/* Submit Leave	 */}
+										{t('add_new')}
 									</Button>
 								</Form.Item>
 							</div>

@@ -9,13 +9,13 @@ import "react-toastify/dist/ReactToastify.css";
 // import store from "./redux/root";
 import store from "./redux/rtk/app/store";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+// import i18n (needs to be bundled ;)) 
+import './i18n';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 //Setting AXIOS and token
 // axios.defaults.baseURL = "https://oserpb.herokuapp.com/v1/";
-//axios.defaults.baseURL = "https://www.zemenethiopiahrms.com/";
-
-	axios.defaults.baseURL = process.env.REACT_APP_API;
+axios.defaults.baseURL = process.env.REACT_APP_API;
 
 const accessToken = localStorage.getItem("access-token");
 

@@ -7,8 +7,11 @@ import { toast } from "react-toastify";
 import { loadSingleStaff } from "../../../redux/rtk/features/user/userSlice";
 import { addDesHistory } from "../../designationHistory/designationHistoryApis";
 import { loadAllDesignation } from "../../../redux/rtk/features/designation/designationSlice";
+import {  useTranslation } from "react-i18next";
 
 const DesignationAddSinglePopup = ({ list, setLoading }) => {
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [form] = Form.useForm();
 	const [designationStartDate, setdesignationStartDate] = useState(null);
@@ -79,11 +82,13 @@ const DesignationAddSinglePopup = ({ list, setLoading }) => {
 		<>
 			<div className='text-center'>
 				<Button type='primary' onClick={showModal}>
-					Add New Designation
+					
+					{t('add_new')}
+
 				</Button>
 			</div>
 			<Modal
-				title={`Add Designation`}
+				title={t('add_designation')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>
@@ -104,7 +109,7 @@ const DesignationAddSinglePopup = ({ list, setLoading }) => {
 					<div>
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Designation'
+							label={t('designation')}
 							name='designationId'
 							rules={[
 								{
@@ -114,7 +119,7 @@ const DesignationAddSinglePopup = ({ list, setLoading }) => {
 							]}>
 							<Select
 								loading={!list}
-								placeholder='Select Designation'
+								placeholder={t('select')}
 								onChange={(value) => setDesignationId(value)}>
 								{list?.map((item) => (
 									<Select.Option key={item.id} value={item.id}>
@@ -126,7 +131,7 @@ const DesignationAddSinglePopup = ({ list, setLoading }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Start Date'
+							label={t('s_date')}
 							name='designationStartDate'
 							valuePropName='designationStartDate'
 							rules={[
@@ -135,22 +140,22 @@ const DesignationAddSinglePopup = ({ list, setLoading }) => {
 									message: "Please input your start date!",
 								},
 							]}>
-							<DatePicker onChange={(date) => setdesignationStartDate(date)} />
+							<DatePicker placeholder={t('select')} onChange={(date) => setdesignationStartDate(date)} />
 						</Form.Item>
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='End Date'
+							label={t('end_date')}
 							name='designationEndDate'
 							valuePropName='designationEndDate'>
-							<DatePicker onChange={(date) => setdesignationEndDate(date)} />
+							<DatePicker placeholder={t('select')}  onChange={(date) => setdesignationEndDate(date)} />
 						</Form.Item>
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Comment'
+							label={t('comment')}
 							name='designationComment'>
-							<Input placeholder='Comment' />
+							<Input placeholder={t('comment')} />
 						</Form.Item>
 
 						<Form.Item
@@ -166,7 +171,7 @@ const DesignationAddSinglePopup = ({ list, setLoading }) => {
 								htmlType='submit'
 								block
 								loading={loader}>
-								Add Now
+								{t('add_new')}
 							</Button>
 						</Form.Item>
 					</div>

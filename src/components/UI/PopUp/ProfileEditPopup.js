@@ -26,8 +26,13 @@ import { loadAllShift } from "../../../redux/rtk/features/shift/shiftSlice";
 import { loadAllLeavePolicy } from "../../../redux/rtk/features/leavePolicy/leavePolicySlice";
 import { loadAllWeeklyHoliday } from "../../../redux/rtk/features/weeklyHoliday/weeklyHolidaySlice";
 import { useParams } from "react-router-dom";
+import {  useTranslation } from "react-i18next";
+
 
 const ProfileEditPopup = ({ data }) => {
+
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [loader, setLoader] = useState(false);
 	const leavePolicy = useSelector((state) => state.leavePolicy?.list);
@@ -158,7 +163,7 @@ const ProfileEditPopup = ({ data }) => {
 			</button>
 			<Modal
 				width={"50%"}
-				title='Update Employee Information'
+				title={t('update_employee')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>
@@ -177,11 +182,11 @@ const ProfileEditPopup = ({ data }) => {
 					onFinishFailed={onFinishFailed}
 					autoComplete='off'>
 					<h2 className='text-center text-xl mt-3 mb-3 txt-color'>
-						User Information
+						{t('user_info')}
 					</h2>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Full Name'
+						label={t('first_name')}
 						name='firstName'
 						rules={[
 							{
@@ -189,23 +194,23 @@ const ProfileEditPopup = ({ data }) => {
 								message: "Please input First Name!",
 							},
 						]}>
-					<Input placeholder='Abebe Kebede' />
+						<Input placeholder='John' />
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Last Name'
+						label={t('last_name')}
 						name='lastName'
 						rules={[
 							{
 								required: true,
-								message: "Please input your GrandFather Name!",
+								message: "Please input Last Name!",
 							},
 						]}>
-						<Input placeholder='Tariku' />
+						<Input placeholder='Doe' />
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='User Name'
+						label={t('user_name')}
 						name='userName'
 						rules={[
 							{
@@ -213,11 +218,12 @@ const ProfileEditPopup = ({ data }) => {
 								message: "Please input User Name!",
 							},
 						]}>
-						<Input placeholder='abebe_kebede' />
+						<Input placeholder='john_doe' />
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Password'
+						label={t('password')}
+
 						name='password'
 						rules={[
 							{
@@ -225,11 +231,12 @@ const ProfileEditPopup = ({ data }) => {
 								message: "Please input your password !",
 							},
 						]}>
-						<Input placeholder='Strong Password' />
+						<Input placeholder={t('strong_pass')} />
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Email'
+						label={t('email')}
+
 						name='email'
 						rules={[
 							{
@@ -237,12 +244,12 @@ const ProfileEditPopup = ({ data }) => {
 								message: "Please input email!",
 							},
 						]}>
-						<Input placeholder='abebe@example.com' />
+						<Input placeholder='johndoe2@example.com' />
 					</Form.Item>
 
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Phone'
+						label={t('phone')}
 						name='phone'
 						rules={[
 							{
@@ -254,11 +261,11 @@ const ProfileEditPopup = ({ data }) => {
 					</Form.Item>
 
 					<h2 className='text-center text-xl mt-3 mb-3 txt-color'>
-						Address Information
+						{t('addres_info')}
 					</h2>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='City'
+						label={t('city')}
 						name='street'
 						rules={[
 							{
@@ -266,25 +273,25 @@ const ProfileEditPopup = ({ data }) => {
 								message: "Please input city!",
 							},
 						]}>
-						<Input 	placeholder='Addis Ababa' style={{ width: "100%" }} />
+						<Input 	placeholder={t('addis_ababa')} style={{ width: "100%" }} />
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Kifle Ketema'
+						label={t('k_ketema')}
 						name='city'
 						rules={[{ required: true, message: "Please input Kifle Ketema!" }]}>
-						<Input placeholder='Yeka' />
+						<Input placeholder={t('yeka')} />
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Woreda'
+						label={t('woreda')}
 						name='state'
 						rules={[{ required: true, message: "Please input Woreda!" }]}>
 						<Input placeholder='22' />
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Kebele'
+						label={t('kebele')}
 						name='zipCode'
 						rules={[
 							{ required: false, message: "Please input Kebele!" },
@@ -293,21 +300,21 @@ const ProfileEditPopup = ({ data }) => {
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Region'
+						label={t('region')}
 						name='country'
 						rules={[
-							{ required: false, message: "Please input Region!" },
+							{ required: true, message: "Please input Region!" },
 						]}>
-				<Input placeholder='Tigray' />
+				<Input placeholder={t('region_name')} />
 					</Form.Item>
 
 					<h2 className='text-center text-xl mt-3 mb-3 txt-color'>
 						{" "}
-						Employee Information{" "}
+						{t('employee_info')}{" "}
 					</h2>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Joining Date'
+						label={t('join_date')}
 						name='joinDate'
 						valuePropName='date'
 						rules={[
@@ -323,7 +330,7 @@ const ProfileEditPopup = ({ data }) => {
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Leave Date'
+						label={t('leave_date')}
 						name='leaveDate'
 						valuePropName='leaveDate'>
 						<DatePicker
@@ -333,7 +340,7 @@ const ProfileEditPopup = ({ data }) => {
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Employee ID'
+						label={t('emp_id')}
 						name='employeeId'
 						rules={[
 							{
@@ -345,7 +352,7 @@ const ProfileEditPopup = ({ data }) => {
 					</Form.Item>
 					<Form.Item
 						style={{ marginBottom: "10px" }}
-						label='Blood Group'
+						label={t('blood_t')}
 						name='bloodGroup'
 						rules={[
 							{
@@ -374,11 +381,12 @@ const ProfileEditPopup = ({ data }) => {
 					<Form.Item
 						name={"departmentId"}
 						style={{ marginBottom: "10px" }}
-						label='Department'
+						label={t('department')}
+
 						rules={[{ required: true, message: "Please input Department!" }]}>
 						<Select
 							onChange={(value) => setDepartmentId(value)}
-							placeholder='Select Department'
+							placeholder={t('department_select')}
 							allowClear
 							size={"middle"}
 							defaultValue={initialValues.departmentId}>
@@ -397,7 +405,7 @@ const ProfileEditPopup = ({ data }) => {
 								message: "Pleases Select Type!",
 							},
 						]}
-						label='Role'
+						label={t('role')}
 						name={"roleId"}
 						style={{ marginBottom: "10px" }}>
 						<Select
@@ -427,7 +435,7 @@ const ProfileEditPopup = ({ data }) => {
 								message: "Pleases Select Type!",
 							},
 						]}
-						label='Shift'
+						label={t('role')}
 						name={"shiftId"}
 						style={{ marginBottom: "10px" }}>
 						<Select
@@ -457,7 +465,7 @@ const ProfileEditPopup = ({ data }) => {
 								message: "Pleases Select Type!",
 							},
 						]}
-						label='Leave Policy'
+						label={t('leave_policy')}
 						name={"leavePolicyId"}
 						style={{ marginBottom: "10px" }}>
 						<Select
@@ -487,7 +495,7 @@ const ProfileEditPopup = ({ data }) => {
 								message: "Pleases Select Type!",
 							},
 						]}
-						label='Weekly Holiday'
+						label={t('weekly_holiday')}
 						name={"weeklyHolidayId"}
 						style={{ marginBottom: "10px" }}>
 						<Select
@@ -524,7 +532,7 @@ const ProfileEditPopup = ({ data }) => {
 							shape='round'
 							htmlType='submit'
 							loading={loader}>
-							Update Employee
+							{t('update_emp')}
 						</Button>
 					</Form.Item>
 				</Form>

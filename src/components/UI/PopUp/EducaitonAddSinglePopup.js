@@ -7,8 +7,12 @@ import { toast } from "react-toastify";
 import { loadSingleStaff } from "../../../redux/rtk/features/user/userSlice";
 import { addEducation, updateEducation } from "../../education/educationApis";
 import BtnEditSvg from "../Button/btnEditSvg";
+import {  useTranslation } from "react-i18next";
+
 
 const EducaitonAddSinglePopup = ({ data, setLoading }) => {
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [form] = Form.useForm();
 	const [studyStartDate, setstudyStartDate] = useState(null);
@@ -71,11 +75,13 @@ const EducaitonAddSinglePopup = ({ data, setLoading }) => {
 		<>
 			<div className='text-center'>
 				<Button type='primary' onClick={showModal}>
-					Add New Education
+					
+					{t('add_new')}
+
 				</Button>
 			</div>
 			<Modal
-				title={`Add Education`}
+				title={t('add_edu')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>
@@ -96,7 +102,7 @@ const EducaitonAddSinglePopup = ({ data, setLoading }) => {
 					<div>
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Degree'
+							label={t('degree')}
 							name='degree'
 							rules={[
 								{
@@ -109,7 +115,7 @@ const EducaitonAddSinglePopup = ({ data, setLoading }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Institution'
+							label={t('inst')}
 							name='institution'
 							rules={[
 								{
@@ -122,7 +128,7 @@ const EducaitonAddSinglePopup = ({ data, setLoading }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Field of Study'
+							label={t('educ_field')} 
 							name='fieldOfStudy'
 							rules={[
 								{
@@ -135,7 +141,7 @@ const EducaitonAddSinglePopup = ({ data, setLoading }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Result'
+							label={t('result')} 
 							name='result'
 							rules={[
 								{
@@ -148,7 +154,7 @@ const EducaitonAddSinglePopup = ({ data, setLoading }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Start Date'
+							label={t('s_date')} 
 							name='studyStartDate'
 							valuePropName='studyStartDate'
 							rules={[
@@ -157,15 +163,15 @@ const EducaitonAddSinglePopup = ({ data, setLoading }) => {
 									message: "Please input your start date!",
 								},
 							]}>
-							<DatePicker onChange={(date) => setstudyStartDate(date)} />
+							<DatePicker placeholder={t('select')} onChange={(date) => setstudyStartDate(date)} />
 						</Form.Item>
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='End Date'
+							label={t('end_date')} 
 							name='studyEndDate'
 							valuePropName='studyEndDate'>
-							<DatePicker onChange={(date) => setstudyEndDate(date)} />
+							<DatePicker placeholder={t('select')}  onChange={(date) => setstudyEndDate(date)} />
 						</Form.Item>
 
 						<Form.Item
@@ -181,7 +187,7 @@ const EducaitonAddSinglePopup = ({ data, setLoading }) => {
 								htmlType='submit'
 								block
 								loading={loader}>
-								Add Now
+								{t('add_new')}
 							</Button>
 						</Form.Item>
 					</div>

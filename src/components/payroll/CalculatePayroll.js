@@ -54,7 +54,7 @@ function CustomTable({ list, loading }) {
 							}}
 							value={salaryPayable}
 							min={0}
-							// defaultValue={salaryPayable}
+							//  defaultValue={salaryPayable}
 						/>{" "}
 					</div>
 				);

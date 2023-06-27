@@ -12,19 +12,23 @@ import ColVisibilityDropdown from "../Shared/ColVisibilityDropdown";
 import ViewBtn from "../Buttons/ViewBtn";
 import { CsvLinkBtn } from "../UI/CsvLinkBtn";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
 
 //Date fucntinalities
 let startdate = moment(new Date()).format("YYYY-MM-DD");
 let enddate = moment(new Date()).add(1, "day").format("YYYY-MM-DD");
 
 function CustomTable({ list, total }) {
+	const {t} = useTranslation();
+
 	const dispatch = useDispatch();
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 			render: (id) => <Link to={`/admin/account/${id}`}>{id}</Link>,
@@ -32,14 +36,14 @@ function CustomTable({ list, total }) {
 
 		{
 			id: 2,
-			title: "Account",
+			title: t('acoount'),
 			dataIndex: "name",
 			key: "name",
 		},
 
 		{
 			id: 3,
-			title: "Account Type ",
+			title: t('acc_type'),
 			dataIndex: "account",
 			key: "account",
 			render: (account) => account?.name,
@@ -47,7 +51,7 @@ function CustomTable({ list, total }) {
 		},
 		{
 			id: 4,
-			title: "Action",
+			title: t('action'),
 			key: "action",
 			render: ({ id }) => <ViewBtn path={`/admin/account/${id}`} />,
 		},
@@ -76,7 +80,7 @@ function CustomTable({ list, total }) {
 					<div>
 						<CsvLinkBtn>
 							<CSVLink data={CSVlist} filename='accounts'>
-								Download CSV
+							{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -113,6 +117,11 @@ function CustomTable({ list, total }) {
 }
 
 const GetAllAccount = (props) => {
+
+
+	const {t} = useTranslation();
+
+
 	const dispatch = useDispatch();
 	const list = useSelector((state) => state.accounts.list);
 
@@ -123,7 +132,7 @@ const GetAllAccount = (props) => {
 	return (
 		<Card className=''>
 			<h5 className=' text-2xl'>
-				<span className='ml-4'>Accounts List</span>
+				<span className='ml-4'>{t('acc_list')}</span>
 			</h5>
 
 			<CustomTable list={list} startdate={startdate} enddate={enddate} />

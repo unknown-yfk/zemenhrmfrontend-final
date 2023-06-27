@@ -13,8 +13,11 @@ import {
 import ColVisibilityDropdown from "../Shared/ColVisibilityDropdown";
 import ViewBtn from "../Buttons/ViewBtn";
 import { CsvLinkBtn } from "../UI/CsvLinkBtn";
+import {  useTranslation } from "react-i18next";
 
 function CustomTable({ list, loading ,total}) {
+	const {t} = useTranslation();
+
 	const dispatch = useDispatch();
 
 	const [columnsToShow, setColumnsToShow] = useState([]);
@@ -22,13 +25,13 @@ function CustomTable({ list, loading ,total}) {
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t('id'),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t('name'),
 			dataIndex: "name",
 			key: "name",
 			render: (name, { id }) => (
@@ -38,7 +41,7 @@ function CustomTable({ list, loading ,total}) {
 
 		{
 			id: 3,
-			title: "Action",
+			title: t('action'),
 			key: "action",
 			render: ({ id }) => <ViewBtn path={`/admin/designation/${id}/`} />,
 			
@@ -59,7 +62,9 @@ function CustomTable({ list, loading ,total}) {
 	return (
 		<div className='mt-4'>
 			<div className='text-center my-2 flex justify-between'>
-				<h5 className='text-xl ml-4'>Designation List</h5>
+				<h5 className='text-xl ml-4'>
+					{t('designation_list')}
+					</h5>
 				{list && (
 					<div>
 						<CsvLinkBtn>
@@ -67,7 +72,7 @@ function CustomTable({ list, loading ,total}) {
 								data={list}
 								className='btn btn-dark btn-sm mb-1'
 								filename='designation'>
-								Download CSV
+								{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -120,11 +125,6 @@ const GetAllDesignation = (props) => {
 				limit: 30,
 		}));
 	}, []);
-
-
-
-
-
 
 
 	// useEffect(() => {

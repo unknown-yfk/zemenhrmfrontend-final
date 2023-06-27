@@ -20,50 +20,53 @@ import {
 import ShifDelete from "./shiftDelete";
 import ShiftEditPopup from "../UI/PopUp/ShiftEditPopup";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 //PopUp
 
 const CustomTable = ({ list }) => {
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t("id"),
 			dataIndex: "id",
 			key: "id",
 		},
 
 		{
 			id: 2,
-			title: " Name",
+			title: t("name"),
 			key: "firstName",
 			render: ({ firstName, lastName }) => firstName + " " + lastName,
 		},
 
 		{
 			id: 6,
-			title: "User Name",
+			title: t("user_name"),
 			dataIndex: "userName",
 			key: "userName",
 		},
 		{
 			id: 7,
-			title: "Start Time",
+			title: t("start_time"),
 			dataIndex: "startTime",
 			key: "startTime",
 			render: (startTime) => moment(startTime).format("hh:mm A"),
 		},
 		{
 			id: 8,
-			title: "End Time",
+			title: t("end_time"),
 			dataIndex: "endTime",
 			key: "endTime",
 			render: (endTime) => moment(endTime).format("hh:mm A"),
 		},
 		{
 			id: 4,
-			title: "Action",
+			title: t("action"),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/hr/staffs/${id}/`} />,
@@ -84,10 +87,12 @@ const CustomTable = ({ list }) => {
 		<div>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='department-list-title text-color-2 text-xl mb-2'>
-					Employee List
+				
+					{t('employee_list')}
+
 				</h5>
 
-				{list && (
+				{/* {list && (
 					<div>
 						<CsvLinkBtn>
 							<CSVLink data={list} filename='user_department'>
@@ -95,9 +100,9 @@ const CustomTable = ({ list }) => {
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
-				)}
+				)} */}
 			</div>
-			{list && (
+			{/* {list && (
 				<div style={{ marginBottom: "30px" }}>
 					<ColVisibilityDropdown
 						options={columns}
@@ -105,7 +110,7 @@ const CustomTable = ({ list }) => {
 						columnsToShowHandler={columnsToShowHandler}
 					/>
 				</div>
-			)}
+			)} */}
 			<Table
 				loading={!list}
 				columns={columnsToShow}
@@ -118,6 +123,10 @@ const CustomTable = ({ list }) => {
 };
 
 const DetailShift = () => {
+	
+	const {t} = useTranslation();
+
+
 	const { id } = useParams();
 	let navigate = useNavigate();
 
@@ -145,7 +154,7 @@ const DetailShift = () => {
 
 	return (
 		<div>
-			<PageTitle title=' Back  ' />
+			<PageTitle title={t('back')} />
 
 			<UserPrivateComponent permission={"read-shift"}>
 				<Card className='mr-top mt-5'>

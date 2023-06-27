@@ -21,8 +21,12 @@ import { loadAllAward } from "../../redux/rtk/features/award/awardSlice";
 import { loadSingleStaff } from "../../redux/rtk/features/user/userSlice";
 import { useParams } from "react-router-dom";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const AddAwardHistory = ({ setLoading }) => {
+	
+	const {t} = useTranslation();
+
 	const [loader, setLoader] = useState(false);
 	const dispatch = useDispatch();
 
@@ -75,7 +79,7 @@ const AddAwardHistory = ({ setLoading }) => {
 						xl={24}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-							Add Award History
+							{t('add_award')}
 						</Title>
 						<Form
 							form={form}
@@ -94,10 +98,10 @@ const AddAwardHistory = ({ setLoading }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Award Name'
+									label={t('name')}
 									name='awardId'
 									rules={[{ required: true }]}>
-									<Select placeholder='Select award' loading={!award}>
+									<Select placeholder={t('select')} loading={!award}>
 										{award &&
 											award.map((award) => (
 												<Select.Option key={award.id} value={award.id}>
@@ -109,7 +113,7 @@ const AddAwardHistory = ({ setLoading }) => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Awarded Date'
+									label={t('date')}
 									name='awardedDate'
 									rules={[
 										{
@@ -117,12 +121,12 @@ const AddAwardHistory = ({ setLoading }) => {
 											message: "Please input your awarded Date!",
 										},
 									]}>
-									<DatePicker />
+									<DatePicker placeholder={t('select')} />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "20px" }}
-									label='Comment'
+									label={t('comment')}
 									name='comment'>
 									<Input />
 								</Form.Item>
@@ -140,7 +144,7 @@ const AddAwardHistory = ({ setLoading }) => {
 										htmlType='submit'
 										block
 										loading={loader}>
-										Add New Award
+										{t('add_new')}
 									</Button>
 								</Form.Item>
 							</div>

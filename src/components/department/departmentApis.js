@@ -46,9 +46,12 @@ export const loadSingleDepartment = async (id) => {
 
 	try {
 		const { data } = await axios.get(`department/${id}`);
+		// console.log(data);
+		
 		return {
 			data,
 			message: "Success",
+
 		};
 		//dispatching data
 	} catch (error) {

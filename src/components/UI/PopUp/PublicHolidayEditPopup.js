@@ -9,8 +9,11 @@ import {
 	updatePublicHoliday,
 } from "../../../redux/rtk/features/publicHoliday/publicHolidaySlice";
 import moment from "moment";
+import {  useTranslation } from "react-i18next";
 
 const PublicHolidayEdit = ({ data }) => {
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const { id } = useParams("id");
 
@@ -57,7 +60,7 @@ const PublicHolidayEdit = ({ data }) => {
 				<BtnEditSvg size={20} />
 			</button>
 			<Modal
-				title='Public Holiday Edit'
+				title={t('public_holiday')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>
@@ -78,7 +81,7 @@ const PublicHolidayEdit = ({ data }) => {
 					<div>
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Name'
+							label={t('name')}
 							name='name'
 							rules={[
 								{
@@ -91,10 +94,10 @@ const PublicHolidayEdit = ({ data }) => {
 
 						<Form.Item
 							style={{ marginBottom: "10px" }}
-							label='Date'
+							label={t('date')}
 							name='date'
 							rules={[{ required: true, message: "Please select date!" }]}>
-							<DatePicker format={"YYYY-DD-MM"} />
+							<DatePicker placeholder={t('select')} format={"YYYY-DD-MM"} />
 						</Form.Item>
 
 						<Form.Item
@@ -110,7 +113,8 @@ const PublicHolidayEdit = ({ data }) => {
 								htmlType='submit'
 								block
 								loading={loader}>
-								Update Public Holiday
+							
+								{t('update_pub_holiday')}
 							</Button>
 						</Form.Item>
 					</div>

@@ -4,7 +4,12 @@ import BtnEditSvg from "../Button/btnEditSvg";
 import EmployeeTimeline from "../EmployeeTimeline";
 import EducaitonAddSinglePopup from "./EducaitonAddSinglePopup";
 import Loader from "../../loader/loader";
+import {  useTranslation } from "react-i18next";
+
 const EducaitonEditPopup = ({ data }) => {
+
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 
@@ -23,7 +28,7 @@ const EducaitonEditPopup = ({ data }) => {
 				<BtnEditSvg size={25} />
 			</button>
 			<Modal
-				title='Edit Education'
+					title={t('edit_educ')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>

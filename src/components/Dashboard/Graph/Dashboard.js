@@ -6,8 +6,12 @@ import checkTokenExp from "../../../utils/checkTokenExp";
 import PublicHolidayBar from "./PublicHolidayBar";
 import DemoLine from "./Demoline";
 import AnnouncementBar from "./AnnouncementBar";
+import {  useTranslation } from "react-i18next";
 
 const Dashboard = () => {
+
+	const {t} = useTranslation();
+
 	const isLogged = Boolean(localStorage.getItem("isLogged"));
 
 	if (!isLogged) {
@@ -22,9 +26,10 @@ const Dashboard = () => {
 		<>
 			<div>
 				
-			<Card title='ANNOUNCEMENTS'>
-									<AnnouncementBar />
-								</Card>
+			<Card title={t('anouncement')}>
+		
+				<AnnouncementBar />
+			</Card>
 				<div>
 					<div className='mb-3'>
 						<Row>
@@ -36,7 +41,7 @@ const Dashboard = () => {
 					<div>
 						<Row gutter={[30, 30]}>
 							<Col sm={24} md={24} lg={12} span={24} className='mb-auto'>
-								<Card title='PUBLIC HOLIDAYS' className=''>
+								<Card title= {t('public_holiday')} className=''>
 									<PublicHolidayBar />
 								</Card>
 							</Col>

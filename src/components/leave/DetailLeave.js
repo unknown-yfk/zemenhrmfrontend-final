@@ -12,8 +12,11 @@ import PageTitle from "../page-header/PageHeader";
 import moment from "moment";
 import ReviewLeavePopup from "../UI/PopUp/ReviewLeavePopup";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 const DetailLeave = () => {
+	const {t} = useTranslation();
+
 	const { id } = useParams("id");
 	const leave = useSelector((state) => state.leave.leave);
 	const dispatch = useDispatch();
@@ -28,20 +31,20 @@ const DetailLeave = () => {
 
 	return (
 		<div>
-			<PageTitle title='Back' />
+			<PageTitle title={t('back')} />
 			<UserPrivateComponent permission={"read-leaveApplication"}>
 				<Card className='mt-4'>
 					<div className='text-center mb-4'>
 						{" "}
 						<h2 className='text-2xl font-semibold text-gray-600'>
-							Leave Application #{leave?.id}{" "}
+							{t('app_leave')} #{leave?.id}{" "}
 						</h2>
 					</div>
 					{leave ? (
 						<div className='flex justify-center '>
 							<ul className='list-inside list-none border-2 border-inherit rounded px-5 py-5 '>
 								<ListItem>
-									Name :{" "}
+								{t('name')} :{" "}
 									<TextInside>
 										{(
 											leave?.user.firstName +
@@ -51,42 +54,42 @@ const DetailLeave = () => {
 									</TextInside>
 								</ListItem>
 								<ListItem>
-									Leave Type : <TextInside>{leave.leaveType}</TextInside>
+								{t('leave_type')} : <TextInside>{leave.leaveType}</TextInside>
 								</ListItem>
 								<ListItem>
-									Leave From :{" "}
+								{t('leave_from')} :{" "}
 									<TextInside>
 										{moment(leave.leaveFrom).format("DD-MM-YYYY")}
 									</TextInside>
 								</ListItem>
 
 								<ListItem>
-									Leave To :{" "}
+								{t('leave_to')} :{" "}
 									<TextInside>
 										{moment(leave.leaveTo).format("DD-MM-YYYY")}
 									</TextInside>
 								</ListItem>
 
 								<ListItem>
-									Leave Duration :{" "}
+								{t('leave_duration')} :{" "}
 									<TextInside className='text-red-500'>
 										{leave.leaveDuration}
 									</TextInside>
 								</ListItem>
 
 								<ListItem>
-									Leave Reason :{" "}
-									<TextInside>{leave.reason || "No reason"}</TextInside>
+								{t('leave_reason')} :{" "}
+									<TextInside>{leave.reason || t('no_reason')}</TextInside>
 								</ListItem>
 
 								<ListItem>
-									Leave Status :{" "}
+								{t('leave_satus')} :{" "}
 									<TextInside>
-										{leave.status === "pending" ? (
+										{leave.status === t('pending') ? (
 											<span className='text-yellow-500'>
 												{leave.status.toUpperCase()}
 											</span>
-										) : leave.status === "accepted" ? (
+										) : leave.status === t('accepted') ? (
 											<span className='text-green-500'>
 												{leave.status.toUpperCase()}
 											</span>
@@ -99,39 +102,38 @@ const DetailLeave = () => {
 								</ListItem>
 
 								<ListItem>
-									Leave Acceted From :{" "}
+									{t('s_date')}:{" "}
 									<TextInside>
 										{leave.acceptLeaveFrom
 											? moment(leave.acceptLeaveFrom).format("DD-MM-YYYY")
-											: "ON REVIEW"}
+											: t('on_review')}
 									</TextInside>
 								</ListItem>
 
 								<ListItem>
-									Leave Acceted To :{" "}
+								{t('end_date')} :{" "}
 									<TextInside>
 										{leave.acceptLeaveTo
 											? moment(leave.acceptLeaveTo).format("DD-MM-YYY")
-											: "ON REVIEW"}
+											: t('on_review')}
 									</TextInside>
 								</ListItem>
 
 								<ListItem>
-									Leave Acceted By :{" "}
+								{t('puched_by')} :{" "}
 									<TextInside className='text-green-500'>
-										{(leave.acceptLeaveBy?.firstName || "ON") +
-											" " +
-											(leave.acceptLeaveBy?.lastName || "REVIEW")}
+										{
+											(leave.acceptLeaveBy?.lastName || t('on_review'))}
 									</TextInside>
 								</ListItem>
 
 								<ListItem>
-									Review Comment :{" "}
-									<TextInside>{leave.reviewComment || "No comment"}</TextInside>
+								{t('comment')} :{" "}
+									<TextInside>{leave.reviewComment ||  t('no_comment')}</TextInside>
 								</ListItem>
 
 								<ListItem>
-									Attachment :{" "}
+								{t('attachment')} :{" "}
 									<TextInside>
 										{leave.attachment ? (
 											<a
@@ -139,10 +141,10 @@ const DetailLeave = () => {
 												target='_blank'
 												rel='noreferrer'
 												className='text-blue-500'>
-												Download
+												{t('	download')}
 											</a>
 										) : (
-											"No Attachment"
+											t('no_attachment')
 										)}
 									</TextInside>
 								</ListItem>

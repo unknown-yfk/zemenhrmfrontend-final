@@ -15,8 +15,12 @@ import {
 import { addAward } from "../../redux/rtk/features/award/awardSlice";
 import PageTitle from "../page-header/PageHeader";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
+
 
 const AddAward = ({ drawer }) => {
+	const {t} = useTranslation();
+
 	const { list, loading } = useSelector((state) => state.award);
 	const [loader, setLoader] = useState(false);
 	const [form] = Form.useForm();
@@ -47,7 +51,7 @@ const AddAward = ({ drawer }) => {
 	};
 	return (
 		<Fragment bordered={false}>
-			<PageTitle title='Back' />
+			<PageTitle title={t('back')} />
 
 			<UserPrivateComponent permission={"create-award"}>
 				<Row className='mr-top' justify={drawer ? "center" : "space-between"}>
@@ -59,7 +63,7 @@ const AddAward = ({ drawer }) => {
 						xl={drawer ? 22 : 12}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-							Add Award
+							{t('add_award')}
 						</Title>
 						<Form
 							style={{ marginBottom: "40px" }}
@@ -78,7 +82,7 @@ const AddAward = ({ drawer }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Name'
+									label={t('name')}
 									name='name'
 									rules={[
 										{
@@ -86,12 +90,12 @@ const AddAward = ({ drawer }) => {
 											message: "Please input your award name!",
 										},
 									]}>
-									<Input placeholder='Employee Of The Month' />
+									<Input placeholder={t('emp_mon')} />
 								</Form.Item>
 
 								<Form.Item
 									style={{ marginBottom: "20px" }}
-									label='Description'
+									label={t('description')}
 									name='description'
 									rules={[
 										{
@@ -99,7 +103,7 @@ const AddAward = ({ drawer }) => {
 											message: "Please input your award description!",
 										},
 									]}>
-									<Input placeholder='Employee Who Performed Well' />
+									<Input placeholder={t('emp_per')} />
 								</Form.Item>
 
 								<Form.Item
@@ -115,7 +119,7 @@ const AddAward = ({ drawer }) => {
 										htmlType='submit'
 										block
 										loading={loader}>
-										Add New Award
+										{t('add_new')}
 									</Button>
 								</Form.Item>
 							</div>

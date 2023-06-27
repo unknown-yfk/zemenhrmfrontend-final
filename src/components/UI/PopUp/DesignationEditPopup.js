@@ -7,8 +7,11 @@ import DesignationAddSinglePopup from "./DesignationAddSinglePopup";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadAllDesignation } from "../../../redux/rtk/features/designation/designationSlice";
+import {  useTranslation } from "react-i18next";
 
 const DesignationEditPopup = ({ data }) => {
+	const {t} = useTranslation();
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const { list } = useSelector((state) => state.designations);
@@ -29,7 +32,7 @@ const DesignationEditPopup = ({ data }) => {
 				<BtnEditSvg size={25} />
 			</button>
 			<Modal
-				title='Edit Designation'
+			title={t('edit_desig')}
 				open={isModalOpen}
 				onOk={handleOk}
 				onCancel={handleCancel}>

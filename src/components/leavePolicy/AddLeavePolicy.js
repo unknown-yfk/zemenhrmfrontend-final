@@ -23,40 +23,43 @@ import {
 	loadAllLeavePolicy,
 } from "../../redux/rtk/features/leavePolicy/leavePolicySlice";
 import UserPrivateComponent from "../PrivateRoutes/UserPrivateComponent";
+import {  useTranslation } from "react-i18next";
 
 function CustomTable({ list, loading }) {
+	const {t} = useTranslation();
+
 	const [columnsToShow, setColumnsToShow] = useState([]);
 
 	const columns = [
 		{
 			id: 1,
-			title: "ID",
+			title: t("id"),
 			dataIndex: "id",
 			key: "id",
 		},
 		{
 			id: 2,
-			title: "Name",
+			title: t("name"),
 			dataIndex: "name",
 			key: "name",
 		},
 
 		{
 			id: 3,
-			title: "Total Paid Leave",
+			title: t("paid"),
 			dataIndex: "paidLeaveCount",
 			key: "paidLeaveCount",
 		},
 
 		{
 			id: 3,
-			title: "Total Unpaid Leave",
+			title: t("unpaid"),
 			dataIndex: "unpaidLeaveCount",
 			key: "unpaidLeaveCount",
 		},
 		{
 			id: 4,
-			title: "Action",
+			title: t("action"),
 			dataIndex: "id",
 			key: "action",
 			render: (id) => <ViewBtn path={`/admin/leave-policy/${id}/`} />,
@@ -77,7 +80,7 @@ function CustomTable({ list, loading }) {
 		<Card>
 			<div className='text-center my-2 flex justify-between'>
 				<h5 className='department-list-title text-color-2 text-xl mb-2'>
-					Leave Policy List
+					{t('leave_policy_list')}
 				</h5>
 				{list && (
 					<div>
@@ -86,7 +89,8 @@ function CustomTable({ list, loading }) {
 								data={list}
 								className='btn btn-dark btn-sm mb-1'
 								filename='leave-policy'>
-								Download CSV
+							
+								{t('download_csv')}
 							</CSVLink>
 						</CsvLinkBtn>
 					</div>
@@ -114,6 +118,8 @@ function CustomTable({ list, loading }) {
 }
 
 const AddLeavePolicy = ({ drawer }) => {
+	const {t} = useTranslation();
+
 	const { list, loading } = useSelector((state) => state.leavePolicy);
 	const [loader, setLoader] = useState(false);
 	const [form] = Form.useForm();
@@ -159,7 +165,9 @@ const AddLeavePolicy = ({ drawer }) => {
 						xl={drawer ? 22 : 12}
 						className='column-design border rounded card-custom'>
 						<Title level={4} className='m-2 mt-5 mb-5 text-center'>
-							Add Leave Policy
+					
+							{t('add_leave_policy')}
+
 						</Title>
 						<Form
 							style={{ marginBottom: "40px" }}
@@ -178,7 +186,7 @@ const AddLeavePolicy = ({ drawer }) => {
 							<div>
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Name'
+									label={t('name')}
 									name='name'
 									rules={[
 										{
@@ -191,7 +199,7 @@ const AddLeavePolicy = ({ drawer }) => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Paid Leave '
+									label={t('paid')}
 									name='paidLeaveCount'
 									rules={[
 										{
@@ -204,7 +212,7 @@ const AddLeavePolicy = ({ drawer }) => {
 
 								<Form.Item
 									style={{ marginBottom: "10px" }}
-									label='Unpaid Leave '
+									label={t('unpaid')}
 									name='unpaidLeaveCount'
 									rules={[
 										{
@@ -228,7 +236,10 @@ const AddLeavePolicy = ({ drawer }) => {
 										htmlType='submit'
 										block
 										loading={loader}>
-										Add New Policy
+
+										{t('add_new')}
+
+
 									</Button>
 								</Form.Item>
 							</div>
